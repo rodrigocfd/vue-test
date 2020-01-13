@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Block from '@/components/Block.vue';
-import HelloWorld from '@/components/HelloWorld.vue';
+import Block from '@/block/Block.vue';
+import Home from '@/home/Home.vue';
 
 Vue.use(VueRouter);
 
@@ -9,8 +9,8 @@ export default new VueRouter({
 	routes: [
 		{
 			path: '/',
-			name: 'helloworld',
-			component: HelloWorld
+			name: 'home',
+			component: Home
 		},
 		{
 			path: '/block',

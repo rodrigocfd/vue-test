@@ -1,5 +1,6 @@
 <template>
-	<div class="hello">
+	<div>
+		<h1>Home</h1>
 		<input v-model="words" />
 		<button v-on:click="fire">Fire</button>
 	</div>
@@ -7,7 +8,7 @@
 
 <script>
 export default {
-	data: function() {
+	data() { // simple local data to be kept
 		return {
 			words: 'foo'
 		};
