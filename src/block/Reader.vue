@@ -1,6 +1,11 @@
 <template>
 	<div id="main">
-		Your name is <span class="theName">{{$store.state.name}}</span>.
+		<template v-if="$store.state.name.length > 0">
+			Your name is <span class="theName">{{$store.state.name}}</span>.
+		</template>
+		<template v-else>
+			(No name kept on the Vuex store.)
+		</template>
 	</div>
 </template>
 
