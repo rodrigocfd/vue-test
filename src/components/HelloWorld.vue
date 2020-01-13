@@ -1,6 +1,5 @@
 <template>
 	<div class="hello">
-		<h1>{{msg}}</h1>
 		<input v-model="words" />
 		<button v-on:click="fire">Fire</button>
 	</div>
@@ -8,10 +7,6 @@
 
 <script>
 export default {
-	name: 'HelloWorld',
-	props: {
-		msg: String
-	},
 	data: function() {
 		return {
 			words: 'foo'
@@ -22,7 +17,7 @@ export default {
 			alert(this.words);
 		}
 	}
-}
+};
 </script>
 
 <style scoped>

@@ -1,24 +1,24 @@
 <template>
 	<div id="app">
-		<HelloWorld msg="Hello" />
+		<div id="nav">
+			<router-link to="/">Hello world</router-link> |
+			<router-link to="/block">Block</router-link>
+		</div>
+		<div id="content">
+			<router-view />
+		</div>
 	</div>
 </template>
-
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-	name: 'app',
-	components: {
-		HelloWorld
-	}
-}
-</script>
 
 <style>
 #app {
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+#content {
+	border-top: 1px solid #eee;
+	margin-top: 10px;
+	padding-top: 10px;
 }
 </style>
