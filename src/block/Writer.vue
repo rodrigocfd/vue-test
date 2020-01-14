@@ -8,9 +8,9 @@
 <script>
 export default {
 	computed: {
-		name: { // allows us to use two-way binding straight to the store
+		name: { // allows us to use two-way binding straight from/to the store
 			get()    { return this.$store.state.name; },
-			set(val) { this.$store.commit('change', val); }
+			set(val) { this.$store.commit('change', val); } // mutate the state
 		}
 	}
 };
