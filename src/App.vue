@@ -1,10 +1,10 @@
 <template>
 	<div id="app">
-		<div id="nav">
+		<div id="nav" v-if="$store.state.isAuth">
 			<router-link to="/home">Home</router-link> |
 			<router-link to="/block">Block</router-link>
 		</div>
-		<div id="content">
+		<div>
 			<router-view />
 		</div>
 	</div>
@@ -16,9 +16,12 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-#content {
-	border-top: 1px solid #eee;
-	margin-top: 10px;
-	padding-top: 10px;
+h1 {
+	color: #555;
+}
+#nav {
+	border-bottom: 1px solid #eee;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
 }
 </style>

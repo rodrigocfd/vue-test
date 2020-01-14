@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
+		isAuth: false,
 		name: ''
 	},
 	mutations: { // never change the state directly, always mutate
