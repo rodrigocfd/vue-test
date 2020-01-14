@@ -10,7 +10,7 @@
 export default {
 	data() { // simple local data to be kept
 		return {
-			words: 'foo'
+			words: 'Você está autenticado.'
 		};
 	},
 	methods: {

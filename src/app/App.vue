@@ -1,16 +1,24 @@
 <template>
 	<div id="app">
-		<div id="nav" v-if="$store.state.isAuth">
-			<router-link to="/home">Home</router-link> |
-			<router-link to="/block">Block</router-link>
-		</div>
+		<Menu />
 		<div>
 			<router-view />
 		</div>
 	</div>
 </template>
 
+<script>
+import Menu from './Menu.vue';
+
+export default {
+	components: {
+		Menu
+	}
+};
+</script>
+
 <style>
+/* App-wide global styles. */
 #app {
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -18,10 +26,5 @@
 }
 h1 {
 	color: #555;
-}
-#nav {
-	border-bottom: 1px solid #eee;
-	padding-bottom: 10px;
-	margin-bottom: 10px;
 }
 </style>
