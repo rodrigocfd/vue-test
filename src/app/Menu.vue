@@ -1,5 +1,5 @@
 <template>
-	<div id="nav" v-if="$store.state.isAuth">
+	<div id="nav" v-if="$store.state.login.isAuth">
 		<router-link to="/home">Home</router-link> |
 		<router-link to="/block">Block</router-link>
 	</div>

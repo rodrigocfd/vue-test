@@ -4,19 +4,19 @@ import store from './store';
 
 import Block from '@/block/Block.vue';
 import Home from '@/Home.vue';
-import Login from '@/Login.vue';
+import Login from '@/login/Login.vue';
 import NotFound from '@/NotFound.vue';
 
 Vue.use(VueRouter);
 
 const routeGuards = {
 	ifSigned(to, from, next) {
-		store.state.isAuth
+		store.state.login.isAuth
 			? next()
 			: next('/login'); // not signed, redirect to login
 	},
 	ifNotSigned(to, from, next) {
-		!store.state.isAuth
+		!store.state.login.isAuth
 			? next()
 			: next('/home'); // yes signed, redirect to home
 	}

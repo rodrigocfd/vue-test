@@ -1,16 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import block from '@/block/blockStore';
+import login from '@/login/loginStore';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-	state: {
-		isAuth: false,
-		name: ''
-	},
-	mutations: { // never change the state directly, always mutate
-		change(state, name) {
-			state.name = name;
-		}
+	modules: {
+		block,
+		login
 	}
 });
