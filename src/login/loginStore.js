@@ -11,8 +11,12 @@ export default {
 	actions: {
 		doLogin(context, {username, password}) {
 			return new Promise((resolve, reject) => {
-				context.commit('setAuth', true);
-				resolve();
+				if (username !== '123' || password !== '123') {
+					reject('Usuário e senha: 123 e 123.');
+				} else {
+					context.commit('setAuth', true);
+					resolve();
+				}
 			});
 		},
 		doLogoff(context) {
