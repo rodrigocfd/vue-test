@@ -2,8 +2,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from './store';
 
-import Block from '@/block/Block.vue';
 import Home from '@/Home.vue';
+import Inputters from '@/inputters/Inputters.vue';
 import Login from '@/login/Login.vue';
 import NotFound from '@/NotFound.vue';
 
@@ -24,10 +24,10 @@ const routeGuards = {
 
 export default new VueRouter({
 	routes: [
-		{ path: '/',      redirect: '/home' },
-		{ path: '/login', name: 'login', component: Login, beforeEnter: routeGuards.ifNotSigned },
-		{ path: '/home',  name: 'home',  component: Home,  beforeEnter: routeGuards.ifSigned },
-		{ path: '/block', name: 'block', component: Block, beforeEnter: routeGuards.ifSigned },
-		{ path: '*',      component: NotFound }
+		{ path: '/',          redirect: '/home' },
+		{ path: '/login',     name: 'login',     component: Login,     beforeEnter: routeGuards.ifNotSigned },
+		{ path: '/home',      name: 'home',      component: Home,      beforeEnter: routeGuards.ifSigned },
+		{ path: '/inputters', name: 'inputters', component: Inputters, beforeEnter: routeGuards.ifSigned },
+		{ path: '*',          component: NotFound }
 	]
 });

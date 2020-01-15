@@ -1,7 +1,7 @@
 <template>
 	<div id="main">
-		<template v-if="$store.state.block.name.length > 0">
-			Your name is <span class="theName">{{$store.state.block.name}}</span>.
+		<template v-if="$store.state.inputters.name.length > 0">
+			Your name is <span class="theName">{{$store.state.inputters.name}}</span>.
 		</template>
 		<template v-else>
 			(No name kept on the Vuex store.)
