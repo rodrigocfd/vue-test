@@ -1,11 +1,29 @@
 <template>
 	<form @submit.prevent="login">
 		<h1>Autentique-se</h1>
-		<!-- <input type="text" name="username" required placeholder="Usuário" v-model="username" /> -->
-		<!-- <input type="password" name="password" required placeholder="Senha" v-model="password" /> -->
+		<input type="text" name="username" required placeholder="Usuário" v-model="username" />
+		<input type="password" name="password" required placeholder="Senha" v-model="password" />
 		<button type="submit">Login</button>
 	</form>
 </template>
+
+<script>
+export default {
+	data() {
+		return {
+			username: '123',
+			password: '123'
+		};
+	},
+	methods: {
+		login() {
+			const {username, password} = this;
+			this.$store.dispatch('login/doLogin', {username, password})
+				.then(() => this.$router.push('/')); // router won't update itself automatically
+		}
+	}
+};
+</script>
 
 <style scoped>
 form {

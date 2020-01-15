@@ -1,6 +1,6 @@
 <template>
-	<div id="app">
-		<Menu />
+	<div class="app">
+		<Menu v-if="$store.state.login.isAuth" />
 		<div>
 			<router-view />
 		</div>
@@ -19,7 +19,7 @@ export default {
 
 <style>
 /* App-wide global styles. */
-#app {
+.app {
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

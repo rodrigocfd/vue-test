@@ -1,5 +1,5 @@
 <template>
-	<div id="main">
+	<div class="main">
 		<template v-if="name.length > 0">
 			Your name is <span class="theName">{{name}}</span>.
 		</template>
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style scoped>
-#main {
+.main {
 	margin-top: 10px;
 }
 .theName {
