@@ -1,13 +1,23 @@
 <template>
 	<div id="main">
-		<template v-if="$store.state.inputters.name.length > 0">
-			Your name is <span class="theName">{{$store.state.inputters.name}}</span>.
+		<template v-if="name.length > 0">
+			Your name is <span class="theName">{{name}}</span>.
 		</template>
 		<template v-else>
 			(No name kept on the Vuex store.)
 		</template>
 	</div>
 </template>
+
+<script>
+export default {
+	computed: {
+		name() {
+			return this.$store.state.inputters.name;
+		}
+	}
+};
+</script>
 
 <style scoped>
 #main {
