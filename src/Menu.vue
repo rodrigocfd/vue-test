@@ -21,8 +21,9 @@ export default {
 <style scoped>
 .nav {
 	border-bottom: 1px solid #eee;
-	padding-bottom: 10px;
-	margin-bottom: 10px;
+	padding: 10px;
+	background-image: url(./assets/spikes-pattern.png);
+	background-repeat: repeat;
 }
 .logoff {
 	display: inline-block;

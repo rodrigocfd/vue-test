@@ -1,7 +1,7 @@
 <template>
 	<div class="app">
 		<Menu v-if="$store.getters['login/isAuth']" />
-		<div>
+		<div class="contents">
 			<router-view />
 		</div>
 	</div>
@@ -19,10 +19,17 @@ export default {
 
 <style>
 /* App-wide global styles. */
+body {
+	margin: 0;
+	padding: 0;
+}
 .app {
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+.app > .contents {
+	margin: 12px 10px;
 }
 h1 {
 	color: #555;
