@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from './store';
 
-import Home from '@/Home.vue';
+import Home from '@/home/Home.vue';
 import Inputters from '@/inputters/Inputters.vue';
 import Login from '@/login/Login.vue';
 import NotFound from '@/NotFound.vue';
