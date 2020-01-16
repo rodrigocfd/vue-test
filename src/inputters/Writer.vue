@@ -9,7 +9,7 @@
 export default {
 	computed: {
 		name: { // allows us to use two-way binding straight from/to the store
-			get()    { return this.$store.state.inputters.name; },
+			get()    { return this.$store.getters['inputters/getName']; },
 			set(val) { this.$store.commit('inputters/setName', val); } // mutate the state
 		}
 	}

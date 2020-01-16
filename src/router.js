@@ -11,12 +11,12 @@ Vue.use(VueRouter);
 
 const routeGuards = {
 	ifSigned(to, from, next) {
-		store.state.login.isAuth
+		store.getters['login/isAuth']
 			? next()
 			: next('/login'); // not signed, redirect to login
 	},
 	ifNotSigned(to, from, next) {
-		!store.state.login.isAuth
+		!store.getters['login/isAuth']
 			? next()
 			: next('/home'); // yes signed, redirect to home
 	}

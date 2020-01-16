@@ -1,6 +1,6 @@
 <template>
 	<div class="app">
-		<Menu v-if="$store.state.login.isAuth" />
+		<Menu v-if="$store.getters['login/isAuth']" />
 		<div>
 			<router-view />
 		</div>
