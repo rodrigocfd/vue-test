@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<label for="name">Your name:</label>
-		<input type="text" name="name" v-model="name" />
+		<input type="text" name="name" v-focus v-model="name" />
 	</div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h1>Home</h1>
-		<input v-model="words" />
+		<input type="text" v-focus v-model="words" />
 		<button v-on:click="fire">Fire</button>
 	</div>
 </template>
