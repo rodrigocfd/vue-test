@@ -16,14 +16,15 @@ export default {
 	},
 	data() {
 		return {
-			words: 'Você está autenticado.'
+			words: ''
 		};
 	},
 	methods: {
 		fire: function() {
 			this.$modal.show('Prompt', {
-				words: this.words,
-				onOk: data => console.log(data)
+				caption: 'Type your name:',
+				text: this.words,
+				onOk: text => this.words = text
 			});
 		}
 	}
