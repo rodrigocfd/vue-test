@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<Prompt />
 		<h1>Home</h1>
 		<input type="text" v-focus v-model="words" />
 		<button v-on:click="fire">Fire</button>
@@ -7,15 +8,23 @@
 </template>
 
 <script>
+import Prompt from './Prompt.vue';
+
 export default {
-	data() { // simple local data to be kept
+	components: {
+		Prompt
+	},
+	data() {
 		return {
 			words: 'Você está autenticado.'
 		};
 	},
 	methods: {
 		fire: function() {
-			alert(this.words);
+			this.$modal.show('Prompt', {
+				words: this.words,
+				onOk: data => console.log(data)
+			});
 		}
 	}
 };

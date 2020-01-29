@@ -17,8 +17,7 @@ export default {
 };
 </script>
 
-<style>
-/* App-wide global styles. */
+<style>/* App-wide global styles. */
 body {
 	margin: 0;
 	padding: 0;
@@ -30,6 +29,9 @@ body {
 }
 .app > .contents {
 	margin: 12px 10px;
+}
+button, input[type=submit] {
+	cursor: pointer;
 }
 h1 {
 	color: #555;

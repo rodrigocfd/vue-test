@@ -1,10 +1,13 @@
 import Vue from 'vue';
-import App from './App.vue';
+import VModal from 'vue-js-modal';
 
+import App from './App.vue';
 import router from './router';
 import store from './store';
 
 Vue.config.productionTip = false;
+
+Vue.use(VModal); // register plugin for modal component
 
 // Custom directive: v-focus
 // Will set focus on input then component loads.
