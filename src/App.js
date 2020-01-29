@@ -1,15 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Home from './home/Home';
-import './App.css';
 
 function App() {
 	return (
-		<div className="App">
+		<Div0 className="App">
 			Main
 			<Home />
-		</div>
+		</Div0>
 	);
 }
+
+const Div0 = styled.div`
+	margin: 20px;
+`;
 
 export default App;
