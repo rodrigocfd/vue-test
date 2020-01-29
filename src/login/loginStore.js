@@ -9,12 +9,12 @@ export default {
 		isAuth: state => state.token !== null // store.getters['login/isAuth']
 	},
 	mutations: {
-		setToken(state, tokenVal) {
+		setToken(state, tokenVal) { // store.commit('login/setToken', tokenVal)
 			state.token = tokenVal;
 		}
 	},
 	actions: {
-		doLogin(context, {username, password}) {
+		doLogin(context, {username, password}) { // store.dispatch('login/doLogin', {username, password})
 			return new Promise((resolve, reject) => {
 				if (username !== '123' || password !== '123') {
 					Cookie.erase('token');
@@ -28,7 +28,7 @@ export default {
 				}
 			});
 		},
-		doLogoff(context) {
+		doLogoff(context) { // store.dispatch('login/doLogoff')
 			return new Promise((resolve, reject) => {
 				Cookie.erase('token');
 				context.commit('setToken', null);

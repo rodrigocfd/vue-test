@@ -7,7 +7,7 @@ export default {
 		getName: state => state.name // store.getters['inputters/getName']
 	},
 	mutations: {
-		setName(state, newName) {
+		setName(state, newName) { // store.commit('inputters/setName', newName)
 			state.name = newName;
 		}
 	}
