@@ -1,6 +1,8 @@
 <template>
-	<modal name="Prompt" :classes="['v--modal', 'Prompt']" :height="'auto'" :width="'350px'"
+	<modal name="Prompt" :classes="['v--modal', 'Prompt']"
+		:height="'auto'" :width="'350px'"
 		@before-open="modalBeforeOpen" @closed="modalClosed">
+		<Prompt2 />
 		<form @submit="doSubmit">
 			<div class="caption">
 				{{caption}}
@@ -11,13 +13,19 @@
 			<div class="buttons">
 				<input type="submit" value="Ok" />
 				<input type="button" value="Cancel" @click="btnCancel" />
+				<input type="button" value="Stacked" @click="btnStacked" />
 			</div>
 		</form>
 	</modal>
 </template>
 
 <script>
+import Prompt2 from './Prompt2.vue';
+
 export default {
+	components: {
+		Prompt2
+	},
 	data() {
 		return {
 			caption: '',
@@ -48,6 +56,9 @@ export default {
 		},
 		btnCancel() {
 			this.$modal.hide('Prompt');
+		},
+		btnStacked() {
+			this.$modal.show('Prompt2');
 		}
 	}
 };
