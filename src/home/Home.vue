@@ -2,7 +2,7 @@
 	<div>
 		<Prompt />
 		<h1>Home</h1>
-		<input type="text" v-focus v-model="words" />
+		<input type="text" ref="words" v-focus v-model="words" />
 		<button v-on:click="fire">Fire</button>
 	</div>
 </template>
@@ -24,7 +24,10 @@ export default {
 			this.$modal.show('Prompt', {
 				caption: 'Type your name:',
 				text: this.words,
-				onOk: text => this.words = text
+				onOk: text => {
+					this.words = text;
+					this.$refs.words.focus();
+				}
 			});
 		}
 	}

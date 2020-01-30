@@ -13,7 +13,7 @@
 export default {
 	computed: {
 		name() {
-			return this.$store.getters['inputters/getName'];
+			return this.$store.getters['typers/getName'];
 		}
 	}
 };
