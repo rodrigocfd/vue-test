@@ -1,14 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Reader from './Reader';
-import Writer from './Writer';
-
-function Typers() {
+function Writer() {
 	return (
 		<Div0>
-			<Reader />
-			<Writer />
+			<h1>Writer</h1>
 		</Div0>
 	);
 }
@@ -18,4 +14,4 @@ const Div0 = styled.div`
 	}
 `;
 
-export default Typers;
+export default Writer;

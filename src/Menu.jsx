@@ -14,6 +14,7 @@ function Menu() {
 const Div0 = styled.div`
 	border-bottom: 1px solid #eee;
 	padding: 10px;
+	background-image: url(/spikes-pattern.png);
 	background-repeat: repeat;
 `;
 
