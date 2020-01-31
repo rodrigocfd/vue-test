@@ -8,8 +8,9 @@ function Reader() {
 		</Div0>
 	);
 }
+
 const Div0 = styled.div`
-	h1 {
+	& > h1 {
 		color: forestgreen;
 	}
 `;

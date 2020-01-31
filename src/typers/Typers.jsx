@@ -1,21 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import Reader from './Reader';
 import Writer from './Writer';
 
 function Typers() {
 	return (
-		<Div0>
+		<div>
 			<Reader />
 			<Writer />
-		</Div0>
+		</div>
 	);
 }
-const Div0 = styled.div`
-	h1 {
-		color: forestgreen;
-	}
-`;
 
 export default Typers;

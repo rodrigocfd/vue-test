@@ -8,9 +8,10 @@ function Writer() {
 		</Div0>
 	);
 }
+
 const Div0 = styled.div`
-	h1 {
-		color: forestgreen;
+	& > h1 {
+		color: darkslateblue;
 	}
 `;
 
