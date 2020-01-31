@@ -14,6 +14,26 @@ code {
 		monospace;
 }
 
-button, input[type=submit] {
+button, input[type=button], input[type=submit] {
 	cursor: pointer;
+}
+
+/* ReactModal component */
+
+.ReactModal-content {
+	position: absolute;
+	inset: 40px;
+	border: 1px solid rgb(204, 204, 204);
+	background: white none repeat scroll 0% 0%;
+	overflow: auto;
+	/*border-radius: 4px;*/
+	outline: currentcolor none medium;
+	padding: 20px;
+	box-shadow: 3px 3px 18px 0px rgba(0, 0, 0, .75);
+}
+
+.ReactModal-overlay {
+	position: fixed;
+	inset: 0;
+	background-color: rgba(0, 0, 0, 0.25);
 }
