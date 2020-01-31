@@ -4,19 +4,19 @@ import styled from 'styled-components';
 import InputModal from './InputModal';
 
 function Home() {
-	const [isOpen, setOpen] = useState(false);
+	const [isModalOpen, setModalOpen] = useState(false);
 
-	function inputModalOnClose() {
-		setOpen(false);
+	function inputModalOnOk() {
+
 	}
 
 	function btnModify() {
-		setOpen(true);
+		setModalOpen(true);
 	}
 
 	return (
 		<Div0>
-			<InputModal isOpen={isOpen} onClose={inputModalOnClose} />
+			<InputModal open={[isModalOpen, setModalOpen]} onOk={inputModalOnOk} />
 			<h1>Home</h1>
 			<h2>This is the home component.</h2>
 			<input type="text" />

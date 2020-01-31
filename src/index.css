@@ -8,18 +8,21 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
 }
-
 button, input[type=button], input[type=submit] {
 	cursor: pointer;
 }
 
 /* --- ReactModal component ------------------------------------------------- */
 
+.ReactModal-overlay {
+	position: fixed;
+	inset: 0;
+	background-color: rgba(0, 0, 0, 0.2);
+}
 .ReactModal-content {
 	position: absolute;
 	/*inset: 40px;*/
@@ -32,12 +35,15 @@ button, input[type=button], input[type=submit] {
 	overflow: auto;
 	/*border-radius: 4px;*/
 	outline: currentcolor none medium;
-	padding: 20px;
+	/*padding: 20px;*/
 	box-shadow: 3px 3px 18px 0px rgba(0, 0, 0, .75);
 }
-
-.ReactModal-overlay {
-	position: fixed;
-	inset: 0;
-	background-color: rgba(0, 0, 0, 0.2);
+.ReactModal-body {
+	padding: 18px;
+}
+.ReactModal-footer {
+	border-top: 1px solid #ddd;
+	margin: 0 4px;
+	padding: 10px;
+	text-align: center;
 }
