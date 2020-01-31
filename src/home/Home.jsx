@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 
-import InputModal from './InputModal';
+import Prompt from './Prompt';
 
 function Home() {
 	const [isModalOpen, setModalOpen] = useState(false);
+	const [name, setName] = useState('');
 
-	function inputModalOnOk() {
-
+	function inputModalOnOk(data) {
+		setName(data);
 	}
 
 	function btnModify() {
@@ -16,10 +17,10 @@ function Home() {
 
 	return (
 		<Div0>
-			<InputModal open={[isModalOpen, setModalOpen]} onOk={inputModalOnOk} />
+			<Prompt open={[isModalOpen, setModalOpen]} initText={name} onOk={inputModalOnOk} />
 			<h1>Home</h1>
 			<h2>This is the home component.</h2>
-			<input type="text" />
+			<input type="text" value={name} onChange={e => setName(e.target.value)} />
 			<input type="button" value="Modify" onClick={btnModify} />
 		</Div0>
 	);
