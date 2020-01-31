@@ -18,12 +18,16 @@ button, input[type=button], input[type=submit] {
 	cursor: pointer;
 }
 
-/* ReactModal component */
+/* --- ReactModal component ------------------------------------------------- */
 
 .ReactModal-content {
 	position: absolute;
-	inset: 40px;
-	border: 1px solid rgb(204, 204, 204);
+	/*inset: 40px;*/
+	top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+	/*border: 1px solid rgb(204, 204, 204);*/
 	background: white none repeat scroll 0% 0%;
 	overflow: auto;
 	/*border-radius: 4px;*/
@@ -35,5 +39,5 @@ button, input[type=button], input[type=submit] {
 .ReactModal-overlay {
 	position: fixed;
 	inset: 0;
-	background-color: rgba(0, 0, 0, 0.25);
+	background-color: rgba(0, 0, 0, 0.2);
 }
