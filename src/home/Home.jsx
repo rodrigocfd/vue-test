@@ -17,7 +17,7 @@ function Home() {
 
 	return (
 		<Div0>
-			<Prompt open={[isModalOpen, setModalOpen]} initText={name} onOk={inputModalOnOk} />
+			<Prompt openHook={[isModalOpen, setModalOpen]} initText={name} onOk={inputModalOnOk} />
 			<h1>Home</h1>
 			<h2>This is the home component.</h2>
 			<input type="text" value={name} onChange={e => setName(e.target.value)} />

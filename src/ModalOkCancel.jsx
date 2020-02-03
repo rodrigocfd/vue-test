@@ -4,8 +4,8 @@ import ReactModal from 'react-modal';
 
 ReactModal.setAppElement('#root');
 
-function ModalOkCancel({children, open, onOk, onCancel, onAfterOpen, onAfterClose}) {
-	const [isOpen, setOpen] = open; // actually an useState hook hosted on parent
+function ModalOkCancel({children, openHook, onOk, onCancel, onAfterOpen, onAfterClose}) {
+	const [isOpen, setOpen] = openHook; // actually an useState hook hosted on parent
 
 	function frmSubmit(ev) {
 		ev.preventDefault();
@@ -37,7 +37,7 @@ function ModalOkCancel({children, open, onOk, onCancel, onAfterOpen, onAfterClos
 
 ModalOkCancel.propTypes = {
 	children: PropTypes.node.isRequired,
-	open: propTypesHookUseState,
+	openHook: propTypesHookUseState,
 	onOk: PropTypes.func,
 	onCancel: PropTypes.func,
 	onAfterOpen: PropTypes.func,
