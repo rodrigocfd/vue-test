@@ -1,19 +1,14 @@
-import {createStore} from 'redux';
+import {combineReducers, createStore} from 'redux';
 
-const initialState = {
-	phrase: ''
-};
+import typers from './typers/store';
 
-function reducer(state, {type, payload}) {
-	switch (type) {
-		case 'setPhrase': return {...state, phrase: payload.phrase};
-		default:          return state;
-	}
-}
+const reducer = combineReducers({
+	typers
+});
 
 function mapDispatchToProps(dispatch) {
 	return {
-		doUp: function(key, val) { // generic dispatch function to any value in store
+		doUp: function(key, val) { // generic dispatch() to any value in store
 			dispatch({
 				type: 'set' + key[0].toUpperCase() + key.slice(1), // all actions must be prefixed with 'set'
 				payload: {
@@ -25,4 +20,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 export {mapDispatchToProps};
-export default createStore(reducer, initialState);
+export default createStore(reducer);

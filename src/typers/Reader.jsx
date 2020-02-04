@@ -18,5 +18,5 @@ const Div0 = styled.div`
 `;
 
 export default connect(
-	({phrase}) => ({phrase})
+	state => ({phrase: state.typers.phrase})
 )(Reader);

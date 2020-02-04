@@ -29,5 +29,6 @@ const Div0 = styled.div`
 `;
 
 export default connect(
-	({phrase}) => ({phrase}), mapDispatchToProps
+	state => ({phrase: state.typers.phrase}),
+	mapDispatchToProps
 )(Writer);
