@@ -2,6 +2,8 @@ import React, {useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
+import {mapDispatchToProps} from '../reduxStore';
+
 function Writer(props) {
 	const phraseRef = useRef(null);
 
@@ -14,7 +16,7 @@ function Writer(props) {
 			<h1>Writer</h1>
 			<div>
 				<input type="text" ref={phraseRef} value={props.phrase}
-					onChange={e => props.setPhrase(e.target.value)} />
+					onChange={e => props.doUp('phrase', e.target.value)} />
 			</div>
 		</Div0>
 	);
@@ -25,19 +27,6 @@ const Div0 = styled.div`
 		color: darkslateblue;
 	}
 `;
-
-function mapDispatchToProps(dispatch) {
-	return {
-		setPhrase: function(val) {
-			dispatch({
-				type: 'setPhrase',
-				payload: {
-					phrase: val
-				}
-			})
-		}
-	};
-}
 
 export default connect(
 	({phrase}) => ({phrase}), mapDispatchToProps
