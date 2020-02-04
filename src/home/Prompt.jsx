@@ -3,21 +3,22 @@ import PropTypes from 'prop-types';
 
 import ModalOkCancel, {propTypesHookUseState} from '../ModalOkCancel';
 
-function Prompt({openHook, initText, onOk}) {
+function Prompt(props) {
 	const txtRef = useRef(null);
 	const [text, setText] = useState('');
 
-	function onModalOk() {
-		if (onOk) onOk(text);
-	}
-
 	function onModalAfterOpen() {
-		setText(initText);
+		setText(props.initText);
 		txtRef.current.focus();
 	}
 
+	function onModalOk() {
+		if (props.onOk) props.onOk(text);
+	}
+
 	return (
-		<ModalOkCancel openHook={openHook} onOk={onModalOk} onAfterOpen={onModalAfterOpen}>
+		<ModalOkCancel openHook={props.openHook} onAfterOpen={onModalAfterOpen}
+			onOk={onModalOk} onCancel={props.onCancel}>
 			<div>
 				<input type="text" ref={txtRef}
 					value={text} onChange={e => setText(e.target.value)} />
@@ -30,6 +31,7 @@ Prompt.propTypes = {
 	openHook: propTypesHookUseState,
 	initText: PropTypes.string,
 	onOk: PropTypes.func,
+	onCancel: PropTypes.func
 };
 
 Prompt.defaultProps = {

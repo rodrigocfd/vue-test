@@ -1,34 +1,43 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 
 ReactModal.setAppElement('#root');
 
-function ModalOkCancel({children, openHook, onOk, onCancel, onAfterOpen, onAfterClose}) {
-	const [isOpen, setOpen] = openHook; // actually an useState hook hosted on parent
+function ModalOkCancel(props) {
+	const [wasOk, setWasOk] = useState(false); // user clicked on OK button?
+	const [isOpen, setOpen] = props.openHook; // actually an useState hook hosted on parent
 
 	function frmSubmit(ev) {
 		ev.preventDefault();
-		setOpen(false);
-		if (onOk) onOk();
+		setWasOk(true); // set the flag
+		setOpen(false); // close the modal
 	}
 
-	function btnCancel() {
-		setOpen(false);
-		if (onCancel) onCancel();
+	function onRequestClose() {
+		setWasOk(false); // set the flag
+		setOpen(false); // close the modal
+	}
+
+	function onAfterClose() {
+		if (wasOk && props.onOk) {
+			props.onOk();
+		} else if (!wasOk && props.onCancel) {
+			props.onCancel();
+		}
 	}
 
 	return (
-		<ReactModal isOpen={isOpen} onRequestClose={btnCancel}
-			onAfterOpen={onAfterOpen} onAfterClose={onAfterClose}
+		<ReactModal isOpen={isOpen} onAfterOpen={props.onAfterOpen}
+			onRequestClose={onRequestClose} onAfterClose={onAfterClose}
 			className="ReactModal-content" overlayClassName="ReactModal-overlay">
 			<form onSubmit={frmSubmit}>
 				<div className="ReactModal-body">
-					{children}
+					{props.children}
 				</div>
 				<div className="ReactModal-footer">
 					<input type="submit" value="OK" />
-					<input type="button" value="Cancel" onClick={btnCancel} />
+					<input type="button" value="Cancel" onClick={onRequestClose} />
 				</div>
 			</form>
 		</ReactModal>
@@ -40,8 +49,7 @@ ModalOkCancel.propTypes = {
 	openHook: propTypesHookUseState,
 	onOk: PropTypes.func,
 	onCancel: PropTypes.func,
-	onAfterOpen: PropTypes.func,
-	onAfterClose: PropTypes.func
+	onAfterOpen: PropTypes.func
 };
 
 // Will demand an useState hook array like [getter, setter].
