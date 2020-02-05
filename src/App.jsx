@@ -7,6 +7,7 @@ import reduxStore from './reduxStore';
 import Home from './home/Home';
 import Login from './login/Login';
 import Menu from './Menu';
+import NotFound from './NotFound';
 import Texts from './texts/Texts';
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
 						<Route exact path="/">
 							<Redirect to="/home" />
 						</Route>
+						<Route path="/404" component={NotFound} />
+						<Redirect to="/404" />
 					</Switch>
 				</DivContents>
 			</HashRouter>
