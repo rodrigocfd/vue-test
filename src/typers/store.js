@@ -4,7 +4,7 @@ const initialState = {
 
 function reducer(state = initialState, {type, payload}) {
 	switch (type) {
-		case 'setPhrase': return {...state, phrase: payload.phrase};
+		case 'setPhrase': return {...state, phrase: payload};
 		default:          return state;
 	}
 }
