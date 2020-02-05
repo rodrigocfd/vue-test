@@ -1,9 +1,18 @@
 import React, {useEffect, useRef, useState} from 'react';
+import {connect} from 'react-redux';
+import styled from 'styled-components';
 
-function Login() {
+import {mapDispatchToProps} from '../app/reduxStore';
+import serverLogin from './serverLogin';
+
+function Login(props) {
+	const formRef = useRef(null);
 	const userNameRef = useRef(null);
+
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
+	const [errMsg, setErrMsg] = useState('');
+	const [isLoading, setLoading] = useState(false);
 
 	useEffect(() => {
 		userNameRef.current.focus();
@@ -11,23 +20,56 @@ function Login() {
 
 	function frmSubmit(ev) {
 		ev.preventDefault();
-		console.log(userName, password);
+		setErrMsg('');
+		setLoading(true);
+		serverLogin(userName, password)
+			.then(data => {
+				if (data.auth) {
+					props.doUp('auth', true);
+				} else {
+					setPassword('');
+					formRef.current.reset();
+					setErrMsg(data.msg);
+					setLoading(false);
+					userNameRef.current.select();
+					userNameRef.current.focus();
+				}
+			});
 	}
 
 	return (
-		<form onSubmit={frmSubmit}>
+		<form onSubmit={frmSubmit} ref={formRef}>
 			<h1>Login</h1>
 			<div>
 				<input type="text" ref={userNameRef} name="userName" required
-					value={userName} onChange={e => setUserName(e.target.value)} />
+					value={userName} onChange={e => setUserName(e.target.value)}
+					disabled={isLoading} placeholder="Username" />
 			</div>
 			<div>
 				<input type="password" name="password" required
-					value={password} onChange={e => setPassword(e.target.value)} />
+					value={password} onChange={e => setPassword(e.target.value)}
+					disabled={isLoading} placeholder="Password" />
 			</div>
-			<div><input type="submit" value="Proceed" /></div>
+			<div>
+				<input type="submit" value="Proceed"
+					disabled={isLoading} />
+			</div>
+			{isLoading && <DivLoading>Logging in...</DivLoading>}
+			<DivErr>{errMsg}</DivErr>
 		</form>
 	);
 }
 
-export default Login;
+const DivLoading = styled.div`
+	margin-top: 20px;
+	font-style: italic;
+`;
+const DivErr = styled.div`
+	margin-top: 20px;
+	color: red;
+`;
+
+export default connect(
+	null,
+	mapDispatchToProps
+)(Login);
