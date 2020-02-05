@@ -1,15 +1,16 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
-import {mapStateToProps} from './reduxStore';
+import {useReduxSelector} from '../app/reduxStore';
 import Home from '../home/Home';
 import Login from '../login/Login';
 import NotFound from './NotFound';
 import Texts from '../texts/Texts';
 
-function Router(props) {
-	if (!props.auth) { // not logged, that's all you'll see
+function Router() {
+	const auth = useReduxSelector(store => store.login.auth);
+
+	if (!auth) { // not logged, that's all you'll see
 		return (
 			<Switch>
 				<Route path="/login" component={Login} />
@@ -35,6 +36,5 @@ function Router(props) {
 	}
 }
 
-export default connect(
-	mapStateToProps('login.auth')
-)(Router);
+export default Router;
+

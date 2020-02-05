@@ -1,12 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
 import styled from 'styled-components';
 
-import {mapStateToProps} from './reduxStore';
+import {useReduxSelector} from '../app/reduxStore';
 
-function Menu(props) {
-	if (props.auth !== true) { // render only when authenticated
+function Menu() {
+	const auth = useReduxSelector(store => store.login.auth);
+
+	if (auth !== true) { // render only when authenticated
 		return null;
 	}
 
@@ -25,6 +26,4 @@ const Div0 = styled.div`
 	background-repeat: repeat;
 `;
 
-export default connect(
-	mapStateToProps('login.auth')
-)(Menu);
+export default Menu;

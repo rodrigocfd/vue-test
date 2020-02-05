@@ -1,14 +1,15 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import styled from 'styled-components';
 
-import {mapStateToProps} from '../app/reduxStore';
+import {useReduxSelector} from '../app/reduxStore';
 
-function Reader(props) {
+function Reader() {
+	const phrase = useReduxSelector(state => state.texts.phrase);
+
 	return (
 		<Div0>
 			<h1>Reader</h1>
-			<div>In the store: {props.phrase}</div>
+			<div>In the store: {phrase}</div>
 		</Div0>
 	);
 }
@@ -19,6 +20,4 @@ const Div0 = styled.div`
 	}
 `;
 
-export default connect(
-	mapStateToProps('texts.phrase')
-)(Reader);
+export default Reader;

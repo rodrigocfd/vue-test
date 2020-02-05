@@ -1,11 +1,13 @@
 import React, {useEffect, useRef} from 'react';
-import {connect} from 'react-redux';
 import styled from 'styled-components';
 
-import {mapStateToProps, mapDispatchToProps} from '../app/reduxStore';
+import {useReduxAction, useReduxSelector} from '../app/reduxStore';
 
-function Writer(props) {
+function Writer() {
 	const phraseRef = useRef(null);
+
+	const phrase = useReduxSelector(state => state.texts.phrase);
+	const reduxAction = useReduxAction();
 
 	useEffect(() => {
 		phraseRef.current.focus();
@@ -15,8 +17,8 @@ function Writer(props) {
 		<Div0>
 			<h1>Writer</h1>
 			<div>
-				<input type="text" ref={phraseRef} value={props.phrase}
-					onChange={e => props.doUp('phrase', e.target.value)} />
+				<input type="text" ref={phraseRef} value={phrase}
+					onChange={e => reduxAction('setPhrase', e.target.value)} />
 			</div>
 		</Div0>
 	);
@@ -28,7 +30,4 @@ const Div0 = styled.div`
 	}
 `;
 
-export default connect(
-	mapStateToProps('texts.phrase'),
-	mapDispatchToProps
-)(Writer);
+export default Writer;

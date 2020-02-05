@@ -1,5 +1,5 @@
 const initialState = {
-	auth: false
+	auth: true
 };
 
 function reducer(state = initialState, {type, payload}) {

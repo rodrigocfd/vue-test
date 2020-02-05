@@ -1,13 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {connect} from 'react-redux';
 import styled from 'styled-components';
 
-import {mapDispatchToProps} from '../app/reduxStore';
+import {useReduxAction} from '../app/reduxStore';
 import serverLogin from './serverLogin';
 
-function Login(props) {
+function Login() {
 	const formRef = useRef(null);
 	const userNameRef = useRef(null);
+	const reduxAction = useReduxAction();
 
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
@@ -25,7 +25,7 @@ function Login(props) {
 		serverLogin(userName, password)
 			.then(data => {
 				if (data.auth) {
-					props.doUp('auth', true);
+					reduxAction('setAuth', true);
 				} else {
 					setPassword('');
 					formRef.current.reset();
@@ -69,7 +69,4 @@ const DivErr = styled.div`
 	color: red;
 `;
 
-export default connect(
-	null,
-	mapDispatchToProps
-)(Login);
+export default Login;
