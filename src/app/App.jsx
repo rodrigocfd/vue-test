@@ -1,14 +1,11 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import {HashRouter, Redirect, Route, Switch} from 'react-router-dom';
+import {HashRouter} from 'react-router-dom';
 import styled from 'styled-components';
 
 import reduxStore from './reduxStore';
-import Home from '../home/Home';
-import Login from '../login/Login';
 import Menu from './Menu';
-import NotFound from './NotFound';
-import Texts from '../texts/Texts';
+import Router from './Router';
 
 function App() {
 	return (
@@ -16,16 +13,7 @@ function App() {
 			<HashRouter>
 				<Menu />
 				<DivContents>
-					<Switch>
-						<Route path="/home" component={Home} />
-						<Route path="/login" component={Login} />
-						<Route path="/texts" component={Texts} />
-						<Route exact path="/">
-							<Redirect to="/home" />
-						</Route>
-						<Route path="/404" component={NotFound} />
-						<Redirect to="/404" />
-					</Switch>
+					<Router />
 				</DivContents>
 			</HashRouter>
 		</Provider>
