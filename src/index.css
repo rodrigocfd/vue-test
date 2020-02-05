@@ -38,7 +38,7 @@ button, input[type=button], input[type=submit] {
 	/*padding: 20px;*/
 	box-shadow: 3px 3px 18px 0px rgba(0, 0, 0, .75);
 }
-.ReactModal__Overlay {
+/*.ReactModal__Overlay {
 	opacity: 0;
 	transition: opacity 150ms ease-in-out;
 }
@@ -47,7 +47,7 @@ button, input[type=button], input[type=submit] {
 }
 .ReactModal__Overlay--before-close{
 	opacity: 0;
-}
+}*/
 .ReactModal-body { /* from here, our own stuff inside the modal */
 	padding: 18px;
 }

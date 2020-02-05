@@ -30,8 +30,8 @@ function ModalOkCancel(props) {
 	return (
 		<ReactModal isOpen={isOpen} onAfterOpen={props.onAfterOpen}
 			onRequestClose={onRequestClose} onAfterClose={onAfterClose}
-			className="ReactModal-content" overlayClassName="ReactModal-overlay"
-			closeTimeoutMS={150}>
+			className="ReactModal-content" overlayClassName="ReactModal-overlay">
+			{/* closeTimeoutMS={150}> */}
 			<form onSubmit={frmSubmit}>
 				<div className="ReactModal-body">
 					{props.children}
