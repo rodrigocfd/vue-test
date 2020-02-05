@@ -2,7 +2,7 @@ import {combineReducers, createStore} from 'redux';
 
 import typers from './typers/store';
 
-const reducer = combineReducers({
+const reducer = combineReducers({ // reducers from all modules
 	typers
 });
 
