@@ -1,8 +1,10 @@
 import {combineReducers, createStore} from 'redux';
 
+import login from './login/store';
 import texts from './texts/store';
 
 const reducer = combineReducers({ // reducers from all modules
+	login,
 	texts
 });
 

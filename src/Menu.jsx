@@ -1,8 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import styled from 'styled-components';
 
-function Menu() {
+function Menu(props) {
+	if (!props.auth) { // render only when authenticated
+		return null;
+	}
+
 	return (
 		<Div0>
 			<Link to="/home">Home</Link> | {' '}
@@ -18,4 +23,6 @@ const Div0 = styled.div`
 	background-repeat: repeat;
 `;
 
-export default Menu;
+export default connect(
+	state => ({auth: state.texts.auth})
+)(Menu);
