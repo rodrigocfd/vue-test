@@ -1,7 +1,7 @@
 import {combineReducers, createStore} from 'redux';
 
-import login from './login/store';
-import texts from './texts/store';
+import login from '../login/store';
+import texts from '../texts/store';
 
 // Reducers from all modules.
 const reducer = combineReducers({

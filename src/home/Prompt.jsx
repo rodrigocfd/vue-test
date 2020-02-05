@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 
-import ModalOkCancel, {propTypesHookUseState} from '../ModalOkCancel';
+import ModalOkCancel, {propTypesHookUseState} from '../app/ModalOkCancel';
 
 function Prompt(props) {
 	const txtRef = useRef(null);

@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
-import {mapStateToProps, mapDispatchToProps} from '../reduxStore';
+import {mapStateToProps, mapDispatchToProps} from '../app/reduxStore';
 
 function Writer(props) {
 	const phraseRef = useRef(null);

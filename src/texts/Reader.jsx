@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
-import {mapStateToProps} from '../reduxStore';
+import {mapStateToProps} from '../app/reduxStore';
 
 function Reader(props) {
 	return (

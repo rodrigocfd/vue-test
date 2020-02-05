@@ -4,11 +4,11 @@ import {HashRouter, Redirect, Route, Switch} from 'react-router-dom';
 import styled from 'styled-components';
 
 import reduxStore from './reduxStore';
-import Home from './home/Home';
-import Login from './login/Login';
+import Home from '../home/Home';
+import Login from '../login/Login';
 import Menu from './Menu';
 import NotFound from './NotFound';
-import Texts from './texts/Texts';
+import Texts from '../texts/Texts';
 
 function App() {
 	return (
