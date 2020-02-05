@@ -3,8 +3,10 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
+import {mapStateToProps} from './reduxStore';
+
 function Menu(props) {
-	if (!props.auth) { // render only when authenticated
+	if (props.auth !== true) { // render only when authenticated
 		return null;
 	}
 
@@ -24,5 +26,5 @@ const Div0 = styled.div`
 `;
 
 export default connect(
-	state => ({auth: state.texts.auth})
+	mapStateToProps('login.auth')
 )(Menu);

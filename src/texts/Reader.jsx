@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
+import {mapStateToProps} from '../reduxStore';
+
 function Reader(props) {
 	return (
 		<Div0>
@@ -18,5 +20,5 @@ const Div0 = styled.div`
 `;
 
 export default connect(
-	state => ({phrase: state.texts.phrase})
+	mapStateToProps('texts.phrase')
 )(Reader);

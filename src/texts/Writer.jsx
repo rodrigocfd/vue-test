@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
-import {mapDispatchToProps} from '../reduxStore';
+import {mapStateToProps, mapDispatchToProps} from '../reduxStore';
 
 function Writer(props) {
 	const phraseRef = useRef(null);
@@ -29,6 +29,6 @@ const Div0 = styled.div`
 `;
 
 export default connect(
-	state => ({phrase: state.texts.phrase}),
+	mapStateToProps('texts.phrase'),
 	mapDispatchToProps
 )(Writer);
