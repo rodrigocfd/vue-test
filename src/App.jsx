@@ -7,7 +7,7 @@ import reduxStore from './reduxStore';
 import Home from './home/Home';
 import Login from './login/Login';
 import Menu from './Menu';
-import Typers from './typers/Typers';
+import Texts from './texts/Texts';
 
 function App() {
 	return (
@@ -18,7 +18,7 @@ function App() {
 					<Switch>
 						<Route path="/home" component={Home} />
 						<Route path="/login" component={Login} />
-						<Route path="/typers" component={Typers} />
+						<Route path="/texts" component={Texts} />
 						<Route exact path="/">
 							<Redirect to="/home" />
 						</Route>

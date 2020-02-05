@@ -6,7 +6,7 @@ function Menu() {
 	return (
 		<Div0>
 			<Link to="/home">Home</Link> | {' '}
-			<Link to="/typers">Typers</Link>
+			<Link to="/texts">Texts</Link>
 		</Div0>
 	);
 }
