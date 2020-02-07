@@ -14,13 +14,15 @@ function Header() {
 
 	return (
 		<Div0>
-			<div className="left">
-				<div className="logo"></div>
-				<Link to="/home">Home</Link> | {' '}
-				<Link to="/texts">Texts</Link>
-			</div>
-			<div className="rite">
-				<LogoffButton />
+			<div className="topWrap">
+				<div className="left">
+					<div className="logo"></div>
+				</div>
+				<div className="rite">
+					<Link to="/home">Home</Link> | {' '}
+					<Link to="/texts">Texts</Link>
+					<LogoffButton />
+				</div>
 			</div>
 		</Div0>
 	);
@@ -28,23 +30,28 @@ function Header() {
 
 const Div0 = styled.div`
 	border-bottom: 1px solid #ddd;
-	margin: 36px 48px;
 	background-repeat: repeat;
 
-	> .left {
-		display: inline;
+	> .topWrap {
+		display: flex;
+		flex-direction: row;
 
-		> .logo {
-			display: inline-block;
-			width: 333px;
-			height: 68px;
-			background: url('/images/logo-header.png') no-repeat center center;
+		> .left {
+			flex-grow: 1;
+
+			> .logo {
+				display: inline-block;
+				margin: 36px 48px;
+				width: 333px;
+				height: 68px;
+				background: url('/images/logo-header.png') no-repeat center center;
+			}
 		}
-	}
-	> .rite {
-		display: inline;
-		text-align: right;
-		margin-left: 12px;
+		> .rite {
+			flex-grow: 1;
+			text-align: right;
+			padding: 12px;
+		}
 	}
 `;
 
