@@ -38,10 +38,10 @@ function Home() {
 }
 
 const Div0 = styled.div`
-	& > h1 {
+	> h1 {
 		color: salmon;
 	}
-	& > h2 {
+	> h2 {
 		color: saddlebrown;
 	}
 `;

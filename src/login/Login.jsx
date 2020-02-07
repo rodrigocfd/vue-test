@@ -39,7 +39,7 @@ function Login() {
 	}
 
 	return (
-		<form onSubmit={frmSubmit} ref={formRef}>
+		<Form0 onSubmit={frmSubmit} ref={formRef}>
 			<h1>Login</h1>
 			<div>
 				<input type="text" ref={userNameRef} name="userName" required
@@ -55,19 +55,21 @@ function Login() {
 				<input type="submit" value="Proceed"
 					disabled={isLoading} />
 			</div>
-			{isLoading && <DivLoading>Logging in... <Spinner /></DivLoading>}
-			<DivErr>{errMsg}</DivErr>
-		</form>
+			{isLoading && <div className="loading">Logging in... <Spinner /></div>}
+			<div className="err">{errMsg}</div>
+		</Form0>
 	);
 }
 
-const DivLoading = styled.div`
-	margin-top: 20px;
-	font-style: italic;
-`;
-const DivErr = styled.div`
-	margin-top: 20px;
-	color: red;
+const Form0 = styled.form`
+	> .loading {
+		margin-top: 20px;
+		font-style: italic;
+	}
+	> .err {
+		margin-top: 20px;
+		color: red;
+	}
 `;
 
 export default Login;

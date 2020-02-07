@@ -2,10 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import {useReduxSelector} from '../app/reduxStore';
+import {useReduxSelector} from './reduxStore';
 import LogoffButton from '../login/LogoffButton';
 
-function Menu() {
+function Header() {
 	const authToken = useReduxSelector(store => store.login.authToken);
 
 	if (authToken === null) {
@@ -15,10 +15,11 @@ function Menu() {
 	return (
 		<Div0>
 			<div className="left">
+				<div className="logo"></div>
 				<Link to="/home">Home</Link> | {' '}
 				<Link to="/texts">Texts</Link>
 			</div>
-			<div className="right">
+			<div className="rite">
 				<LogoffButton />
 			</div>
 		</Div0>
@@ -26,18 +27,25 @@ function Menu() {
 }
 
 const Div0 = styled.div`
-	border-bottom: 1px solid #eee;
-	padding: 10px;
-	background-image: url(/spikes-pattern.png);
+	border-bottom: 1px solid #ddd;
+	margin: 36px 48px;
 	background-repeat: repeat;
 
-	& > .left, & > .right {
+	> .left {
 		display: inline;
+
+		> .logo {
+			display: inline-block;
+			width: 333px;
+			height: 68px;
+			background: url('/images/logo-header.png') no-repeat center center;
+		}
 	}
-	& > .right {
+	> .rite {
+		display: inline;
 		text-align: right;
 		margin-left: 12px;
 	}
 `;
 
-export default Menu;
+export default Header;

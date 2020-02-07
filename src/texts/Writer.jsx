@@ -25,7 +25,7 @@ function Writer() {
 }
 
 const Div0 = styled.div`
-	& > h1 {
+	> h1 {
 		color: darkslateblue;
 	}
 `;

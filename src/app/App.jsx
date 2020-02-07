@@ -4,14 +4,14 @@ import {HashRouter} from 'react-router-dom';
 import styled from 'styled-components';
 
 import reduxStore from './reduxStore';
-import Menu from './Menu';
+import Header from './Header';
 import Router from './Router';
 
 function App() {
 	return (
 		<Provider store={reduxStore}>
 			<HashRouter>
-				<Menu />
+				<Header />
 				<DivContents>
 					<Router />
 				</DivContents>
