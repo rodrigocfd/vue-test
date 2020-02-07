@@ -6,10 +6,10 @@ import {useReduxSelector} from '../app/reduxStore';
 import LogoffButton from '../login/LogoffButton';
 
 function Menu() {
-	const auth = useReduxSelector(store => store.login.auth);
+	const authToken = useReduxSelector(store => store.login.authToken);
 
-	if (auth !== true) { // render only when authenticated
-		return null;
+	if (authToken === null) {
+		return null; // render only when authenticated
 	}
 
 	return (

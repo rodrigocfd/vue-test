@@ -8,9 +8,9 @@ import NotFound from './NotFound';
 import Texts from '../texts/Texts';
 
 function Router() {
-	const auth = useReduxSelector(store => store.login.auth);
+	const authToken = useReduxSelector(store => store.login.authToken);
 
-	if (!auth) { // not logged, that's all you'll see
+	if (authToken === null) { // not logged, that's all you'll see
 		return (
 			<Switch>
 				<Route path="/login" component={Login} />

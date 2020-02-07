@@ -24,8 +24,8 @@ function Login() {
 		setLoading(true);
 		serverLogin(userName, password)
 			.then(data => {
-				if (data.auth) {
-					reduxAction('setAuth', true);
+				if (data.authToken) {
+					reduxAction('setAuthToken', data.authToken);
 				} else {
 					setPassword('');
 					formRef.current.reset();

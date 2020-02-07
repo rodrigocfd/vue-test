@@ -7,7 +7,7 @@ function LogoffButton() {
 
 	return (
 		<input type="button" value="Logoff"
-			onClick={() => reduxAction('setAuth', false)} />
+			onClick={() => reduxAction('setAuthToken', null)} />
 	);
 }
 

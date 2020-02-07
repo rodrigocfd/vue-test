@@ -1,11 +1,18 @@
+import Cookie from './cookie';
+
 const initialState = {
-	auth: true
+	authToken: Cookie.read('auth') // load the token when page loads
 };
 
 function reducer(state = initialState, {type, payload}) {
 	switch (type) {
-		case 'setAuth': return {...state, auth: payload};
-		default:        return state;
+	case 'setAuthToken':
+		payload === null
+			? Cookie.erase('auth') // keep cookie in sync with state
+			: Cookie.write('auth', payload);
+		return {...state, authToken: payload};
+	default:
+		return state;
 	}
 }
 
