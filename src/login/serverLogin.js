@@ -3,7 +3,7 @@ function serverLogin(username, password) {
 		setTimeout(() => {
 			resolve({authToken: 'AUTHORIZED', msg: null});
 			// resolve({authToken: null, msg: 'Your login failed miserably.'});
-		}, 1500);
+		}, 2000);
 	});
 }
 

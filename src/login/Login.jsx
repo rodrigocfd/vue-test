@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import {useReduxAction} from '../app/reduxStore';
 import serverLogin from './serverLogin';
+import Spinner from '../app/Spinner';
 
 function Login() {
 	const formRef = useRef(null);
@@ -54,7 +55,7 @@ function Login() {
 				<input type="submit" value="Proceed"
 					disabled={isLoading} />
 			</div>
-			{isLoading && <DivLoading>Logging in...</DivLoading>}
+			{isLoading && <DivLoading>Logging in... <Spinner /></DivLoading>}
 			<DivErr>{errMsg}</DivErr>
 		</form>
 	);
