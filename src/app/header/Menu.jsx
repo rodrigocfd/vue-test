@@ -5,7 +5,16 @@ function Menu() {
 	return (
 		<Div0>
 			<ul>
-				<li>Estruturas Organizacionais</li>
+				<li>
+					<span>Estruturas Organizacionais</span>
+					<ul>
+						<li>Consultar Estruturas</li>
+						<li>Gestão de Órgãos/Entidades</li>
+						<li>Proposta de Estrutura</li>
+						<li>Cadastrar Informações Complementares</li>
+						<li>Comparar Estruturas</li>
+					</ul>
+				</li>
 				<li>Cargos/Funções</li>
 				<li>Relatórios</li>
 				<li>Administração do Sistema</li>
@@ -39,6 +48,26 @@ const Div0 = styled.div`
 			line-height: 1.5em;
 			margin-top: 8px;
 			border-right: 1px solid #ccc;
+
+			> ul {
+				margin: 2px;
+				padding: 0 8px;
+				display: flex;
+				flex-direction: column;
+				background-color: #f6f7f7;
+				border: 1px solid #aaba75;
+				border-radius: 3px;
+
+				> li {
+					list-style-type: none;
+					padding: 10px;
+					text-align: left;
+					border-bottom: 1px dotted #aebc82;
+				}
+				> li:last-child {
+					border-bottom: 0;
+				}
+			}
 		}
 		> li:last-child {
 			border-right: 0;
