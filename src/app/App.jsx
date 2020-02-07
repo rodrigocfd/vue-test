@@ -4,7 +4,7 @@ import {HashRouter} from 'react-router-dom';
 import styled from 'styled-components';
 
 import reduxStore from './reduxStore';
-import Header from './Header';
+import Header from './header/Header';
 import Router from './Router';
 
 function App() {

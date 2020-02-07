@@ -2,8 +2,9 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import {useReduxSelector} from './reduxStore';
-import LogoffButton from '../login/LogoffButton';
+import {useReduxSelector} from '../reduxStore';
+import LogoffButton from '../../login/LogoffButton';
+import Menu from './Menu';
 
 function Header() {
 	const authToken = useReduxSelector(store => store.login.authToken);
@@ -24,6 +25,7 @@ function Header() {
 					<LogoffButton />
 				</div>
 			</div>
+			<Menu />
 		</Div0>
 	);
 }
@@ -41,7 +43,8 @@ const Div0 = styled.div`
 
 			> .logo {
 				display: inline-block;
-				margin: 36px 48px;
+				margin-left: 48px;
+				margin-top: 36px;
 				width: 333px;
 				height: 68px;
 				background: url('/images/logo-header.png') no-repeat center center;
