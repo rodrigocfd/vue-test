@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import MenuL1 from './MenuL1';
+import MenuRender from './MenuRender';
 
 function Menu() {
 	return (
 		<Div0>
-			<MenuL1 items={[
+			<MenuRender items={[
 				{
 					label: 'Estruturas Organizacionais',
-					menuL2: [
+					vertMenu1: [
 						{
 							label: 'Consultar Estruturas'
 						},
