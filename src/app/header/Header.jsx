@@ -31,7 +31,6 @@ function Header() {
 }
 
 const Div0 = styled.div`
-	border-bottom: 1px solid #ddd;
 	background-repeat: repeat;
 
 	> .topWrap {
