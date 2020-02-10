@@ -10,7 +10,16 @@ const menuItems = [{
 	}, {
 		label: 'Gestão de Órgãos/Entidades'
 	}, {
-		label: 'Proposta de Estrutura'
+		label: 'Proposta de Estrutura',
+		menuVert2: [{
+			label: 'Consultar Propostas'
+		}, {
+			label: 'Cadastrar Nova Proposta'
+		}, {
+			label: 'Consultar Pendências'
+		}, {
+			label: 'Consultar Erros de Efetivação'
+		}]
 	}, {
 		label: 'Cadastrar Informações Complementares'
 	}, {
