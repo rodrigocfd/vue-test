@@ -38,7 +38,12 @@ const menuItems = [{
 	}, {
 		label: 'Definir Valor de Referência'
 	}, {
-		label: 'Provimento de cargo/função sem vínculo'
+		label: 'Provimento de cargo/função sem vínculo',
+		menuVert2: [{
+			label: 'Analisar solicitação de cargo/função sem vínculo'
+		}, {
+			label: 'Solicitar cargo/função sem vínculo'
+		}]
 	}]
 }, {
 	label: 'Relatórios',

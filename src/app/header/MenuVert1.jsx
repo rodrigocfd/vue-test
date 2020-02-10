@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import MenuLabelWithArrow from './MenuLabelWithArrow';
 import MenuVert2 from './MenuVert2';
 
 function MenuVert1(props) {
@@ -12,7 +13,10 @@ function MenuVert1(props) {
 			</li>
 			{props.items.map(item =>
 				<li key={item.label} className="entry">
-					<span>{item.label}</span>
+					<span>
+						<MenuLabelWithArrow text={item.label}
+							showArrow={item.menuVert2 !== undefined} />
+					</span>
 					{item.menuVert2 &&
 						<MenuVert2 items={item.menuVert2} />
 					}
@@ -35,6 +39,7 @@ MenuVert1.propTypes = {
 const Ul0 = styled.ul`
 	position: absolute;
 	top: -1px; /* relative to parent, because parent LI has "position: relative" */
+	width: 284px; /* empirically found */
 	margin: 2px;
 	padding: 0;
 	display: flex;
@@ -42,7 +47,6 @@ const Ul0 = styled.ul`
 	background-color: #f6f7f7;
 	border: 1px solid #aaba75;
 	border-radius: 3px;
-	width: 284px; /* empirically found */
 	box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, .1);
 	visibility: hidden; /* parent component LI will toggle this */
 
@@ -58,8 +62,14 @@ const Ul0 = styled.ul`
 			user-select: none;
 			display: block;
 			margin: 0 8px;
-			padding: 12px 10px;
+			padding: 12px 2px 12px 10px;
 			border-bottom: 1px dotted #aebc82;
+
+			> span.arrow {
+				float: right;
+				color: #5393ac;
+				font-size: 80%;
+			}
 		}
 	}
 	> li.title {

@@ -24,9 +24,9 @@ MenuVert2.propTypes = {
 
 const Ul0 = styled.ul`
 	position: absolute;
+	top: -3px; /* relative to parent, because parent LI has "position: relative" */
 	width: 284px; /* empirically found */
 	left: 276px;
-	top: -3px; /* relative to parent, because parent LI has "position: relative" */
 	margin: 2px;
 	padding: 0;
 	display: flex;
