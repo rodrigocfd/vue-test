@@ -10,9 +10,7 @@ function MenuHorz(props) {
 			{props.items.map(item =>
 				<li key={item.label}>
 					<span>{item.label}</span>
-					{item.menuVert1 &&
-						<MenuVert1 title={item.label} items={item.menuVert1} />
-					}
+					<MenuVert1 title={item.label} items={item.menuVert1} />
 				</li>
 			)}
 		</Ul0>
@@ -25,7 +23,7 @@ MenuHorz.propTypes = {
 			label: PropTypes.string,
 			menuVert1: MenuVert1.propTypes.items
 		})
-	)
+	).isRequired
 };
 
 const Ul0 = styled.ul`
@@ -38,12 +36,11 @@ const Ul0 = styled.ul`
 		list-style-type: none;
 		flex-basis: 0;
 		flex-grow: 1;
-		position: relative;
+		position: relative; /* so nested UL can be relatively positioned */
 		text-align: center;
 		line-height: 19px;
 		padding: 8px 0;
 		margin: 0;
-		cursor: pointer;
 
 		> span {
 			display: inline-block;
@@ -57,6 +54,9 @@ const Ul0 = styled.ul`
 		span {
 			border-right: 0;
 		}
+	}
+	> li:hover > ul, > li > ul:hover {
+		visibility: visible; /* toggle UL in child component */
 	}
 `;
 

@@ -23,12 +23,12 @@ MenuVert1.propTypes = {
 		PropTypes.shape({
 			label: PropTypes.string
 		})
-	)
+	).isRequired
 };
 
 const Ul0 = styled.ul`
 	position: absolute;
-	top: 0px;
+	top: -1px; /* relative to parent, because parent LI has "position: relative" */
 	margin: 2px;
 	padding: 0;
 	display: flex;
@@ -36,7 +36,9 @@ const Ul0 = styled.ul`
 	background-color: #f6f7f7;
 	border: 1px solid #aaba75;
 	border-radius: 3px;
-	max-width: 280px; /* empirically found */
+	min-width: 284px; /* empirically found */
+	max-width: 284px;
+	visibility: hidden; /* parent component LI will toggle this */
 
 	> li {
 		list-style-type: none;
@@ -55,7 +57,7 @@ const Ul0 = styled.ul`
 	}
 	> li.title {
 		text-align: center;
-		padding-bottom: 6px;
+		padding-bottom: 1px;
 		cursor: auto;
 	}
 	> li.title, li:last-child {

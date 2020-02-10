@@ -32,9 +32,49 @@ const menuItems = [{
 		label: 'Provimento de cargo/função sem vínculo'
 	}]
 }, {
-	label: 'Relatórios'
+	label: 'Relatórios',
+	menuVert1: [{
+		label: 'Anexo II/III'
+	}, {
+		label: 'Cargos Temporários'
+	}, {
+		label: 'Comparativo de Cargos/Funções entre Órgãos/Entidades'
+	}, {
+		label: 'Distribuição dos Cargos Funções por Órgão/Entidade'
+	}, {
+		label: 'Estrutura Hierárquica'
+	}, {
+		label: 'Evolução do Quantitativo de Cargos/Funções no Órgão/Entidade'
+	}, {
+		label: 'Finalidade e Competência das Unidades Organizacionais'
+	}, {
+		label: 'Impacto Orçamentário da Proposta'
+	}, {
+		label: 'Quadro Comparativo da Estrutura de Cargos/Funções da Proposta'
+	}, {
+		label: 'Quadro Resumo de Custos de Cargos/Funções da Proposta'
+	}, {
+		label: 'Titulares de Cargos/Funções e Endereços'
+	}, {
+		label: 'Unidades Organizacionais por UF ou Município'
+	}]
 }, {
-	label: 'Administração do Sistema'
+	label: 'Administração do Sistema',
+	menuVert1: [{
+		label: 'Consultar Erros do Sistema'
+	}, {
+		label: 'Consultar Logs'
+	}, {
+		label: 'Manter Tabelas de Apoio'
+	}, {
+		label: 'Parâmetros de Pesquisa'
+	}, {
+		label: 'Cadastro de Parâmetros'
+	}, {
+		label: 'Gestão de Regras de Negócio'
+	}, {
+		label: 'Baixar Cópia do Banco de Dados'
+	}]
 }];
 
 function Menu() {
