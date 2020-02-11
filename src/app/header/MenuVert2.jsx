@@ -55,7 +55,7 @@ const Ul0 = styled.ul`
 	}
 	> li:last-child {
 		> span {
-			border-bottom: 0;
+			border-bottom: 0; /* last item won't have bottom border */
 		}
 	}
 	> li:hover {

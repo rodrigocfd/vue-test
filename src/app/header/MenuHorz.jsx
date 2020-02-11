@@ -21,7 +21,7 @@ MenuHorz.propTypes = {
 	items: PropTypes.arrayOf(
 		PropTypes.shape({
 			label: PropTypes.string,
-			menuVert1: MenuVert1.propTypes.items
+			menuVert1: MenuVert1.propTypes.items // passed straight to MenuVert1 component
 		})
 	).isRequired
 };

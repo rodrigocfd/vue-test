@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import MenuLabelWithArrow from './MenuLabelWithArrow';
+import MenuVert1Label from './MenuVert1Label';
 import MenuVert2 from './MenuVert2';
 
 function MenuVert1(props) {
@@ -14,8 +14,7 @@ function MenuVert1(props) {
 			{props.items.map(item =>
 				<li key={item.label} className="entry">
 					<span>
-						<MenuLabelWithArrow text={item.label}
-							showArrow={item.menuVert2 !== undefined} />
+						<MenuVert1Label {...item} />
 					</span>
 					{item.menuVert2 &&
 						<MenuVert2 items={item.menuVert2} />
@@ -30,8 +29,7 @@ MenuVert1.propTypes = {
 	title: PropTypes.string,
 	items: PropTypes.arrayOf(
 		PropTypes.shape({
-			label: PropTypes.string,
-			menuVert2: MenuVert2.propTypes.items
+			...MenuVert1Label.propTypes
 		})
 	).isRequired
 };
@@ -79,13 +77,13 @@ const Ul0 = styled.ul`
 	}
 	> li.title, li:last-child {
 		> span {
-			border-bottom: 0;
+			border-bottom: 0; /* last item won't have bottom border */
 		}
 	}
 	> li.entry:hover {
 		background-color: #eee;
 	}
-	> li:hover > ul, > li > ul:hover {
+	> li.entry:hover > ul, > li.entry > ul:hover {
 		visibility: visible; /* toggle UL in child component */
 	}
 `;
