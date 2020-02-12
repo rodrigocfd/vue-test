@@ -2,12 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import variaveisDeAmbiente from '../../variaveisDeAmbiente.json';
+
 function MenuVert2(props) {
 	return (
 		<Ul0>
 			{props.items.map(item =>
 				<li key={item.label}>
-					<span>{item.label}</span>
+					<span>
+						{item.oldLink
+							? <a href={variaveisDeAmbiente.dominioGestaoAntigo + item.oldLink}>{item.label}</a>
+							: <>{item.label}</>
+						}
+					</span>
 				</li>
 			)}
 		</Ul0>
@@ -17,7 +24,8 @@ function MenuVert2(props) {
 MenuVert2.propTypes = {
 	items: PropTypes.arrayOf(
 		PropTypes.shape({
-			label: PropTypes.string
+			label: PropTypes.string,
+			oldLink: PropTypes.string
 		})
 	)
 };

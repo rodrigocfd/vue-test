@@ -14,24 +14,29 @@
 				"label": "Proposta de Estrutura",
 				"menuVert2": [
 					{
-						"label": "Consultar Propostas"
+						"label": "Consultar Propostas",
+						"oldLink": "/private/manter_alteracao_estrutura_organizacional/listar_proposta_alteracao.jsf"
 					},
 					{
 						"label": "Cadastrar Nova Proposta"
 					},
 					{
-						"label": "Consultar Pendências"
+						"label": "Consultar Pendências",
+						"oldLink": "/private/manter_pendencia/manter_pendencia.jsf"
 					},
 					{
-						"label": "Consultar Erros de Efetivação"
+						"label": "Consultar Erros de Efetivação",
+						"oldLink": "/private/listar_erros/listar_erros_efetivacao.jsf"
 					}
 				]
 			},
 			{
-				"label": "Cadastrar Informações Complementares"
+				"label": "Cadastrar Informações Complementares",
+				"oldLink": "/private/manter_informacao_complementar/manter_informacao_complementar.jsf"
 			},
 			{
-				"label": "Comparar Estruturas"
+				"label": "Comparar Estruturas",
+				"oldLink": "/private/comparar_estrutura/comparar_estrutura.jsf"
 			}
 		]
 	},

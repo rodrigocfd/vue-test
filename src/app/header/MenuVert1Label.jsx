@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import MenuVert2 from './MenuVert2';
-
-const oldUrl = 'http://10.32.161.159:8080/siorg-gestao-webapp';
+import variaveisDeAmbiente from '../../variaveisDeAmbiente.json';
 
 function MenuVert1Label(props) {
 	return (
 		<Div0>
 			<div className="label">
 				{props.oldLink
-					? <a href={oldUrl + props.oldLink}>{props.label}</a>
+					? <a href={variaveisDeAmbiente.dominioGestaoAntigo + props.oldLink}>{props.label}</a>
 					: <>{props.label}</>
 				}
 			</div>
