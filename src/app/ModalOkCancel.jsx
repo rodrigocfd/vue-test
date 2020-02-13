@@ -55,15 +55,19 @@ ModalOkCancel.propTypes = {
 
 // Will demand an useState hook array like [getter, setter].
 function propTypesHookUseState(props, propName, componentName) {
+	function tk(word) { return '`' + word + '`'; } // surround with backticks
+
 	if (props[propName] === undefined || props[propName] === null) {
-		return new Error('The prop `' + propName + '` is marked as required'
-			+ ' in `' + componentName + '`, but its value is `' + props[propName] + '`.');
+		return new Error(`The prop ${tk(propName)} is marked as required`
+			+ ` in ${tk(componentName)}, but its value is ${tk(props[propName])}.`);
+
 	} else if (!Array.isArray(props[propName]) || props[propName].length !== 2) {
-		return new Error('The prop `' + propName + '` is marked as required'
-			+ ' in `' + componentName + '`, and it must be a hook array of [getter, setter].');
+		return new Error(`The prop ${tk(propName)} is marked as required`
+			+ ` in ${tk(componentName)}, and it must be a hook array of [getter, setter].`);
+
 	} else if (typeof props[propName][1] !== 'function') {
-		return new Error('The prop `' + propName + '` is marked as required'
-			+ ' in `' + componentName + '`, and second element must be a setter function.');
+		return new Error(`The prop ${tk(propName)} is marked as required`
+			+ ` in ${tk(componentName)}, and second element must be a setter function.`);
 	}
 }
 
