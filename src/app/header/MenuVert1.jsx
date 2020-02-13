@@ -83,7 +83,8 @@ const Ul0 = styled.ul`
 	> li.entry:hover {
 		background-color: #eee;
 	}
-	> li.entry:hover > ul, > li.entry > ul:hover {
+	> li.entry:hover > ul,
+	> li.entry > ul:hover {
 		visibility: visible; /* toggle UL in child component */
 	}
 `;

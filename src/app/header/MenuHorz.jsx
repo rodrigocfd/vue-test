@@ -9,7 +9,10 @@ function MenuHorz(props) {
 		<Ul0>
 			{props.items.map(item =>
 				<li key={item.label}>
-					<span>{item.label}</span>
+					<div className="labelFlex">
+						<div className="label">{item.label}</div>
+						<div className="arrow">▼</div>
+					</div>
 					<MenuVert1 title={item.label} items={item.menuVert1} />
 				</li>
 			)}
@@ -42,20 +45,32 @@ const Ul0 = styled.ul`
 		padding: 8px 0;
 		margin: 0;
 
-		> span {
-			display: inline-block;
-			width: 100%;
+		> .labelFlex {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
 			border-right: 1px solid #ccc;
-			margin: 0;
-			user-select: none;
+
+			> .label {
+				flex-grow: 1;
+				user-select: none;
+				text-align: center;
+			}
+			> .arrow {
+				flex-basis: auto;
+				margin: 0 7px 0 3px;
+				color: #5393ac;
+				font-size: 65%;
+			}
 		}
 	}
 	> li:last-child {
-		span {
+		> .labelFlex {
 			border-right: 0;
 		}
 	}
-	> li:hover > ul, > li > ul:hover {
+	> li:hover > ul,
+	> li > ul:hover {
 		visibility: visible; /* toggle UL in child component */
 	}
 `;

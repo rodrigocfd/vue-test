@@ -36,9 +36,8 @@ const Div0 = styled.div`
 		flex-grow: 1;
 	}
 	> .arrow {
-		flex-grow: 1;
-		text-align: right;
-		margin-left: 3px;
+		flex-basis: auto;
+		margin-left: 2px;
 		color: #5393ac;
 		font-size: 80%;
 	}
