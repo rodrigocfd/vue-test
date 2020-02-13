@@ -59,7 +59,7 @@ const Ul0 = styled.ul`
 			> .arrow {
 				flex-basis: auto;
 				margin: 0 7px 0 3px;
-				color: #5393ac;
+				color: #4b849b;
 				font-size: 65%;
 			}
 		}

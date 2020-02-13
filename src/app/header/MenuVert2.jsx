@@ -30,7 +30,7 @@ MenuVert2.propTypes = {
 
 const Ul0 = styled.ul`
 	position: absolute;
-	z-index: 999; /* so it stays over the next LIs, which will be rendered after the nested UL */
+	z-index: 999; /* so it stays over the parent component LIs which are rendered after us */
 	top: 1px; /* relative to parent, because parent LI has "position: relative" */
 	width: 284px; /* empirically found */
 	left: 268px;

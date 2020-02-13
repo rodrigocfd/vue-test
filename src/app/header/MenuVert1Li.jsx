@@ -8,7 +8,7 @@ import MenuVert2 from './MenuVert2';
 function MenuVert1Li(props) {
 	return (
 		<Li0>
-			<div>
+			<div className="flexWrap">
 				{props.oldLink
 					? <a className="label" href={variaveisDeAmbiente.dominioGestaoAntigo + props.oldLink}>{props.label}</a>
 					: <span className="label">{props.label}</span>
@@ -38,7 +38,7 @@ const Li0 = styled.li`
 	text-align: left;
 	cursor: pointer;
 
-	> div {
+	> div.flexWrap {
 		display: flex;
 		flex-direction: row;
 		user-select: none;
@@ -55,13 +55,13 @@ const Li0 = styled.li`
 		> .arrow {
 			flex-basis: auto;
 			margin-left: 2px;
-			color: #5393ac;
+			color: #4b849b;
 			font-size: 80%;
 		}
 	}
 
 	&:last-child {
-		> span {
+		> div.flexWrap {
 			border-bottom: 0; /* last item won't have bottom border */
 		}
 	}
