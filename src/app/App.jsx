@@ -3,13 +3,13 @@ import {Provider} from 'react-redux';
 import {HashRouter} from 'react-router-dom';
 import styled from 'styled-components';
 
-import reduxStore from './reduxStore';
+import Redux from './reduxStore';
 import Header from './header/Header';
 import Router from './Router';
 
 function App() {
 	return (
-		<Provider store={reduxStore}>
+		<Provider store={Redux.store}>
 			<HashRouter>
 				<Header />
 				<DivContents>

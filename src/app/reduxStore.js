@@ -1,20 +1,34 @@
-import {combineReducers, createStore} from 'redux';
+import {createStore} from 'redux';
 import {useDispatch, useSelector} from 'react-redux';
 
-import login from '../login/store';
-import texts from '../texts/store';
+import Cookie from './cookie';
 
-// Reducers from all modules.
-const reducer = combineReducers({
-	login,
-	texts
-});
+// Global app store.
+const initialState = {
+	authToken: Cookie.read('auth'), // load the token when page loads
+	phrase: ''
+};
+
+// Global app reducer.
+function reducer(state, {type, payload}) {
+	switch (type) {
+		case 'setAuthToken': return {...state, authToken: payload};
+		case 'setPhrase':    return {...state, phrase: payload};
+		default:             return state;
+	}
+}
 
 // Custom hook to wrap useDispatch(), receiving action name and payload.
-function useReduxAction() {
+// Usage:
+//  const action = useAction();
+//  action('setName', 'my name');
+function useAction() {
 	const dispatch = useDispatch();
 	return (type, payload) => dispatch({type, payload});
 }
 
-export {useReduxAction, useSelector as useReduxSelector}; // re-export useSelector for convenience
-export default createStore(reducer);
+export default {
+	store: createStore(reducer, initialState),
+	useValue: useSelector, // re-export useSelector for convenience
+	useAction
+};

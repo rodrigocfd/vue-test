@@ -1,14 +1,16 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
 
-import {useReduxAction} from '../app/reduxStore';
+import Redux from '../app/reduxStore';
+import Cookie from '../app/cookie';
 import serverLogin from './serverLogin';
 import Spinner from '../app/Spinner';
 
 function Login() {
 	const formRef = useRef(null);
 	const userNameRef = useRef(null);
-	const reduxAction = useReduxAction();
+
+	const reduxAction = Redux.useAction();
 
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
@@ -26,6 +28,9 @@ function Login() {
 		serverLogin(userName, password)
 			.then(data => {
 				if (data.authToken) {
+					data.authToken === null
+						? Cookie.erase('auth') // keep cookie in sync with state
+						: Cookie.write('auth', data.authToken);
 					reduxAction('setAuthToken', data.authToken);
 				} else {
 					setPassword('');

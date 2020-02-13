@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {useReduxAction} from '../app/reduxStore';
+import Redux from '../app/reduxStore';
 
 function LogoffButton() {
-	const reduxAction = useReduxAction();
+	const reduxAction = Redux.useAction();
 
 	return (
 		<input type="button" value="Logoff"
