@@ -7,6 +7,8 @@ import Redux from './reduxStore';
 import Header from './header/Header';
 import Router from './Router';
 
+import './App.css'; // global app-wide styles
+
 function App() {
 	return (
 		<Provider store={Redux.store}>
