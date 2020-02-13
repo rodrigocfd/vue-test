@@ -9,12 +9,10 @@ function MenuVert2(props) {
 		<Ul0>
 			{props.items.map(item =>
 				<li key={item.label}>
-					<span>
-						{item.oldLink
-							? <a href={variaveisDeAmbiente.dominioGestaoAntigo + item.oldLink}>{item.label}</a>
-							: <>{item.label}</>
-						}
-					</span>
+					{item.oldLink
+						? <a className="label" href={variaveisDeAmbiente.dominioGestaoAntigo + item.oldLink}>{item.label}</a>
+						: <span className="label">{item.label}</span>
+					}
 				</li>
 			)}
 		</Ul0>
@@ -32,9 +30,10 @@ MenuVert2.propTypes = {
 
 const Ul0 = styled.ul`
 	position: absolute;
-	top: -3px; /* relative to parent, because parent LI has "position: relative" */
+	z-index: 999; /* so it stays over the next LIs, which will be rendered after the nested UL */
+	top: 1px; /* relative to parent, because parent LI has "position: relative" */
 	width: 284px; /* empirically found */
-	left: 276px;
+	left: 268px;
 	margin: 2px;
 	padding: 0;
 	display: flex;
@@ -43,7 +42,12 @@ const Ul0 = styled.ul`
 	border: 1px solid #aaba75;
 	border-radius: 3px;
 	box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, .1);
-	visibility: hidden; /* parent component LI will toggle this */
+	visibility: hidden; /* toggled by parent LI */
+
+	li:hover > &,
+	li > &:hover {
+		visibility: visible; /* note: applied on the parent component LI */
+	}
 
 	> li {
 		list-style-type: none;
@@ -53,11 +57,13 @@ const Ul0 = styled.ul`
 		text-align: left;
 		cursor: pointer;
 
-		> span {
+		> .label {
 			user-select: none;
 			display: block;
 			margin: 0 8px;
 			padding: 12px 10px;
+			color: #44788d;
+			text-decoration: none;
 			border-bottom: 1px dotted #aebc82;
 		}
 	}

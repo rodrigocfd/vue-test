@@ -69,10 +69,6 @@ const Ul0 = styled.ul`
 			border-right: 0;
 		}
 	}
-	> li:hover > ul,
-	> li > ul:hover {
-		visibility: visible; /* toggle UL in child component */
-	}
 `;
 
 export default MenuHorz;
