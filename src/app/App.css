@@ -6,11 +6,13 @@ html {
 *, *:before, *:after {
 	box-sizing: inherit;
 }
+:root {
+	--app-font: 10pt arial, helvetica, Trebuchet MS, clean, sans-serif;
+}
 body {
 	margin: 0;
 	padding: 0;
-	font-family: arial, helvetica, Trebuchet MS, clean, sans-serif;
-	font-size: 10pt;
+	font: var(--app-font);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: #333;
@@ -18,7 +20,26 @@ body {
 }
 button, input[type=button], input[type=submit] {
 	cursor: pointer;
+	font: var(--app-font);
+	background-color: #adc565;
+	color: white;
+	padding: 4px 13px;
+	margin: 0 4px;
+	border: 0;
+	border-radius: 2px;
 }
+/*button:hover, input[type=button]:hover, input[type=submit]:hover {
+	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, .75);
+}*/
+input[type=text], input[type=password], select, textarea {
+	font: var(--app-font);
+	border: 1px solid #aeb6c3;
+	border-radius: 2px;
+	padding: 3px;
+}
+/*input[type=text]:focus, input[type=password]:focus, select:focus, textarea:focus {
+	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, .75);
+}*/
 
 /* --- ReactModal component ------------------------------------------------- */
 
