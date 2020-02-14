@@ -6,9 +6,9 @@ import * as Cookie from './cookie';
 // Global app reducer.
 function reducer(state, {type, payload}) {
 	switch (type) {
-		case 'setAuthToken': return {...state, authToken: payload};
-		case 'setPhrase':    return {...state, phrase: payload};
-		default:             return state;
+		case 'authToken': return {...state, authToken: payload};
+		case 'phrase':    return {...state, phrase: payload};
+		default:          return state;
 	}
 }
 
@@ -20,15 +20,15 @@ const store = createStore(reducer, {
 
 // Custom hook to wrap useDispatch(), receiving action name and payload.
 // Usage:
-//  const action = useAction();
-//  action('setName', 'my name');
-function useAction() {
-	const dispatch = useDispatch();
+//  const update = useUpdate();
+//  update('name', 'John Doe');
+function useUpdate() {
+	const dispatch = useDispatch(); // react-redux hook
 	return (type, payload) => dispatch({type, payload});
 }
 
 export {
 	store,
-	useSelector as useValue, // re-export useSelector for convenience
-	useAction
+	useSelector as useValue, // re-export useSelector hook for convenience
+	useUpdate
 };

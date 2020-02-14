@@ -10,7 +10,7 @@ function Login() {
 	const formRef = useRef(null);
 	const userNameRef = useRef(null);
 
-	const doAction = Store.useAction();
+	const update = Store.useUpdate();
 
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
@@ -31,7 +31,7 @@ function Login() {
 					data.authToken === null
 						? Cookie.erase('auth') // keep cookie in sync with state
 						: Cookie.write('auth', data.authToken);
-					doAction('setAuthToken', data.authToken);
+					update('authToken', data.authToken);
 				} else {
 					setPassword('');
 					formRef.current.reset();

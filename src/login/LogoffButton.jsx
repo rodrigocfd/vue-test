@@ -3,11 +3,11 @@ import React from 'react';
 import * as Store from '../app/reduxStore';
 
 function LogoffButton() {
-	const doAction = Store.useAction();
+	const update = Store.useUpdate();
 
 	return (
 		<input type="button" value="Logoff"
-			onClick={() => doAction('setAuthToken', null)} />
+			onClick={() => update('authToken', null)} />
 	);
 }
 

@@ -7,7 +7,7 @@ function Writer() {
 	const phraseRef = useRef(null);
 
 	const phrase = Store.useValue(state => state.phrase);
-	const doAction = Store.useAction();
+	const update = Store.useUpdate();
 
 	useEffect(() => {
 		phraseRef.current.focus();
@@ -18,7 +18,7 @@ function Writer() {
 			<h1>Writer</h1>
 			<div>
 				<input type="text" ref={phraseRef} value={phrase}
-					onChange={e => doAction('setPhrase', e.target.value)} />
+					onChange={e => update('phrase', e.target.value)} />
 			</div>
 		</Div0>
 	);
