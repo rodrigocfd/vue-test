@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Redux from '../app/reduxStore';
+import * as Store from '../app/reduxStore';
 
 function LogoffButton() {
-	const reduxAction = Redux.useAction();
+	const doAction = Store.useAction();
 
 	return (
 		<input type="button" value="Logoff"
-			onClick={() => reduxAction('setAuthToken', null)} />
+			onClick={() => doAction('setAuthToken', null)} />
 	);
 }
 

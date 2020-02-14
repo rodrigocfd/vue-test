@@ -3,7 +3,7 @@ import {Provider} from 'react-redux';
 import {HashRouter} from 'react-router-dom';
 import styled from 'styled-components';
 
-import Redux from './reduxStore';
+import * as Store from './reduxStore';
 import Header from './header/Header';
 import Router from './Router';
 
@@ -11,7 +11,7 @@ import './App.css'; // global app-wide styles
 
 function App() {
 	return (
-		<Provider store={Redux.store}>
+		<Provider store={Store.store}>
 			<HashRouter>
 				<Header />
 				<DivContents>

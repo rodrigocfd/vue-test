@@ -1,13 +1,13 @@
 import React, {useEffect, useRef} from 'react';
 import styled from 'styled-components';
 
-import Redux from '../app/reduxStore';
+import * as Store from '../app/reduxStore';
 
 function Writer() {
 	const phraseRef = useRef(null);
 
-	const phrase = Redux.useValue(state => state.phrase);
-	const reduxAction = Redux.useAction();
+	const phrase = Store.useValue(state => state.phrase);
+	const doAction = Store.useAction();
 
 	useEffect(() => {
 		phraseRef.current.focus();
@@ -18,7 +18,7 @@ function Writer() {
 			<h1>Writer</h1>
 			<div>
 				<input type="text" ref={phraseRef} value={phrase}
-					onChange={e => reduxAction('setPhrase', e.target.value)} />
+					onChange={e => doAction('setPhrase', e.target.value)} />
 			</div>
 		</Div0>
 	);

@@ -1,13 +1,7 @@
 import {createStore} from 'redux';
 import {useDispatch, useSelector} from 'react-redux';
 
-import Cookie from './cookie';
-
-// Global app store.
-const initialState = {
-	authToken: Cookie.read('auth'), // load the token when page loads
-	phrase: ''
-};
+import * as Cookie from './cookie';
 
 // Global app reducer.
 function reducer(state, {type, payload}) {
@@ -18,6 +12,12 @@ function reducer(state, {type, payload}) {
 	}
 }
 
+// Global app store.
+const store = createStore(reducer, {
+	authToken: Cookie.read('auth'), // load the token when page loads
+	phrase: ''
+});
+
 // Custom hook to wrap useDispatch(), receiving action name and payload.
 // Usage:
 //  const action = useAction();
@@ -27,8 +27,8 @@ function useAction() {
 	return (type, payload) => dispatch({type, payload});
 }
 
-export default {
-	store: createStore(reducer, initialState),
-	useValue: useSelector, // re-export useSelector for convenience
+export {
+	store,
+	useSelector as useValue, // re-export useSelector for convenience
 	useAction
 };

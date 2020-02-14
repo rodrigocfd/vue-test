@@ -1,14 +1,14 @@
 import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
-import Redux from '../app/reduxStore';
+import * as Store from '../app/reduxStore';
 import Home from '../home/Home';
 import Login from '../login/Login';
 import NotFound from './NotFound';
 import Texts from '../texts/Texts';
 
 function Router() {
-	const authToken = Redux.useValue(store => store.authToken);
+	const authToken = Store.useValue(store => store.authToken);
 
 	if (authToken === null) { // not logged, that's all you'll see
 		return (

@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Redux from '../app/reduxStore';
+import * as Store from '../app/reduxStore';
 
 function Reader() {
-	const phrase = Redux.useValue(state => state.phrase);
+	const phrase = Store.useValue(state => state.phrase);
 
 	return (
 		<Div0>
