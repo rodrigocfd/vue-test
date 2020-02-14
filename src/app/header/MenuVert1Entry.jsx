@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import variaveisDeAmbiente from '../../variaveisDeAmbiente.json';
 import MenuVert2 from './MenuVert2';
 
-function MenuVert1Li(props) {
+function MenuVert1Entry(props) {
 	return (
 		<Li0>
 			<div className="flexWrap">
@@ -24,7 +24,7 @@ function MenuVert1Li(props) {
 	);
 }
 
-MenuVert1Li.propTypes = {
+MenuVert1Entry.propTypes = {
 	label: PropTypes.string,
 	oldLink: PropTypes.string,
 	menuVert2: MenuVert2.propTypes.items // passed straight to MenuVert2 component
@@ -70,4 +70,4 @@ const Li0 = styled.li`
 	}
 `;
 
-export default MenuVert1Li;
+export default MenuVert1Entry;

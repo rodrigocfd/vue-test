@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import MenuVert1Li from './MenuVert1Li';
+import MenuVert1Entry from './MenuVert1Entry';
 
 function MenuVert1(props) {
 	return (
@@ -11,7 +11,7 @@ function MenuVert1(props) {
 				<span>{props.title}</span>
 			</li>
 			{props.items.map(item =>
-				<MenuVert1Li key={item.label} {...item} />
+				<MenuVert1Entry key={item.label} {...item} />
 			)}
 		</Ul0>
 	);
@@ -21,7 +21,7 @@ MenuVert1.propTypes = {
 	title: PropTypes.string,
 	items: PropTypes.arrayOf(
 		PropTypes.shape({
-			...MenuVert1Li.propTypes
+			...MenuVert1Entry.propTypes
 		})
 	).isRequired
 };
