@@ -14,7 +14,7 @@ function reducer(state, {type, payload}) {
 
 // Global app store.
 const store = createStore(reducer, {
-	authToken: Cookie.read('auth'), // load the token when page loads
+	authToken: Cookie.read('authToken'), // load the token when page loads
 	phrase: ''
 });
 

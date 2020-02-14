@@ -1,9 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
 
-import * as Cookie from '../app/cookie';
+import * as ServerAuth from './serverAuth';
 import * as Store from '../app/reduxStore';
-import serverLogin from './serverLogin';
 import Spinner from '../app/Spinner';
 
 function Login() {
@@ -25,14 +24,12 @@ function Login() {
 		ev.preventDefault();
 		setErrMsg('');
 		setLoading(true);
-		serverLogin(userName, password)
+		ServerAuth.login(userName, password) // will update cookie
 			.then(data => {
-				if (data.authToken) {
-					data.authToken === null
-						? Cookie.erase('auth') // keep cookie in sync with state
-						: Cookie.write('auth', data.authToken);
-					update('authToken', data.authToken);
+				if (data.logged) {
+					update('authToken', data.authToken); // will trigger router redirection
 				} else {
+					update('authToken', null);
 					setPassword('');
 					formRef.current.reset();
 					setErrMsg(data.msg);
@@ -67,11 +64,16 @@ function Login() {
 }
 
 const Form0 = styled.form`
-	> .loading {
+	> div {
+		> input {
+			margin-bottom: 4px;
+		}
+	}
+	> div.loading {
 		margin-top: 20px;
 		font-style: italic;
 	}
-	> .err {
+	> div.err {
 		margin-top: 20px;
 		color: red;
 	}
