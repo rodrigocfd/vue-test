@@ -1,11 +1,11 @@
-import React, {useRef, useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import ModalOkCancel, {propTypesHookUseState} from '../app/ModalOkCancel';
 
 function Prompt(props) {
-	const txtRef = useRef(null);
-	const [text, setText] = useState('');
+	const txtRef = React.useRef(null);
+	const [text, setText] = React.useState('');
 
 	function onModalAfterOpen() {
 		setText(props.initText);

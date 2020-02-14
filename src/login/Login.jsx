@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import * as ServerAuth from './serverAuth';
@@ -6,17 +6,17 @@ import * as Store from '../app/reduxStore';
 import Spinner from '../app/Spinner';
 
 function Login() {
-	const formRef = useRef(null);
-	const userNameRef = useRef(null);
+	const formRef = React.useRef(null);
+	const userNameRef = React.useRef(null);
 
 	const update = Store.useUpdate();
 
-	const [userName, setUserName] = useState('');
-	const [password, setPassword] = useState('');
-	const [errMsg, setErrMsg] = useState('');
-	const [isLoading, setLoading] = useState(false);
+	const [userName, setUserName] = React.useState('');
+	const [password, setPassword] = React.useState('');
+	const [errMsg, setErrMsg] = React.useState('');
+	const [isLoading, setLoading] = React.useState(false);
 
-	useEffect(() => {
+	React.useEffect(() => {
 		userNameRef.current.focus();
 	}, []);
 

@@ -1,15 +1,15 @@
-import React, {useEffect, useRef} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import * as Store from '../app/reduxStore';
 
 function Writer() {
-	const phraseRef = useRef(null);
+	const phraseRef = React.useRef(null);
 
 	const phrase = Store.useValue(state => state.phrase);
 	const update = Store.useUpdate();
 
-	useEffect(() => {
+	React.useEffect(() => {
 		phraseRef.current.focus();
 	}, []);
 

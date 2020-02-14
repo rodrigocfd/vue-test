@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 
 ReactModal.setAppElement('#root');
 
 function ModalOkCancel(props) {
-	const [wasOk, setWasOk] = useState(false); // user clicked on OK button?
+	const [wasOk, setWasOk] = React.useState(false); // user clicked on OK button?
 	const [isOpen, setOpen] = props.openHook; // actually an useState hook hosted on parent
 
 	function frmSubmit(ev) {

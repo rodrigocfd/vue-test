@@ -1,14 +1,14 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import Prompt from './Prompt';
 
 function Home() {
-	const nameRef = useRef(null);
-	const [isModalOpen, setModalOpen] = useState(false);
-	const [name, setName] = useState('');
+	const nameRef = React.useRef(null);
+	const [isModalOpen, setModalOpen] = React.useState(false);
+	const [name, setName] = React.useState('');
 
-	useEffect(() => {
+	React.useEffect(() => {
 		nameRef.current.focus();
 	}, []);
 
