@@ -1,4 +1,6 @@
-/* App-wide global styles. */
+// App-wide global styles.
+
+$appFont: 10pt arial, helvetica, Trebuchet MS, clean, sans-serif;
 
 html {
 	box-sizing: border-box;
@@ -6,13 +8,10 @@ html {
 *, *:before, *:after {
 	box-sizing: inherit;
 }
-:root {
-	--app-font: 10pt arial, helvetica, Trebuchet MS, clean, sans-serif;
-}
 body {
 	margin: 0;
 	padding: 0;
-	font: var(--app-font);
+	font: $appFont;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: #333;
@@ -20,7 +19,7 @@ body {
 }
 button, input[type=button], input[type=submit] {
 	cursor: pointer;
-	font: var(--app-font);
+	font: $appFont;
 	background-color: #adc565;
 	color: white;
 	padding: 4px 13px;
@@ -28,20 +27,20 @@ button, input[type=button], input[type=submit] {
 	border: 0;
 	border-radius: 2px;
 }
-/*button:hover, input[type=button]:hover, input[type=submit]:hover {
-	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, .75);
-}*/
+// button:hover, input[type=button]:hover, input[type=submit]:hover {
+// 	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, .75);
+// }
 input[type=text], input[type=password], select, textarea {
-	font: var(--app-font);
+	font: $appFont;
 	border: 1px solid #aeb6c3;
 	border-radius: 2px;
 	padding: 3px;
 }
-/*input[type=text]:focus, input[type=password]:focus, select:focus, textarea:focus {
-	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, .75);
-}*/
+// input[type=text]:focus, input[type=password]:focus, select:focus, textarea:focus {
+// 	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, .75);
+// }
 
-/* --- ReactModal component ------------------------------------------------- */
+//---- ReactModal component ----------------------------------------------------
 
 .ReactModal-overlay {
 	position: fixed;
@@ -50,30 +49,30 @@ input[type=text], input[type=password], select, textarea {
 }
 .ReactModal-content {
 	position: absolute;
-	/*inset: 40px;*/
+	// inset: 40px;
 	top: 50%;
 	left: 50%;
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
-	/*border: 1px solid rgb(204, 204, 204);*/
+	// border: 1px solid rgb(204, 204, 204);
 	background: white none repeat scroll 0% 0%;
 	overflow: auto;
-	/*border-radius: 4px;*/
+	// border-radius: 4px;
 	outline: currentcolor none medium;
-	/*padding: 20px;*/
+	// padding: 20px;
 	box-shadow: 3px 3px 18px 0px rgba(0, 0, 0, .75);
 }
-/*.ReactModal__Overlay {
-	opacity: 0;
-	transition: opacity 150ms ease-in-out;
-}
-.ReactModal__Overlay--after-open{
-	opacity: 1;
-}
-.ReactModal__Overlay--before-close{
-	opacity: 0;
-}*/
-.ReactModal-body { /* from here, our own stuff inside the modal */
+// .ReactModal__Overlay {
+// 	opacity: 0;
+// 	transition: opacity 150ms ease-in-out;
+// }
+// .ReactModal__Overlay--after-open{
+// 	opacity: 1;
+// }
+// .ReactModal__Overlay--before-close{
+// 	opacity: 0;
+// }
+.ReactModal-body { // from here, our own stuff inside the modal
 	padding: 18px;
 }
 .ReactModal-footer {

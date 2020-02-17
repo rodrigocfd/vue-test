@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import * as Store from '../app/reduxStore';
+import c from './Writer.module.scss';
 
 function Writer() {
 	const phraseRef = React.useRef(null);
@@ -14,20 +14,14 @@ function Writer() {
 	}, []);
 
 	return (
-		<Div0>
-			<h1>Writer</h1>
+		<div>
+			<h1 className={c.title}>Writer</h1>
 			<div>
 				<input type="text" ref={phraseRef} value={phrase}
 					onChange={e => update('phrase', e.target.value)} />
 			</div>
-		</Div0>
+		</div>
 	);
 }
-
-const Div0 = styled.div`
-	> h1 {
-		color: darkslateblue;
-	}
-`;
 
 export default Writer;

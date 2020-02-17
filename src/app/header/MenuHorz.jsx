@@ -1,22 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 import MenuVert1 from './MenuVert1';
+import c from './MenuHorz.module.scss';
 
 function MenuHorz(props) {
 	return (
-		<Ul0>
+		<ul className={c.ul}>
 			{props.items.map(item =>
-				<li key={item.label}>
-					<div className="labelFlex">
-						<div className="label">{item.label}</div>
-						<div className="arrow">▼</div>
+				<li className={c.li} key={item.label}>
+					<div className={c.labelFlex}>
+						<div className={c.label}>{item.label}</div>
+						<div className={c.arrow}>▼</div>
 					</div>
 					<MenuVert1 title={item.label} items={item.menuVert1} />
 				</li>
 			)}
-		</Ul0>
+		</ul>
 	);
 }
 
@@ -28,47 +28,5 @@ MenuHorz.propTypes = {
 		})
 	).isRequired
 };
-
-const Ul0 = styled.ul`
-	margin: 0;
-	padding: 0;
-	display: flex;
-	flex-direction: row;
-
-	> li {
-		list-style-type: none;
-		flex-basis: 0;
-		flex-grow: 1;
-		position: relative; /* so nested UL can be relatively positioned */
-		text-align: center;
-		line-height: 19px;
-		padding: 8px 0;
-		margin: 0;
-
-		> .labelFlex {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			border-right: 1px solid #ccc;
-
-			> .label {
-				flex-grow: 1;
-				user-select: none;
-				text-align: center;
-			}
-			> .arrow {
-				flex-basis: auto;
-				margin: 0 7px 0 3px;
-				color: #4b849b;
-				font-size: 65%;
-			}
-		}
-	}
-	> li:last-child {
-		> .labelFlex {
-			border-right: 0;
-		}
-	}
-`;
 
 export default MenuHorz;

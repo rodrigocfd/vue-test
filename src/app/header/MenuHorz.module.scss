@@ -1,0 +1,41 @@
+.ul {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+
+	.li {
+		list-style-type: none;
+		flex-basis: 0;
+		flex-grow: 1;
+		position: relative; // so nested UL can be relatively positioned
+		text-align: center;
+		line-height: 19px;
+		padding: 8px 0;
+		margin: 0;
+
+		.labelFlex {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			border-right: 1px solid #ccc;
+
+			.label {
+				flex-grow: 1;
+				user-select: none;
+				text-align: center;
+			}
+			.arrow {
+				flex-basis: auto;
+				margin: 0 7px 0 3px;
+				color: #4b849b;
+				font-size: 65%;
+			}
+		}
+	}
+	.li:last-child {
+		.labelFlex {
+			border-right: 0;
+		}
+	}
+}

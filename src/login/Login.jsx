@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import * as ServerAuth from './serverAuth';
 import * as Store from '../app/reduxStore';
 import Spinner from '../app/Spinner';
+import c from './Login.module.scss';
 
 function Login() {
 	const formRef = React.useRef(null);
@@ -41,42 +41,28 @@ function Login() {
 	}
 
 	return (
-		<Form0 onSubmit={frmSubmit} ref={formRef}>
+		<form onSubmit={frmSubmit} ref={formRef}>
 			<h1>Login</h1>
 			<div>
 				<input type="text" ref={userNameRef} name="userName" required
+					className={c.textField} placeholder="Username"
 					value={userName} onChange={e => setUserName(e.target.value)}
-					disabled={isLoading} placeholder="Username" />
+					disabled={isLoading} />
 			</div>
 			<div>
 				<input type="password" name="password" required
+					className={c.textField} placeholder="Password"
 					value={password} onChange={e => setPassword(e.target.value)}
-					disabled={isLoading} placeholder="Password" />
+					disabled={isLoading} />
 			</div>
 			<div>
 				<input type="submit" value="Proceed"
 					disabled={isLoading} />
 			</div>
-			{isLoading && <div className="loading">Logging in... <Spinner /></div>}
-			<div className="err">{errMsg}</div>
-		</Form0>
+			{isLoading && <div className={c.loading}>Logging in... <Spinner /></div>}
+			<div className={c.err}>{errMsg}</div>
+		</form>
 	);
 }
-
-const Form0 = styled.form`
-	> div {
-		> input {
-			margin-bottom: 4px;
-		}
-	}
-	> div.loading {
-		margin-top: 20px;
-		font-style: italic;
-	}
-	> div.err {
-		margin-top: 20px;
-		color: red;
-	}
-`;
 
 export default Login;

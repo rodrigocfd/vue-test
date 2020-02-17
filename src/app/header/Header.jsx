@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import styled from 'styled-components';
 
 import * as Store from '../reduxStore';
 import LogoffButton from '../../login/LogoffButton';
 import Menu from './Menu';
+import c from './Header.module.scss';
 
 function Header() {
 	const authToken = Store.useValue(store => store.authToken);
@@ -14,47 +14,20 @@ function Header() {
 	}
 
 	return (
-		<Div0>
-			<div className="topWrap">
-				<div className="left">
-					<div className="logo"></div>
+		<div className={c.header}>
+			<div className={c.aboveMenu}>
+				<div className={c.left}>
+					<div className={c.logo}></div>
 				</div>
-				<div className="rite">
+				<div className={c.rite}>
 					<Link to="/home">Home</Link> | {' '}
 					<Link to="/texts">Texts</Link>
 					<LogoffButton />
 				</div>
 			</div>
 			<Menu />
-		</Div0>
+		</div>
 	);
 }
-
-const Div0 = styled.div`
-	background-repeat: repeat;
-
-	> .topWrap {
-		display: flex;
-		flex-direction: row;
-
-		> .left {
-			flex-grow: 1;
-
-			> .logo {
-				display: inline-block;
-				margin-left: 48px;
-				margin-top: 36px;
-				width: 333px;
-				height: 68px;
-				background: url('/images/logo-header.png') no-repeat center center;
-			}
-		}
-		> .rite {
-			flex-grow: 1;
-			text-align: right;
-			padding: 12px;
-		}
-	}
-`;
 
 export default Header;
