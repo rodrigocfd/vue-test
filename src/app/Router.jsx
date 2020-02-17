@@ -8,23 +8,6 @@ import Login from '../login/Login';
 import NotFound from './NotFound';
 import Texts from '../texts/Texts';
 
-function CookieProtectedRoute({component: Component, ...otherProps}) {
-	const authToken = Cookie.read('authToken');
-	if (authToken === null) { // check cookie state every navigation
-		const update = Store.useUpdate();
-		update('authToken', null);
-	}
-
-	return (
-		<Route {...otherProps} render={props => (
-			authToken !== null // if no auth cookie, go to login
-				? <Component {...props} />
-				: <Redirect to="/login" />
-			)
-		}/>
-	);
-}
-
 function Router() {
 	const authToken = Store.useValue(store => store.authToken);
 
@@ -49,6 +32,23 @@ function Router() {
 				<Redirect to="/404" />
 			</Switch>
 		);
+}
+
+function CookieProtectedRoute({component: Component, ...otherProps}) {
+	const authToken = Cookie.read('authToken');
+	if (authToken === null) { // check cookie state every navigation
+		const update = Store.useUpdate();
+		update('authToken', null); // if no auth cookie, update global state
+	}
+
+	return (
+		<Route {...otherProps} render={props => (
+			authToken !== null // if no auth cookie, go to login
+				? <Component {...props} />
+				: <Redirect to="/login" />
+			)
+		}/>
+	);
 }
 
 export default Router;

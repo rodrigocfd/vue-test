@@ -1,41 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ModalOkCancel, {propTypesHookUseState} from '../app/ModalOkCancel';
+import Modal from '../app/Modal';
+import c from './Prompt.module.scss';
 
 function Prompt(props) {
 	const txtRef = React.useRef(null);
-	const [text, setText] = React.useState('');
+	const [text, setText] = React.useState(props.initText || '');
 
-	function onModalAfterOpen() {
-		setText(props.initText);
+	React.useEffect(() => {
 		txtRef.current.focus();
+	}, []);
+
+	function onOk() {
+		props.modalState.close();
+		props.onOk && props.onOk(text);
 	}
 
-	function onModalOk() {
-		if (props.onOk) props.onOk(text);
+	function onCancel() {
+		props.modalState.close();
+		props.onCancel && props.onCancel();
 	}
 
 	return (
-		<ModalOkCancel openHook={props.openHook} onAfterOpen={onModalAfterOpen}
-			onOk={onModalOk} onCancel={props.onCancel}>
-			<div>
+		<Modal onEsc={onCancel}>
+			<div className={c.txt}>
 				<input type="text" ref={txtRef}
 					value={text} onChange={e => setText(e.target.value)} />
 			</div>
-		</ModalOkCancel>
+			<div className={c.btns}>
+				<input type="button" value="Ok" onClick={onOk} />
+				<input type="button" value="Cancel" onClick={onCancel} />
+			</div>
+		</Modal>
 	);
 }
 
 Prompt.propTypes = {
-	openHook: propTypesHookUseState,
+	modalState: Modal.stateProps.isRequired,
 	initText: PropTypes.string,
 	onOk: PropTypes.func,
 	onCancel: PropTypes.func
-};
-
-Prompt.defaultProps = {
-	initText: ''
 };
 
 export default Prompt;

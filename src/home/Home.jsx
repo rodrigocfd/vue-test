@@ -1,11 +1,12 @@
 import React from 'react';
 
+import {useModal} from '../app/Modal';
 import Prompt from './Prompt';
 import c from './Home.module.scss';
 
 function Home() {
+	const modalState = useModal();
 	const nameRef = React.useRef(null);
-	const [isModalOpen, setModalOpen] = React.useState(false);
 	const [name, setName] = React.useState('');
 
 	React.useEffect(() => {
@@ -13,28 +14,28 @@ function Home() {
 	}, []);
 
 	function btnModify() {
-		setModalOpen(true);
+		modalState.open();
 	}
 
-	function inputModalOnOk(data) {
+	function onModalOk(data) {
 		nameRef.current.focus();
-		setName(data);
+ 		setName(data);
 	}
 
-	function onInputModalCancel() {
+	function onModalCancel() {
 		nameRef.current.focus();
 	}
 
-	return (
-		<div>
-			<Prompt openHook={[isModalOpen, setModalOpen]} initText={name}
-				onOk={inputModalOnOk} onCancel={onInputModalCancel} />
-			<h1 className={c.title}>Home</h1>
-			<h2 className={c.subtitle}>This is the home component.</h2>
-			<input type="text" ref={nameRef} value={name} onChange={e => setName(e.target.value)} />
-			<input type="button" value="Modify" onClick={btnModify} />
-		</div>
-	);
+	return (<>
+		{modalState.isOpen &&
+			<Prompt modalState={modalState} initText={name}
+				onOk={onModalOk} onCancel={onModalCancel} />
+		}
+		<h1 className={c.title}>Home</h1>
+		<h2 className={c.subtitle}>This is the home component.</h2>
+		<input type="text" ref={nameRef} value={name} onChange={e => setName(e.target.value)} />
+		<input type="button" value="Modify" onClick={btnModify} />
+	</>);
 }
 
 export default Home;
