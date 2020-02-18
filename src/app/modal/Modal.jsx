@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import c from './Modal.module.scss';
 
+// Generic modal which can hold any content.
 function Modal(props) {
 	function onKeyDown(ev) {
 		if (ev.keyCode === 27 && props.onEsc) { // works only if focus is within DIV

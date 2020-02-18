@@ -1,20 +1,19 @@
 import React from 'react';
 
 import * as Store from '../app/reduxStore';
-import useModalOk from '../app/modal/useModalOk';
+import useModalOkCancel from '../app/modal/useModalOkCancel';
 import Reader from './Reader';
 import Writer from './Writer';
 import c from './Texts.module.scss';
 
 function Texts() {
-	const modalOk = useModalOk();
+	const modalOkCancel = useModalOkCancel();
 	const phrase = Store.useValue(state => state.phrase);
 
 	function popClick() {
-		modalOk.open(`The Redux-stored text is "${phrase}".`)
-			.onOk(() => {
-				console.log('OK modal was closed.');
-			});
+		modalOkCancel.open(`The Redux-stored text is "${phrase}".`)
+			.onOk(() => console.log('OK button clicked.'))
+			.onCancel(() => console.log('Cancelled.'));
 	}
 
 	return (
@@ -22,7 +21,7 @@ function Texts() {
 			<Reader />
 			<Writer />
 			<div className={c.btnModalOk}>
-				<modalOk.Component />
+				<modalOkCancel.Component />
 				<input type="button" value="Click for pop" onClick={popClick} />
 			</div>
 		</div>

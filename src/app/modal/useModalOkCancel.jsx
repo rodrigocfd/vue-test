@@ -4,10 +4,11 @@ import useModal from './useModal';
 import Modal from './Modal';
 import c from './useModalOk.module.scss';
 
-function useModalOk() {
+function useModalOkCancel() {
 	const modalState = useModal();
 	const [text, setText] = React.useState('');
 	const [okCallback, setOkCallback] = React.useState(() => () => {});
+	const [cancelCallback, setCancelCallback] = React.useState(() => () => {});
 
 	function open(text) {
 		setText(text);
@@ -15,6 +16,15 @@ function useModalOk() {
 		return {
 			onOk(callback) { // method is chained after open() call
 				setOkCallback(() => callback); // store user callback
+				return {
+					onCancel(callback) { setCancelCallback(() => callback); } // chained right after
+				};
+			},
+			onCancel(callback) { // or this one can be chained after open() call
+				setCancelCallback(() => callback); // store user callback
+				return {
+					onOk(callback) { setOkCallback(() => callback); } // chained right after
+				};
 			}
 		};
 	}
@@ -31,11 +41,17 @@ function useModalOk() {
 			okCallback(); // invoke user callback, if any
 		}
 
+		function cancelBtn() {
+			modalState.close();
+			cancelCallback(); // invoke user callback if any
+		}
+
 		return modalState.isOpen && (
 			<Modal>
 				<div>{text}</div>
 				<div className={c.btnRow}>
 					<input type="button" value="OK" ref={btnRef} onClick={okBtn} />
+					<input type="button" value="Cancelar" onClick={cancelBtn} />
 				</div>
 			</Modal>
 		);
@@ -44,4 +60,4 @@ function useModalOk() {
 	return {Component, open};
 }
 
-export default useModalOk;
+export default useModalOkCancel;
