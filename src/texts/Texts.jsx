@@ -11,10 +11,10 @@ function Texts() {
 	const phrase = Store.useValue(state => state.phrase);
 
 	function popClick() {
-		modalOk.open(`The Redux-stored text is "${phrase}".`);
-		modalOk.onClose(() => {
-			console.log('OK modal was closed.');
-		});
+		modalOk.open(`The Redux-stored text is "${phrase}".`)
+			.onOk(() => {
+				console.log('OK modal was closed.');
+			});
 	}
 
 	return (

@@ -7,15 +7,16 @@ import c from './useModalOk.module.scss';
 function useModalOk() {
 	const modalState = useModal();
 	const [text, setText] = React.useState('');
-	const [closeCallback, setCloseCallback] = React.useState(() => () => {});
+	const [okCallback, setOkCallback] = React.useState(() => () => {});
 
 	function open(text) {
 		setText(text);
 		modalState.open();
-	}
-
-	function onClose(callback) {
-		setCloseCallback(() => callback); // store user callback
+		return {
+			onOk: function(callback) { // onOk() method is chained after open() call
+				setOkCallback(() => callback); // store user callback
+			}
+		};
 	}
 
 	function Component() { // this component must go inside owner's render block
@@ -27,7 +28,7 @@ function useModalOk() {
 
 		function okBtn() {
 			modalState.close();
-			closeCallback(); // invoke user callback, if any
+			okCallback(); // invoke user callback, if any
 		}
 
 		return modalState.isOpen && (
@@ -40,7 +41,7 @@ function useModalOk() {
 		);
 	}
 
-	return {Component, open, onClose};
+	return {Component, open};
 }
 
 export default useModalOk;
