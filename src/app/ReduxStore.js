@@ -1,7 +1,7 @@
 import {createStore} from 'redux';
 import {useDispatch, useSelector} from 'react-redux';
 
-import * as Cookie from './cookie';
+import Cookie from './Cookie';
 
 // Global app reducer.
 function reducer(state, {type, payload}) {
@@ -27,8 +27,8 @@ function useUpdate() {
 	return (type, payload) => dispatch({type, payload});
 }
 
-export {
+export default {
 	store,
-	useSelector as useValue, // re-export useSelector hook for convenience
+	useValue: useSelector, // re-export useSelector hook for convenience, naming it as useValue
 	useUpdate
 };

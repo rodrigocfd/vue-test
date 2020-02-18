@@ -1,13 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import * as Store from '../reduxStore';
+import ReduxStore from '../ReduxStore';
 import LogoffButton from '../../login/LogoffButton';
 import Menu from './Menu';
 import c from './Header.module.scss';
 
 function Header() {
-	const authToken = Store.useValue(store => store.authToken);
+	const authToken = ReduxStore.useValue(store => store.authToken);
 
 	if (authToken === null) {
 		return null; // render only when authenticated

@@ -22,4 +22,4 @@ function erase(name) {
 	document.cookie = name + '=; Max-Age=-99999999;';
 }
 
-export {write, read, erase};
+export default {write, read, erase};

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as Store from '../app/reduxStore';
+import ReduxStore from '../app/ReduxStore';
 import c from './Writer.module.scss';
 
 function Writer(_props, ref) {
@@ -10,8 +10,8 @@ function Writer(_props, ref) {
 		select: () => phraseRef.current.select()
 	}), []);
 
-	const phrase = Store.useValue(state => state.phrase);
-	const update = Store.useUpdate();
+	const phrase = ReduxStore.useValue(state => state.phrase);
+	const update = ReduxStore.useUpdate();
 
 	React.useEffect(() => {
 		phraseRef.current.focus();

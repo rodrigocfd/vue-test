@@ -1,7 +1,7 @@
 import React from 'react';
 
-import * as ServerAuth from './serverAuth';
-import * as Store from '../app/reduxStore';
+import ReduxStore from '../app/ReduxStore';
+import ServerAuth from './ServerAuth';
 import Spinner from '../app/Spinner';
 import c from './Login.module.scss';
 
@@ -9,7 +9,7 @@ function Login() {
 	const formRef = React.useRef(null);
 	const userNameRef = React.useRef(null);
 
-	const update = Store.useUpdate();
+	const update = ReduxStore.useUpdate();
 
 	const [userName, setUserName] = React.useState('');
 	const [password, setPassword] = React.useState('');

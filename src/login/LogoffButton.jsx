@@ -1,10 +1,10 @@
 import React from 'react';
 
-import * as ServerAuth from './serverAuth';
-import * as Store from '../app/reduxStore';
+import ReduxStore from '../app/ReduxStore';
+import ServerAuth from './ServerAuth';
 
 function LogoffButton() {
-	const update = Store.useUpdate();
+	const update = ReduxStore.useUpdate();
 
 	function doLogoff() {
 		ServerAuth.logoff(); // will update cookie

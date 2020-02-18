@@ -1,10 +1,10 @@
 import React from 'react';
 
-import * as Store from '../app/reduxStore';
+import ReduxStore from '../app/ReduxStore';
 import c from './Reader.module.scss';
 
 function Reader() {
-	const phrase = Store.useValue(state => state.phrase);
+	const phrase = ReduxStore.useValue(state => state.phrase);
 
 	return (
 		<div>

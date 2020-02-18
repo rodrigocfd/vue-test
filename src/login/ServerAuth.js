@@ -1,4 +1,4 @@
-import * as Cookie from '../app/cookie';
+import Cookie from '../app/Cookie';
 
 function login(username, password) {
 	return new Promise((resolve, reject) => {
@@ -20,7 +20,4 @@ function logoff() {
 	Cookie.erase('authToken');
 }
 
-export {
-	login,
-	logoff
-};
+export default {login, logoff};

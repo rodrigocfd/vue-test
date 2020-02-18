@@ -1,15 +1,16 @@
 import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
-import * as Cookie from '../app/cookie';
-import * as Store from '../app/reduxStore';
+import Cookie from '../app/Cookie';
+import ReduxStore from '../app/ReduxStore';
+
 import Home from '../home/Home';
 import Login from '../login/Login';
 import NotFound from './NotFound';
 import Texts from '../texts/Texts';
 
 function Router() {
-	const authToken = Store.useValue(store => store.authToken);
+	const authToken = ReduxStore.useValue(store => store.authToken);
 
 	return authToken === null
 		? ( // not logged, that's all you'll see
@@ -37,7 +38,7 @@ function Router() {
 function CookieProtectedRoute({component: Component, ...otherProps}) {
 	const authToken = Cookie.read('authToken');
 	if (authToken === null) { // check cookie state every navigation
-		const update = Store.useUpdate();
+		const update = ReduxStore.useUpdate();
 		update('authToken', null); // if no auth cookie, update global state
 	}
 
