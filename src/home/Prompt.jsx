@@ -2,16 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import useModal from '../app/modal/useModal';
+import Hooks from '../app/Hooks';
 import Modal from '../app/modal/Modal';
 import c from './Prompt.module.scss';
 
 function Prompt(props) {
-	const txtRef = React.useRef(null);
+	const txtRef = Hooks.useFocusOnMountRef();
 	const [text, setText] = React.useState(props.initText || '');
-
-	React.useEffect(() => {
-		txtRef.current.focus();
-	}, []);
 
 	function onOk() {
 		props.modalState.close();

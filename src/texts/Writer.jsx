@@ -1,21 +1,18 @@
 import React from 'react';
 
+import Hooks from '../app/Hooks';
 import ReduxStore from '../app/ReduxStore';
 import c from './Writer.module.scss';
 
 function Writer(_props, ref) {
-	const phraseRef = React.useRef(null);
+	const phraseRef = Hooks.useFocusOnMountRef();
 	React.useImperativeHandle(ref, () => ({
 		focus: () => phraseRef.current.focus(), // add focus() method to forwarded ref
 		select: () => phraseRef.current.select()
-	}), []);
+	}), [phraseRef]);
 
 	const phrase = ReduxStore.useValue(state => state.phrase);
 	const update = ReduxStore.useUpdate();
-
-	React.useEffect(() => {
-		phraseRef.current.focus();
-	}, []);
 
 	return (
 		<div>

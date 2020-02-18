@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Hooks from '../app/Hooks';
 import ReduxStore from '../app/ReduxStore';
 import ServerAuth from './ServerAuth';
 import Spinner from '../app/Spinner';
@@ -7,7 +8,7 @@ import c from './Login.module.scss';
 
 function Login() {
 	const formRef = React.useRef(null);
-	const userNameRef = React.useRef(null);
+	const userNameRef = Hooks.useFocusOnMountRef();
 
 	const update = ReduxStore.useUpdate();
 
@@ -15,10 +16,6 @@ function Login() {
 	const [password, setPassword] = React.useState('');
 	const [errMsg, setErrMsg] = React.useState('');
 	const [isLoading, setLoading] = React.useState(false);
-
-	React.useEffect(() => {
-		userNameRef.current.focus();
-	}, []);
 
 	function frmSubmit(ev) {
 		ev.preventDefault();

@@ -1,17 +1,14 @@
 import React from 'react';
 
 import useModal from '../app/modal/useModal';
+import Hooks from '../app/Hooks';
 import Prompt from './Prompt';
 import c from './Home.module.scss';
 
 function Home() {
 	const modalState = useModal();
-	const nameRef = React.useRef(null);
+	const nameRef = Hooks.useFocusOnMountRef();
 	const [name, setName] = React.useState('');
-
-	React.useEffect(() => {
-		nameRef.current.focus();
-	}, []);
 
 	function btnModify() {
 		modalState.open();
