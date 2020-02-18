@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Hooks from '../Hooks';
 import Modal, {useModal} from './Modal';
 import c from './useModalOk.module.scss';
 
@@ -30,11 +31,7 @@ function useModalOkCancel() {
 	}
 
 	function Component() { // this component must go inside owner's render block
-		const btnRef = React.useRef(null);
-
-		React.useEffect(() => {
-			modalState.isOpen && btnRef.current.focus();
-		}, []);
+		const btnRef = Hooks.useFocusOnMountRef();
 
 		function okBtn() {
 			modalState.close();
@@ -46,7 +43,7 @@ function useModalOkCancel() {
 			cancelCallback(); // invoke user callback if any
 		}
 
-		return modalState.isOpen && (
+		return modalState.render(
 			<Modal>
 				<div className={c.content}>
 					<div>

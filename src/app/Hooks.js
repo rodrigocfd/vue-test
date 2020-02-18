@@ -4,13 +4,13 @@ function useFocusOnMountRef() {
 	const myRef = React.useRef(null);
 
 	React.useEffect(() => { // set focus on component mount
-		myRef.current.focus();
+		myRef && myRef.current && myRef.current.focus();
 	}, []);
 
 	return myRef; // return ordinary ref to element
 }
 
-function useFocusForwardRef(fwdRef) { // to be used with forwardRef()
+function useFwdFocusRef(fwdRef) { // to be used with forwardRef()
 	const ourRef = useFocusOnMountRef();
 
 	React.useImperativeHandle(fwdRef, () => ({
@@ -23,5 +23,5 @@ function useFocusForwardRef(fwdRef) { // to be used with forwardRef()
 
 export default {
 	useFocusOnMountRef,
-	useFocusForwardRef
+	useFwdFocusRef
 };

@@ -37,12 +37,13 @@ function useModal() {
 
 	function open() { setOpen(true); }
 	function close() { setOpen(false); }
+	function render(jsxContent) { return isOpen && jsxContent; } // renders nothing if not open
 
-	return {isOpen, open, close};
+	return {render, open, close}; // call render() on parent-most component
 }
 
 const modalStateProps = PropTypes.shape({
-	isOpen: PropTypes.bool.isRequired,
+	render: PropTypes.func.isRequired,
 	open: PropTypes.func.isRequired,
 	close: PropTypes.func.isRequired
 });

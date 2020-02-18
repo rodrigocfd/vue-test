@@ -5,7 +5,7 @@ import ReduxStore from '../app/ReduxStore';
 import c from './Writer.module.scss';
 
 function Writer(_props, ref) {
-	const phraseRef = Hooks.useFocusForwardRef(ref);
+	const phraseRef = Hooks.useFwdFocusRef(ref);
 	const phrase = ReduxStore.useValue(state => state.phrase);
 	const update = ReduxStore.useUpdate();
 

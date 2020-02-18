@@ -7,7 +7,7 @@ import c from './Prompt.module.scss';
 
 function Prompt(props) {
 	const txtRef = Hooks.useFocusOnMountRef();
-	const [text, setText] = React.useState(props.initText || '');
+	const [text, setText] = React.useState(props.initText || ''); // because initText is optional
 
 	function onOk() {
 		props.modalState.close();
