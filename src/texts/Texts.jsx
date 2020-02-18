@@ -7,8 +7,8 @@ import Writer from './Writer';
 import c from './Texts.module.scss';
 
 function Texts() {
-	const wRef = React.useRef(null);
 	const modalOkCancel = useModalOkCancel();
+	const wRef = React.useRef(null);
 	const phrase = ReduxStore.useValue(state => state.phrase);
 
 	function popClick() {

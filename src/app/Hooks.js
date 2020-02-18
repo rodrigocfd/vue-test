@@ -10,4 +10,18 @@ function useFocusOnMountRef() {
 	return myRef; // return ordinary ref to element
 }
 
-export default {useFocusOnMountRef};
+function useFocusForwardRef(fwdRef) { // to be used with forwardRef()
+	const ourRef = useFocusOnMountRef();
+
+	React.useImperativeHandle(fwdRef, () => ({
+		focus: () => ourRef.current.focus(), // add focus() method to forwarded ref
+		select: () => ourRef.current.select()
+	}), [ourRef]);
+
+	return ourRef;
+}
+
+export default {
+	useFocusOnMountRef,
+	useFocusForwardRef
+};
