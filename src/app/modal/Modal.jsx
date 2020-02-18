@@ -31,4 +31,21 @@ Modal.propTypes = {
 	onEsc: PropTypes.func
 };
 
+// Custom hook to keep modal "isOpen" state.
+function useModal() {
+	const [isOpen, setOpen] = React.useState(false);
+
+	function open() { setOpen(true); }
+	function close() { setOpen(false); }
+
+	return {isOpen, open, close};
+}
+
+const modalStateProps = PropTypes.shape({
+	isOpen: PropTypes.bool.isRequired,
+	open: PropTypes.func.isRequired,
+	close: PropTypes.func.isRequired
+});
+
 export default Modal;
+export {useModal, modalStateProps};

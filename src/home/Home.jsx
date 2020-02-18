@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useModal from '../app/modal/useModal';
+import {useModal} from '../app/modal/Modal';
 import Hooks from '../app/Hooks';
 import Prompt from './Prompt';
 import c from './Home.module.scss';

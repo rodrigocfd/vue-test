@@ -1,7 +1,6 @@
 import React from 'react';
 
-import useModal from './useModal';
-import Modal from './Modal';
+import Modal, {useModal} from './Modal';
 import c from './useModalOk.module.scss';
 
 // Modal which displays text and OK/Cancel buttons.
