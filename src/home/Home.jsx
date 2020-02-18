@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {useModal} from '../app/Modal';
+import useModal from '../app/modal/useModal';
 import Prompt from './Prompt';
 import c from './Home.module.scss';
 
@@ -19,7 +19,7 @@ function Home() {
 
 	function onModalOk(data) {
 		nameRef.current.focus();
- 		setName(data);
+		setName(data);
 	}
 
 	function onModalCancel() {

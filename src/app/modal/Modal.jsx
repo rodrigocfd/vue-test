@@ -4,18 +4,9 @@ import PropTypes from 'prop-types';
 
 import c from './Modal.module.scss';
 
-function useModal() { // custom hook to keep modal isOpen state
-	const [isOpen, setOpen] = React.useState(false);
-
-	function open() { setOpen(true); }
-	function close() { setOpen(false); }
-
-	return {isOpen, open, close};
-}
-
-function Modal(props) { // the Modal component itself
+function Modal(props) {
 	function onKeyDown(ev) {
-		if (ev.keyCode === 27 && props.onEsc) {
+		if (ev.keyCode === 27 && props.onEsc) { // works only if focus is within DIV
 			ev.stopPropagation();
 			props.onEsc();
 		}
@@ -39,11 +30,4 @@ Modal.propTypes = {
 	onEsc: PropTypes.func
 };
 
-Modal.stateProps = PropTypes.shape({
-	isOpen: PropTypes.bool.isRequired,
-	open: PropTypes.func.isRequired,
-	close: PropTypes.func.isRequired
-});
-
-export {useModal};
 export default Modal;
