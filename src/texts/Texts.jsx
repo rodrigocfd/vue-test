@@ -11,7 +11,7 @@ function Texts() {
 	const phrase = Store.useValue(state => state.phrase);
 
 	function popClick() {
-		modalOkCancel.open(`The Redux-stored text is "${phrase}".`)
+		modalOkCancel.open(`The Redux-stored text is "${phrase}".\nAnother phrase.`)
 			.onOk(() => console.log('OK button clicked.'))
 			.onCancel(() => console.log('Cancelled.'));
 	}

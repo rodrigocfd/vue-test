@@ -1,4 +1,23 @@
+.content {
+	margin: 5px 8px 28px 8px;
+	color: #294956;
+	display: flex;
+	align-items: center;
+
+	.iconInformation, .iconQuestion {
+		display: inline-block;
+		align-items: center;
+		width: 48px;
+		height: 48px;
+		margin-right: 24px;
+	}
+	.iconInformation {
+		background-image: url('/images/dialog-information.png');
+	}
+	.iconQuestion {
+		background-image: url('/images/dialog-question.png');
+	}
+}
 .btnRow {
-	margin-top: 26px;
 	text-align: center;
 }

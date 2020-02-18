@@ -4,6 +4,7 @@ import useModal from './useModal';
 import Modal from './Modal';
 import c from './useModalOk.module.scss';
 
+// Modal which displays text and OK/Cancel buttons.
 function useModalOkCancel() {
 	const modalState = useModal();
 	const [text, setText] = React.useState('');
@@ -48,7 +49,19 @@ function useModalOkCancel() {
 
 		return modalState.isOpen && (
 			<Modal>
-				<div>{text}</div>
+				<div className={c.content}>
+					<div>
+						<div className={c.iconQuestion} />
+					</div>
+					<div>
+						{text.split('\n').map((item, idx) => ( // convert \n to <br/>
+							<span key={idx}>
+								{idx !== 0 && <br />}
+								{item}
+							</span>
+						))}
+					</div>
+				</div>
 				<div className={c.btnRow}>
 					<input type="button" value="OK" ref={btnRef} onClick={okBtn} />
 					<input type="button" value="Cancelar" onClick={cancelBtn} />
