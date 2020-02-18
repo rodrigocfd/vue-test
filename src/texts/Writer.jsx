@@ -3,8 +3,12 @@ import React from 'react';
 import * as Store from '../app/reduxStore';
 import c from './Writer.module.scss';
 
-function Writer() {
+function Writer(_props, ref) {
 	const phraseRef = React.useRef(null);
+	React.useImperativeHandle(ref, () => ({
+		focus: () => phraseRef.current.focus(), // add focus() method to forwarded ref
+		select: () => phraseRef.current.select()
+	}), []);
 
 	const phrase = Store.useValue(state => state.phrase);
 	const update = Store.useUpdate();
@@ -24,4 +28,4 @@ function Writer() {
 	);
 }
 
-export default Writer;
+export default React.forwardRef(Writer);

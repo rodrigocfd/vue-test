@@ -7,19 +7,20 @@ import Writer from './Writer';
 import c from './Texts.module.scss';
 
 function Texts() {
+	const wRef = React.useRef(null);
 	const modalOkCancel = useModalOkCancel();
 	const phrase = Store.useValue(state => state.phrase);
 
 	function popClick() {
 		modalOkCancel.open(`The Redux-stored text is "${phrase}".\nAnother phrase.`)
-			.onOk(() => console.log('OK button clicked.'))
+			.onOk(() => { wRef.current.focus(); wRef.current.select(); })
 			.onCancel(() => console.log('Cancelled.'));
 	}
 
 	return (
 		<div>
 			<Reader />
-			<Writer />
+			<Writer ref={wRef} />
 			<div className={c.btnModalOk}>
 				<modalOkCancel.Component />
 				<input type="button" value="Click for pop" onClick={popClick} />
