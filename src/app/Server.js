@@ -1,5 +1,15 @@
+const API_REST = '/siorg-gestao-webapp/api';
+const BASE_JSF = '/siorg-gestao-webapp/private';
+
+function geraUrlJsf(path) {
+	if (process.env.NODE_ENV === 'development') {
+		return 'http://localhost:8080' + BASE_JSF + path;
+	}
+	return BASE_JSF + path;
+}
+
 function get(path, payload) {
-	return fetch('/siorg-gestao-webapp/api' + path, {
+	return fetch(API_REST + path, {
 		method: 'GET',
 		cache: 'no-cache',
 		credentials: 'include',
@@ -12,4 +22,4 @@ function get(path, payload) {
 	.then(resp => resp.json());
 }
 
-export default {get};
+export default {geraUrlJsf, get};

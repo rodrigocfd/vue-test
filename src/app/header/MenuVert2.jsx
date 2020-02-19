@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import variaveisDeAmbiente from '../../variaveisDeAmbiente.json';
+import Server from '../Server';
 import c from './MenuVert2.module.scss';
 
 function MenuVert2(props) {
@@ -10,7 +10,7 @@ function MenuVert2(props) {
 			{props.items.map(item =>
 				<li key={item.label} className={c.li}>
 					{item.oldLink
-						? <a className={c.label} href={variaveisDeAmbiente.dominioGestaoAntigo + item.oldLink}>{item.label}</a>
+						? <a className={c.label} href={Server.geraUrlJsf(item.oldLink)}>{item.label}</a>
 						: <span className={c.label}>{item.label}</span>
 					}
 				</li>
