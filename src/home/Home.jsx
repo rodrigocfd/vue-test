@@ -2,6 +2,7 @@ import React from 'react';
 
 import {useModal} from '../app/modal/Modal';
 import Hooks from '../app/Hooks';
+import Server from '../app/Server';
 import Prompt from './Prompt';
 import c from './Home.module.scss';
 
@@ -11,8 +12,7 @@ function Home() {
 	const [name, setName] = React.useState('');
 
 	React.useEffect(() => {
-		fetch('/siorg-gestao-webapp/api/unidade')
-			.then(res => res.json())
+		Server.get('/unidade')
 			.then(data => console.log(data));
 	}, []);
 
