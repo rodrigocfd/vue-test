@@ -10,6 +10,12 @@ function Home() {
 	const nameRef = Hooks.useFocusOnMountRef();
 	const [name, setName] = React.useState('');
 
+	React.useEffect(() => {
+		fetch('/siorg-gestao-webapp/api/unidade')
+			.then(res => res.json())
+			.then(data => console.log(data));
+	}, []);
+
 	function btnModify() {
 		modalState.open();
 	}
