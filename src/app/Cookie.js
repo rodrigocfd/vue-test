@@ -7,19 +7,22 @@ function write(name, val, hours) {
 }
 
 function read(name) {
-	let nameEq = name + '=';
-	let ca = document.cookie.split(';');
-	for (let i = 0; i < ca.length; ++i) {
-		let c = ca[i].trim();
-		if (c.indexOf(nameEq) === 0) {
-			return c.substring(nameEq.length, c.length);
-		}
-	}
-	return null; // cookie not found
+	const all = readAll();
+	return all[name] || null;
+}
+
+function readAll() {
+	const cookieLine = document.cookie;
+	if (!cookieLine) return {}; // empty object if no cookies
+	return cookieLine.split(';').reduce((res, rawVal) => {
+		const [cokName, cokVal] = rawVal.split('=').map(str => str.trim());
+		res[cokName] = cokVal;
+		return res;
+	}, {});
 }
 
 function erase(name) {
 	document.cookie = name + '=; Max-Age=-99999999;';
 }
 
-export default {write, read, erase};
+export default {write, read, readAll, erase};
