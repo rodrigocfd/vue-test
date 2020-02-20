@@ -1,20 +1,16 @@
 import {createStore} from 'redux';
 import {useDispatch, useSelector} from 'react-redux';
 
-import Cookie from './Cookie';
-
 // Global app reducer.
 function reducer(state, {type, payload}) {
 	switch (type) {
-		case 'authToken': return {...state, authToken: payload};
-		case 'phrase':    return {...state, phrase: payload};
-		default:          return state;
+		case 'phrase': return {...state, phrase: payload};
+		default:       return state;
 	}
 }
 
 // Global app store.
 const store = createStore(reducer, {
-	authToken: Cookie.read('authToken'), // load the token when page loads
 	phrase: ''
 });
 

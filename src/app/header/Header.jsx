@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import ReduxStore from '../ReduxStore';
-import LogoffButton from '../../login/LogoffButton';
 import Menu from './Menu';
 import c from './Header.module.scss';
 
@@ -22,7 +21,7 @@ function Header() {
 				<div className={c.rite}>
 					<Link to="/home">Home</Link> | {' '}
 					<Link to="/texts">Texts</Link>
-					<LogoffButton />
+					[Logoff]
 				</div>
 			</div>
 			<Menu />
