@@ -8,7 +8,7 @@ import c from './Home.module.scss';
 
 function Home() {
 	const modalState = useModal();
-	const nameRef = Hooks.useFocusOnMountRef(null);
+	const nameRef = Hooks.useRef(null, {focusOnMount: true});
 	const [name, setName] = React.useState('');
 
 	React.useEffect(() => {

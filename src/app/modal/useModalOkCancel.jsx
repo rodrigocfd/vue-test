@@ -31,7 +31,7 @@ function useModalOkCancel() {
 	}
 
 	function Component() { // this component must go inside owner's render block
-		const btnRef = Hooks.useFocusOnMountRef(null);
+		const btnRef = Hooks.useRef(null, {focusOnMount: true});
 
 		function okBtn() {
 			modalState.close();

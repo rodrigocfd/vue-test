@@ -1,27 +1,27 @@
 import React from 'react';
 
-function useFocusOnMountRef(refVal) {
-	const myRef = React.useRef(refVal);
+// Wrapper to useRef() with optional automations.
+function useRef(refVal, {focusOnMount = false, forwardRef = null}) {
+	const localRef = React.useRef(refVal); // ordinary ref
 
 	React.useEffect(() => { // set focus on component mount
-		myRef && myRef.current && myRef.current.focus();
-	}, []);
+		if (focusOnMount && localRef && localRef.current) {
+			localRef.current.focus();
+		}
+	}, [focusOnMount]);
 
-	return myRef; // return ordinary ref to element
-}
+	React.useImperativeHandle(forwardRef, () => {
+		if (forwardRef) {
+			return {
+				focus: () => localRef.current.focus(), // add focus() method to forwarded ref
+				select: () => localRef.current.select()
+			};
+		}
+	}, [forwardRef]);
 
-function useFwdFocusRef(fwdRef) { // to be used with forwardRef()
-	const ourRef = useFocusOnMountRef(null);
-
-	React.useImperativeHandle(fwdRef, () => ({
-		focus: () => ourRef.current.focus(), // add focus() method to forwarded ref
-		select: () => ourRef.current.select()
-	}), [ourRef]);
-
-	return ourRef;
+	return localRef;
 }
 
 export default {
-	useFocusOnMountRef,
-	useFwdFocusRef
+	useRef
 };
