@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import useServer from '../useServer';
+import jsfUrl from './jsfUrl';
 import c from './MenuVert2.module.scss';
 
 function MenuVert2(props) {
-	const server = useServer();
-
 	return (
 		<ul className={c.ul}>
 			{props.items.map(item =>
 				<li key={item.label} className={c.li}>
 					{item.oldLink
-						? <a className={c.label} href={server.geraUrlJsf(item.oldLink)}>{item.label}</a>
+						? <a className={c.label} href={jsfUrl(item.oldLink)}>{item.label}</a>
 						: <span className={c.label}>{item.label}</span>
 					}
 				</li>
