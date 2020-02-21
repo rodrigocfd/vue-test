@@ -1,6 +1,7 @@
 import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
+import ReduxStore from '../app/ReduxStore';
 import Header from './header/Header';
 import Home from '../home/Home';
 import Texts from '../texts/Texts';
@@ -8,8 +9,10 @@ import NotFound from './NotFound';
 import c from './AppRoute.module.scss';
 
 function AppRoute() {
+	const auth = ReduxStore.useValue(state => state.auth);
+
 	return (<>
-		<Header />
+		{auth && <Header />}
 		<div className={c.contents}>
 			<Switch>
 				<Route path="/home" component={Home} />

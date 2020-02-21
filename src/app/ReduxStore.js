@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 // Global app reducer.
 function reducer(state, {type, payload}) {
 	switch (type) {
+		case 'auth':   return {...state, auth: payload};
 		case 'phrase': return {...state, phrase: payload};
 		default:       return state;
 	}
@@ -11,6 +12,7 @@ function reducer(state, {type, payload}) {
 
 // Global app store.
 const store = createStore(reducer, {
+	auth: true,
 	phrase: ''
 });
 

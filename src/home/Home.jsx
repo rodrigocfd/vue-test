@@ -1,20 +1,21 @@
 import React from 'react';
 
 import {useModalState} from '../app/modal/Modal';
+import useServer from '../app/useServer';
 import Hooks from '../app/Hooks';
-import Server from '../app/Server';
 import Prompt from './Prompt';
 import c from './Home.module.scss';
 
 function Home() {
+	const server = useServer();
 	const modalState = useModalState();
 	const nameRef = Hooks.useRef(null, {focusOnMount: true});
 	const [name, setName] = React.useState('');
 
 	React.useEffect(() => {
-		Server.get('/unidade')
+		server.get('/unidade')
 			.then(data => console.log(data));
-	}, []);
+	}, [server]);
 
 	function btnModify() {
 		modalState.open();
