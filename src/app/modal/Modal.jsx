@@ -32,7 +32,7 @@ Modal.propTypes = {
 };
 
 // Custom hook to keep modal "isOpen" state.
-function useModal() {
+function useModalState() {
 	const [isOpen, setOpen] = React.useState(false);
 
 	function open() { setOpen(true); }
@@ -49,4 +49,4 @@ const modalStateProps = PropTypes.shape({
 });
 
 export default Modal;
-export {useModal, modalStateProps};
+export {useModalState, modalStateProps};

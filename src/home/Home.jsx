@@ -1,13 +1,13 @@
 import React from 'react';
 
-import {useModal} from '../app/modal/Modal';
+import {useModalState} from '../app/modal/Modal';
 import Hooks from '../app/Hooks';
 import Server from '../app/Server';
 import Prompt from './Prompt';
 import c from './Home.module.scss';
 
 function Home() {
-	const modalState = useModal();
+	const modalState = useModalState();
 	const nameRef = Hooks.useRef(null, {focusOnMount: true});
 	const [name, setName] = React.useState('');
 

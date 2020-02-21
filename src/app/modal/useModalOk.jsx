@@ -1,12 +1,12 @@
 import React from 'react';
 
 import Hooks from '../Hooks';
-import Modal, {useModal} from './Modal';
+import Modal, {useModalState} from './Modal';
 import c from './useModalOk.module.scss';
 
 // Modal which displays text and OK button.
 function useModalOk() {
-	const modalState = useModal();
+	const modalState = useModalState();
 	const [text, setText] = React.useState('');
 	const [okCallback, setOkCallback] = React.useState(() => () => {});
 
