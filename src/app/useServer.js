@@ -13,7 +13,14 @@ function useServer() {
 			redirect: 'follow',
 			body: JSON.stringify(payload)
 		})
-		.then(resp => resp.json());
+		.then(resp => {
+			if (resp.status === 500) {
+				throw new Error('Error 500.');
+			} else {
+				resp.json();
+			}
+		})
+		.catch(err => console.error(err));
 	}
 
 	return {
