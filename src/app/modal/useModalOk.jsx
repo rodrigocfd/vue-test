@@ -10,11 +10,11 @@ function useModalOk() {
 	const [text, setText] = React.useState('');
 	const [okCallback, setOkCallback] = React.useState(() => () => {});
 
-	function open(text) {
+	function show(text) {
 		setText(text);
 		modalState.open();
 		return {
-			onOk(callback) { // method is chained after open() call
+			onOk(callback) { // method is chainable after open() call
 				setOkCallback(() => callback); // store user callback
 			}
 		};
@@ -50,7 +50,7 @@ function useModalOk() {
 		);
 	}
 
-	return {Component, open};
+	return {Component, show};
 }
 
 export default useModalOk;

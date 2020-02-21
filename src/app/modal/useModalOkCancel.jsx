@@ -11,20 +11,20 @@ function useModalOkCancel() {
 	const [okCallback, setOkCallback] = React.useState(() => () => {});
 	const [cancelCallback, setCancelCallback] = React.useState(() => () => {});
 
-	function open(text) {
+	function show(text) {
 		setText(text);
 		modalState.open();
 		return {
-			onOk(callback) { // method is chained after open() call
+			onOk(callback) { // method is chainable after open() call
 				setOkCallback(() => callback); // store user callback
 				return {
-					onCancel(callback) { setCancelCallback(() => callback); } // chained right after
+					onCancel(callback) { setCancelCallback(() => callback); } // chainable right after
 				};
 			},
-			onCancel(callback) { // or this one can be chained after open() call
+			onCancel(callback) { // also chainable after open() call
 				setCancelCallback(() => callback); // store user callback
 				return {
-					onOk(callback) { setOkCallback(() => callback); } // chained right after
+					onOk(callback) { setOkCallback(() => callback); } // chainable right after
 				};
 			}
 		};
@@ -66,7 +66,7 @@ function useModalOkCancel() {
 		);
 	}
 
-	return {Component, open};
+	return {Component, show};
 }
 
 export default useModalOkCancel;

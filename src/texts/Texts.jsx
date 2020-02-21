@@ -12,7 +12,7 @@ function Texts() {
 	const phrase = ReduxStore.useValue(state => state.phrase);
 
 	function popClick() {
-		modalOkCancel.open(`The Redux-stored text is "${phrase}".\nAnother phrase.`)
+		modalOkCancel.show(`The Redux-stored text is "${phrase}".\nAnother phrase.`)
 			.onOk(() => { wRef.current.focus(); wRef.current.select(); })
 			.onCancel(() => console.log('Cancelled.'));
 	}
