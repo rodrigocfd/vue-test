@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Modal, {modalStateProps} from '../app/modal/Modal';
+import Modal from '../app/modal/Modal';
 import Hooks from '../app/Hooks';
 import c from './Prompt.module.scss';
 
@@ -34,7 +34,7 @@ function Prompt(props) {
 }
 
 Prompt.propTypes = {
-	modalState: modalStateProps.isRequired,
+	modalState: Modal.stateProps.isRequired,
 	initText: PropTypes.string,
 	onOk: PropTypes.func,
 	onCancel: PropTypes.func

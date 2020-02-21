@@ -31,6 +31,12 @@ Modal.propTypes = {
 	onEsc: PropTypes.func
 };
 
+Modal.stateProps = PropTypes.shape({ // to validate an useModalState() prop
+	render: PropTypes.func.isRequired,
+	open: PropTypes.func.isRequired,
+	close: PropTypes.func.isRequired
+});
+
 // Custom hook to keep modal "isOpen" state.
 function useModalState() {
 	const [isOpen, setOpen] = React.useState(false);
@@ -42,11 +48,5 @@ function useModalState() {
 	return {render, open, close}; // call render() on parent-most component
 }
 
-const modalStateProps = PropTypes.shape({
-	render: PropTypes.func.isRequired,
-	open: PropTypes.func.isRequired,
-	close: PropTypes.func.isRequired
-});
-
 export default Modal;
-export {useModalState, modalStateProps};
+export {useModalState};
