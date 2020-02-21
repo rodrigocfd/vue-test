@@ -1,7 +1,7 @@
 import React from 'react';
 
-function useFocusOnMountRef() {
-	const myRef = React.useRef(null);
+function useFocusOnMountRef(refVal) {
+	const myRef = React.useRef(refVal);
 
 	React.useEffect(() => { // set focus on component mount
 		myRef && myRef.current && myRef.current.focus();
@@ -11,7 +11,7 @@ function useFocusOnMountRef() {
 }
 
 function useFwdFocusRef(fwdRef) { // to be used with forwardRef()
-	const ourRef = useFocusOnMountRef();
+	const ourRef = useFocusOnMountRef(null);
 
 	React.useImperativeHandle(fwdRef, () => ({
 		focus: () => ourRef.current.focus(), // add focus() method to forwarded ref
