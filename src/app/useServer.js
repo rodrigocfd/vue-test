@@ -1,6 +1,13 @@
+import {useHistory} from 'react-router-dom';
+
+import ReduxStore from './ReduxStore';
+
 const API_REST = '/siorg-gestao-webapp/api';
 
 function useServer() {
+	const history = useHistory();
+	const update = ReduxStore.useUpdate();
+
 	// Performs a GET request.
 	function get(path, payload) {
 		return fetch(API_REST + path, {
@@ -15,12 +22,12 @@ function useServer() {
 		})
 		.then(resp => {
 			if (resp.status === 500) {
-				throw new Error('Error 500.');
+				update('auth', false);
+				history.push('/404');
 			} else {
 				resp.json();
 			}
 		})
-		.catch(err => console.error(err));
 	}
 
 	return {
