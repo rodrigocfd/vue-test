@@ -16,8 +16,14 @@ const reduxStore = createStore(reducer, {
 	phrase: ''
 });
 
-// Allows access to the store values in a similar way to useState().
-// const [name, setName] = useValue('name');
+/**
+ * Allows access to the store values in a similar way to React.useState().
+ * @example
+ * const [name, setName] = useReduxStore('name');
+ *
+ * @param {string} name Name of the Redux store variable to be accessed.
+ * @returns {void}
+ */
 function useReduxStore(name) {
 	const value = useSelector(state => state[name]);
 	const dispatch = useDispatch();

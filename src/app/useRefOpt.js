@@ -1,6 +1,17 @@
 import React from 'react';
 
-// Wrapper to useRef() with optional automations.
+/**
+ * @typedef {Object} UseRefOptions
+ * @property {boolean} focusOnMount Control will receive focus on component mount.
+ * @property {Object} forwardRef React ref passed by React.forwardRef().
+ */
+/**
+ * Wrapper to React.useRef() with optional automations.
+ *
+ * @param {Object} refVal Ordinary React ref object.
+ * @param {UseRefOptions} options Options.
+ * @returns {Object} Ordinary React ref object.
+ */
 function useRefOpt(refVal, {focusOnMount = false, forwardRef = null}) {
 	const localRef = React.useRef(refVal); // ordinary ref
 
