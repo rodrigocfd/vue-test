@@ -1,7 +1,7 @@
 import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
-import ReduxStore from '../app/ReduxStore';
+import useReduxStore from './useReduxStore';
 import Header from './header/Header';
 import Home from '../home/Home';
 import Texts from '../texts/Texts';
@@ -10,7 +10,7 @@ import c from './AppRoute.module.scss';
 
 // Describes all the routes and controls auth behavior.
 function AppRoute() {
-	const auth = ReduxStore.useValue(state => state.auth);
+	const [auth] = useReduxStore('auth');
 
 	return auth.logged ? (<>
 		<Header />

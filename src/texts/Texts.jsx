@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ReduxStore from '../app/ReduxStore';
+import useReduxStore from '../app/useReduxStore';
 import useModalOkCancel from '../app/modal/useModalOkCancel';
 import Reader from './Reader';
 import Writer from './Writer';
@@ -9,7 +9,7 @@ import c from './Texts.module.scss';
 function Texts() {
 	const modalOkCancel = useModalOkCancel();
 	const wRef = React.useRef(null);
-	const phrase = ReduxStore.useValue(state => state.phrase);
+	const [phrase] = useReduxStore('phrase');
 
 	function popClick() {
 		modalOkCancel.show(`The Redux-stored text is "${phrase}".\nAnother phrase.`)

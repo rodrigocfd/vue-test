@@ -1,10 +1,10 @@
-import ReduxStore from './ReduxStore';
+import useReduxStore from './useReduxStore';
 
 const API_REST = '/siorg-gestao-webapp/api';
 const useServerObj = {doGet: null};
 
 function useServer() {
-	const update = ReduxStore.useUpdate();
+	const [, setAuth] = useReduxStore('auth');
 
 	// Performs a GET request.
 	useServerObj.doGet = function(path, payload) {
@@ -21,7 +21,7 @@ function useServer() {
 		.then(resp => {
 			if (resp.status === 401) {
 				resp.json().then(data => {
-					update('auth', {logged: false, msg: data.mensagem}); // will redirect
+					setAuth({logged: false, msg: data.mensagem}); // will redirect
 				});
 			} else {
 				return resp.json();
