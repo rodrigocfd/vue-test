@@ -1,15 +1,15 @@
 import React from 'react';
 
 import {useModalState} from '../app/modal/Modal';
-import useServer from '../app/useServer';
-import Hooks from '../app/Hooks';
+import useRefOpt from '../app/useRefOpt';
+import useServerRequest from '../app/useServerRequest';
 import Prompt from './Prompt';
 import c from './Home.module.scss';
 
 function Home() {
-	const server = useServer();
+	const server = useServerRequest();
 	const modalState = useModalState();
-	const nameRef = Hooks.useRef(null, {focusOnMount: true});
+	const nameRef = useRefOpt(null, {focusOnMount: true});
 	const [name, setName] = React.useState('');
 	const [unid, setUnid] = React.useState({});
 

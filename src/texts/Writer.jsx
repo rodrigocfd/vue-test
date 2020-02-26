@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Hooks from '../app/Hooks';
 import useReduxStore from '../app/useReduxStore';
+import useRefOpt from '../app/useRefOpt';
 import c from './Writer.module.scss';
 
 function Writer(_props, ref) {
-	const phraseRef = Hooks.useRef(null, {focusOnMount: true, forwardRef: ref});
+	const phraseRef = useRefOpt(null, {focusOnMount: true, forwardRef: ref});
 	const [phrase, setPhrase] = useReduxStore('phrase');
 
 	return (

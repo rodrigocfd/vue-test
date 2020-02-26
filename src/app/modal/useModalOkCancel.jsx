@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Hooks from '../Hooks';
+import useRefOpt from '../useRefOpt';
 import Modal, {useModalState} from './Modal';
 import c from './useModalOk.module.scss';
 
@@ -31,7 +31,7 @@ function useModalOkCancel() {
 	}
 
 	function Component() { // this component must go inside owner's render block
-		const btnRef = Hooks.useRef(null, {focusOnMount: true});
+		const btnRef = useRefOpt(null, {focusOnMount: true});
 
 		function okBtn() {
 			modalState.close();

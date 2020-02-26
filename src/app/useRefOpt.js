@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Wrapper to useRef() with optional automations.
-function useRef(refVal, {focusOnMount = false, forwardRef = null}) {
+function useRefOpt(refVal, {focusOnMount = false, forwardRef = null}) {
 	const localRef = React.useRef(refVal); // ordinary ref
 
 	React.useEffect(() => { // set focus on component mount
@@ -22,6 +22,4 @@ function useRef(refVal, {focusOnMount = false, forwardRef = null}) {
 	return localRef;
 }
 
-export default {
-	useRef
-};
+export default useRefOpt;

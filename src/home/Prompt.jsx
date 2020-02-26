@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import useRefOpt from '../app/useRefOpt';
 import Modal from '../app/modal/Modal';
-import Hooks from '../app/Hooks';
 import c from './Prompt.module.scss';
 
 function Prompt(props) {
-	const txtRef = Hooks.useRef(null, {focusOnMount: true});
+	const txtRef = useRefOpt(null, {focusOnMount: true});
 	const [text, setText] = React.useState(props.initText || ''); // because initText is optional
 
 	function onOk() {

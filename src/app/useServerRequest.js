@@ -1,13 +1,13 @@
 import useReduxStore from './useReduxStore';
 
 const API_REST = '/siorg-gestao-webapp/api';
-const useServerObj = {doGet: null};
+const wrapper = {doGet: null};
 
-function useServer() {
+// Hook to perform server requests, validating responses.
+function useServerRequest() {
 	const [, setAuth] = useReduxStore('auth');
 
-	// Performs a GET request.
-	useServerObj.doGet = function(path, payload) {
+	wrapper.doGet = function(path, payload) {
 		return fetch(API_REST + path, {
 			method: 'GET',
 			cache: 'no-cache',
@@ -29,7 +29,7 @@ function useServer() {
 		});
 	};
 
-	return useServerObj; // always return the same object, important for [deps] check
+	return wrapper; // always return the same object, important for [deps] check
 }
 
-export default useServer;
+export default useServerRequest;
