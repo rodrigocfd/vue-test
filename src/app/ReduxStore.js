@@ -10,9 +10,9 @@ function reducer(state, {type, payload}) {
 	}
 }
 
-// Global app store.
+// Global app store with initial state.
 const store = createStore(reducer, {
-	auth: true,
+	auth:   {logged: true, msg: ''},
 	phrase: ''
 });
 

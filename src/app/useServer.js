@@ -1,15 +1,13 @@
-import {useHistory} from 'react-router-dom';
-
 import ReduxStore from './ReduxStore';
 
 const API_REST = '/siorg-gestao-webapp/api';
+const useServerObj = {doGet: null};
 
 function useServer() {
-	const history = useHistory();
 	const update = ReduxStore.useUpdate();
 
 	// Performs a GET request.
-	function get(path, payload) {
+	useServerObj.doGet = function(path, payload) {
 		return fetch(API_REST + path, {
 			method: 'GET',
 			cache: 'no-cache',
@@ -21,18 +19,17 @@ function useServer() {
 			body: JSON.stringify(payload)
 		})
 		.then(resp => {
-			if (resp.status === 500) {
-				update('auth', false);
-				history.push('/404');
+			if (resp.status === 401) {
+				resp.json().then(data => {
+					update('auth', {logged: false, msg: data.mensagem}); // will redirect
+				});
 			} else {
-				resp.json();
+				return resp.json();
 			}
-		})
-	}
-
-	return {
-		get
+		});
 	};
+
+	return useServerObj; // always return the same object, important for [deps] check
 }
 
 export default useServer;

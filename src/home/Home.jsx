@@ -13,7 +13,7 @@ function Home() {
 	const [name, setName] = React.useState('');
 
 	React.useEffect(() => {
-		server.get('/unidade')
+		server.doGet('/unidade')
 			.then(data => console.log(data));
 	}, [server]);
 

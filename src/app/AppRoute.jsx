@@ -8,11 +8,12 @@ import Texts from '../texts/Texts';
 import NotFound from './NotFound';
 import c from './AppRoute.module.scss';
 
+// Describes all the routes and controls auth behavior.
 function AppRoute() {
 	const auth = ReduxStore.useValue(state => state.auth);
 
-	return (<>
-		{auth && <Header />}
+	return auth.logged ? (<>
+		<Header />
 		<div className={c.contents}>
 			<Switch>
 				<Route path="/home" component={Home} />
@@ -25,7 +26,12 @@ function AppRoute() {
 				<Redirect to="/404" />
 			</Switch>
 		</div>
-	</>);
+	</>) : ( // not authenticated, that's all you see
+		<div className={c.authErr}>
+			<div>{auth.msg}</div>
+			<div><a href="/">Clique aqui</a> para fazer login.</div>
+		</div>
+	);
 }
 
 export default AppRoute;
