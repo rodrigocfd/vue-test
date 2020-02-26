@@ -19,7 +19,7 @@ function Home() {
 			setTimeout(() => {
 				setUnid(data);
 			}, 1000);
-		});
+		}).catch(() => {});
 	}, [server]);
 
 	function btnModify() {
@@ -35,9 +35,9 @@ function Home() {
 		nameRef.current.focus();
 	}
 
-	// if (!unid.sigla) {
-	// 	return <div>Carregando...</div>;
-	// }
+	if (!unid.sigla) {
+		return <div>Carregando...</div>;
+	}
 
 	return (<>
 		{modalState.render(

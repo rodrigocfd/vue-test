@@ -19,9 +19,13 @@ function useServerRequest() {
 			body: JSON.stringify(payload)
 		})
 		.then(resp => {
-			if (resp.status === 401) {
-				resp.json().then(data => {
+			if (resp.status === 500) { // Internal Server Error
+				alert('Erro interno do servidor, ou ele está fora do ar.');
+				throw new Error(500);
+			} else if (resp.status === 401) { // Unauthorized
+				return resp.json().then(data => {
 					setAuth({logged: false, msg: data.mensagem}); // will redirect
+					throw new Error(401);
 				});
 			} else {
 				return resp.json();

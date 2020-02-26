@@ -29,7 +29,7 @@ function AppRoute() {
 	</>) : ( // not authenticated, that's all you see
 		<div className={c.authErr}>
 			<div>{auth.msg}</div>
-			<div><a href="/">Clique aqui</a> para fazer login.</div>
+			<div><a href="/siorg-gestao-webapp/private/index.jsf">Clique aqui</a> para fazer login.</div>
 		</div>
 	);
 }
