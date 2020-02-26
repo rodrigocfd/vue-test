@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
 
+import useModalState from './useModalState';
 import c from './Modal.module.scss';
 
 // Generic modal which can hold any content.
@@ -37,16 +38,5 @@ Modal.stateProps = PropTypes.shape({ // to validate an useModalState() prop
 	close: PropTypes.func.isRequired
 });
 
-// Custom hook to keep modal "isOpen" state.
-function useModalState() {
-	const [isOpen, setOpen] = React.useState(false);
-
-	function open() { setOpen(true); }
-	function close() { setOpen(false); }
-	function render(jsxContent) { return isOpen && jsxContent; } // renders nothing if not open
-
-	return {render, open, close}; // call render() on parent-most component
-}
-
 export default Modal;
-export {useModalState};
+export {useModalState}; // re-export for convenience
