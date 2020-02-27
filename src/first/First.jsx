@@ -15,11 +15,13 @@ function First() {
 
 	React.useEffect(() => {
 		(async () => {
-			const data = await server.doGet('/unidade');
-			console.log(data);
-			setTimeout(() => {
-				setUnid(data);
-			}, 1000);
+			try {
+				const data = await server.doGet('/unidade');
+				console.log(data);
+				setTimeout(() => {
+					setUnid(data);
+				}, 1000);
+			} catch (ex) { }
 		})();
 	}, [server]);
 

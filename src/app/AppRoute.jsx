@@ -12,7 +12,16 @@ import c from './AppRoute.module.scss';
 function AppRoute() {
 	const [auth] = useReduxStore('auth');
 
-	return auth.logged ? (<>
+	if (!auth.logged) {
+		return (
+			<div className={c.authErr}>
+				<div>{auth.msg}</div>
+				<div><a href="/siorg-gestao-webapp/private/index.jsf">Clique aqui</a> para fazer login.</div>
+			</div>
+		);
+	}
+
+	return (<>
 		<Header />
 		<div className={c.contents}>
 			<Switch>
@@ -26,12 +35,7 @@ function AppRoute() {
 				<Redirect to="/404" />
 			</Switch>
 		</div>
-	</>) : ( // not authenticated, that's all you see
-		<div className={c.authErr}>
-			<div>{auth.msg}</div>
-			<div><a href="/siorg-gestao-webapp/private/index.jsf">Clique aqui</a> para fazer login.</div>
-		</div>
-	);
+	</>);
 }
 
 export default AppRoute;
