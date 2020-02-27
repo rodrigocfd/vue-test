@@ -2,29 +2,13 @@ import React from 'react';
 
 import {useModalState} from '../app/modal/Modal';
 import useRefOpt from '../app/useRefOpt';
-import useServerRequest from '../app/useServerRequest';
 import Prompt from './Prompt';
-import Loading from '../app/Loading';
 import c from './First.module.scss';
 
 function First() {
-	const server = useServerRequest();
 	const modalState = useModalState();
 	const nameRef = useRefOpt(null, {focusOnMount: true});
 	const [name, setName] = React.useState('');
-	const [usr, setUsr] = React.useState(null);
-
-	React.useEffect(() => {
-		(async () => {
-			try {
-				const data = await server.doGet('/informacaoUsuario');
-				console.log(data);
-				setTimeout(() => {
-					setUsr(data);
-				}, 1500);
-			} catch (ex) { }
-		})();
-	}, [server]);
 
 	function btnModify() {
 		modalState.open();
@@ -46,14 +30,6 @@ function First() {
 		)}
 		<h1 className={c.title}>First</h1>
 		<h2 className={c.subtitle}>This is the first component.</h2>
-
-		{!usr ? (
-			<div><Loading text="Carregando usuário..." /></div>
-		) : (
-			<h3>{usr.codigo} | {usr.nome}<br />
-				{usr.orgaoUsuario.denominacao}</h3>
-		)}
-
 		<input type="text" ref={nameRef} value={name} onChange={e => setName(e.target.value)} />
 		<input type="button" value="Modify" onClick={btnModify} />
 	</>);

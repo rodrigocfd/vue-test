@@ -1,26 +1,28 @@
 .header {
 	background-repeat: repeat;
 
-	.aboveMenu {
+	.logoRow {
 		display: flex;
 		flex-direction: row;
+		margin: 36px 18px 0 48px;
 
 		.left {
 			flex-grow: 1;
 
 			.logo {
 				display: inline-block;
-				margin-left: 48px;
-				margin-top: 36px;
 				width: 333px;
 				height: 68px;
 				background: url('../../images/logo-header.png') no-repeat center center;
 			}
 		}
-		.rite {
+		.right {
 			flex-grow: 1;
 			text-align: right;
-			padding: 12px;
+
+			.userName {
+				margin-bottom: 2px;
+			}
 		}
 	}
 }
