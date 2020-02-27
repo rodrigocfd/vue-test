@@ -3,26 +3,7 @@ import useReduxStore from './useReduxStore';
 const API_REST = '/siorg-gestao-webapp/api';
 const wrapper = {doGet: null};
 
-/**
- * @callback doGet
- * @param {string} path Server path to be requested.
- * @param {Object} payload Free-form object to be sent as request body.
- * @return {Promise}
- */
-/**
- * @typedef {Object} ServerRequestObj
- * @property {doGet} doGet Performs a GET request to server.
- */
-/**
- * Hook to perform server requests, validating responses.
- * @example
- * const server = useServerRequest();
- * server.doGet('/person')
- *   .then(data => console.log(data))
- *   .catch(error => console.err(error));
- *
- * @returns {ServerRequestObj}
- */
+// Returns doGet() to perform server requests.
 function useServerRequest() {
 	const [, setAuth] = useReduxStore('auth');
 

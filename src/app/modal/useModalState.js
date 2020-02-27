@@ -1,12 +1,12 @@
 import React from 'react';
 
-// Custom hook to keep modal "isOpen" state.
+// Custom hook control the show/hide of a modal component.
 function useModalState() {
 	const [isOpen, setOpen] = React.useState(false);
 
+	function render(jsxContent) { return isOpen && jsxContent; } // renders nothing if not open
 	function open() { setOpen(true); }
 	function close() { setOpen(false); }
-	function render(jsxContent) { return isOpen && jsxContent; } // renders nothing if not open
 
 	return {render, open, close}; // call render() on parent-most component
 }
