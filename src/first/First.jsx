@@ -11,15 +11,15 @@ function First() {
 	const modalState = useModalState();
 	const nameRef = useRefOpt(null, {focusOnMount: true});
 	const [name, setName] = React.useState('');
-	const [unid, setUnid] = React.useState({});
+	const [usr, setUsr] = React.useState({});
 
 	React.useEffect(() => {
 		(async () => {
 			try {
-				const data = await server.doGet('/unidade');
+				const data = await server.doGet('/informacaoUsuario');
 				console.log(data);
 				setTimeout(() => {
-					setUnid(data);
+					setUsr(data);
 				}, 1000);
 			} catch (ex) { }
 		})();
@@ -38,7 +38,7 @@ function First() {
 		nameRef.current.focus();
 	}
 
-	if (!unid.sigla) {
+	if (!usr.codigo) {
 		return <div>Carregando...</div>;
 	}
 
@@ -49,7 +49,7 @@ function First() {
 		)}
 		<h1 className={c.title}>First</h1>
 		<h2 className={c.subtitle}>This is the first component.</h2>
-		<h3>{unid.sigla} | {unid.nome}</h3>
+		<h3>{usr.codigo} | {usr.nome}<br />{usr.orgaoUsuario.denominacao}</h3>
 		<input type="text" ref={nameRef} value={name} onChange={e => setName(e.target.value)} />
 		<input type="button" value="Modify" onClick={btnModify} />
 	</>);

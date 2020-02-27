@@ -19,19 +19,26 @@ function useServerRequest() {
 			body: JSON.stringify(payload)
 		});
 
-		if (resp.status === 500) { // Internal Server Error
-			alert('Erro interno do servidor, ou ele está fora do ar.');
-			throw new Error(500);
-		} else if (resp.status === 401) { // Unauthorized
+		switch (resp.status) {
+		case 401: // Unauthorized
 			const data = await resp.json();
 			setAuth({logged: false, msg: data.mensagem}); // will redirect
 			throw new Error(401);
-		} else {
-			return resp.json();
+
+		case 404: // Not Found
+			alert(`Erro da aplicação, chamada "${path}" não encontrada.`);
+			throw new Error(404);
+
+		case 500: // Internal Server Error
+			alert('Erro interno do servidor, ou ele está fora do ar.');
+			throw new Error(500);
+
+		default:
+			return resp.json(); // all good, send response to client
 		}
 	};
 
-	return wrapper; // always return the same object, important for [deps] check
+	return wrapper; // always return the same object, important for useEffect [deps] check
 }
 
 export default useServerRequest;
