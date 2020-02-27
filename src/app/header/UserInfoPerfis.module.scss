@@ -1,0 +1,36 @@
+.wrap {
+	display: inline-block;
+	cursor: pointer;
+	padding: 0 10px 5px 0; // enlarge to make the menu hover work better
+
+	&:hover {
+		.ul {
+			visibility: visible;
+		}
+	}
+
+	.ul {
+		position: absolute;
+		z-index: 1; // to cover the horizontal menu texts
+		padding: 4px 6px;
+		left: -7px; // relative to parent, because parent LI has "position: relative"
+		top: 6px;
+		background-color: #f6f7f7;
+		border: 1px solid #aaba75;
+		border-radius: 3px;
+		box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, .1);
+		visibility: hidden; // toggled by parent LI
+
+		&:hover {
+			visibility: visible; // note: applied on the parent DIV
+		}
+
+		.li {
+			list-style-type: none;
+			max-width: 210px;
+			word-wrap: break-word;
+			padding: 3px;
+			cursor: default;
+		}
+	}
+}
