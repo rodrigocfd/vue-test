@@ -1,6 +1,7 @@
 import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
+import jsfUrl from './header/jsfUrl';
 import useReduxStore from './useReduxStore';
 import Header from './header/Header';
 import First from '../first/First';
@@ -16,7 +17,7 @@ function AppRoute() {
 		return (
 			<div className={c.authErr}>
 				<div>{auth.msg}</div>
-				<div><a href="/siorg-gestao-webapp/private/index.jsf">Clique aqui</a> para fazer login.</div>
+				<div><a href={jsfUrl('')}>Clique aqui</a> para fazer login.</div>
 			</div>
 		);
 	}
