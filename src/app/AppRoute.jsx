@@ -3,8 +3,8 @@ import {Redirect, Route, Switch} from 'react-router-dom';
 
 import useReduxStore from './useReduxStore';
 import Header from './header/Header';
-import Home from '../home/Home';
-import Texts from '../texts/Texts';
+import First from '../first/First';
+import Second from '../second/Second';
 import NotFound from './NotFound';
 import c from './AppRoute.module.scss';
 
@@ -16,12 +16,12 @@ function AppRoute() {
 		<Header />
 		<div className={c.contents}>
 			<Switch>
-				<Route path="/home" component={Home} />
-				<Route path="/texts" component={Texts} />
+				<Route path="/first" component={First} />
+				<Route path="/second" component={Second} />
 				<Route path="/404" component={NotFound} />
 
 				<Route exact path="/">
-					<Redirect to="/home" />
+					<Redirect to="/first" />
 				</Route>
 				<Redirect to="/404" />
 			</Switch>

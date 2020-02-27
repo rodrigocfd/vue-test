@@ -4,9 +4,9 @@ import {useModalState} from '../app/modal/Modal';
 import useRefOpt from '../app/useRefOpt';
 import useServerRequest from '../app/useServerRequest';
 import Prompt from './Prompt';
-import c from './Home.module.scss';
+import c from './First.module.scss';
 
-function Home() {
+function First() {
 	const server = useServerRequest();
 	const modalState = useModalState();
 	const nameRef = useRefOpt(null, {focusOnMount: true});
@@ -45,12 +45,12 @@ function Home() {
 			<Prompt modalState={modalState} initText={name}
 				onOk={onModalOk} onCancel={onModalCancel} />
 		)}
-		<h1 className={c.title}>Home</h1>
-		<h2 className={c.subtitle}>This is the home component.</h2>
+		<h1 className={c.title}>First</h1>
+		<h2 className={c.subtitle}>This is the first component.</h2>
 		<h3>{unid.sigla} | {unid.nome}</h3>
 		<input type="text" ref={nameRef} value={name} onChange={e => setName(e.target.value)} />
 		<input type="button" value="Modify" onClick={btnModify} />
 	</>);
 }
 
-export default Home;
+export default First;

@@ -12,8 +12,8 @@ function Header() {
 					<div className={c.logo}></div>
 				</div>
 				<div className={c.rite}>
-					<Link to="/home">Home</Link> | {' '}
-					<Link to="/texts">Texts</Link>
+					<Link to="/first">First</Link> | {' '}
+					<Link to="/second">Second</Link>
 					[Logoff]
 				</div>
 			</div>

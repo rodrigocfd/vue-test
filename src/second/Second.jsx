@@ -4,9 +4,9 @@ import useReduxStore from '../app/useReduxStore';
 import useModalOkCancel from '../app/modal/useModalOkCancel';
 import Reader from './Reader';
 import Writer from './Writer';
-import c from './Texts.module.scss';
+import c from './Second.module.scss';
 
-function Texts() {
+function Second() {
 	const modalOkCancel = useModalOkCancel();
 	const wRef = React.useRef(null);
 	const [phrase] = useReduxStore('phrase');
@@ -29,4 +29,4 @@ function Texts() {
 	);
 }
 
-export default Texts;
+export default Second;
