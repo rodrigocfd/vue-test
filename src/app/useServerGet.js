@@ -4,7 +4,7 @@ const API_REST = '/siorg-gestao-webapp/api';
 const wrapper = {doGet: null};
 
 // Returns doGet() to perform server requests.
-function useServerRequest() {
+function useServerGet() {
 	const [, setAuth] = useReduxStore('auth');
 
 	wrapper.doGet = async function(path, payload) {
@@ -41,4 +41,4 @@ function useServerRequest() {
 	return wrapper; // always return the same object, important for useEffect [deps] check
 }
 
-export default useServerRequest;
+export default useServerGet;

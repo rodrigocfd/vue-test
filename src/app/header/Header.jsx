@@ -1,20 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import useServerRequest from '../useServerRequest';
+import useServerGetOnMount from '../useServerGetOnMount';
 import Menu from './Menu';
 import Loading from '../Loading';
 import c from './Header.module.scss';
 
+// Main application header.
 function Header() {
-	const server = useServerRequest();
-	const [userInfo, setUserInfo] = React.useState(null);
-
-	React.useEffect(() => {
-		server.doGet('/informacaoUsuario')
-			.then(data => setUserInfo(data))
-			.catch(() => {});
-	}, [server]);
+	const userInfo = useServerGetOnMount('/informacaoUsuario');
 
 	return (
 		<div className={c.header}>
