@@ -1,14 +1,24 @@
 import React from 'react';
 
-import MenuHorz from './MenuHorz';
+import MenuVert1 from './MenuVert1';
 import menuItems from './menuItems.json';
 import c from './Menu.module.scss';
 
-// Main application menu.
+// Main application horizontal menu.
 function Menu() {
 	return (
 		<div className={c.menu}>
-			<MenuHorz items={menuItems} />
+			<ul className={c.ul}>
+				{menuItems.map(item =>
+					<li className={c.li} key={item.label}>
+						<div className={c.labelFlex}>
+							<div className={c.label}>{item.label}</div>
+							<div className={c.arrow}>▼</div>
+						</div>
+						<MenuVert1 title={item.label} items={item.menuVert1} />
+					</li>
+				)}
+			</ul>
 		</div>
 	);
 }
