@@ -14,12 +14,13 @@ function Home() {
 	const [unid, setUnid] = React.useState({});
 
 	React.useEffect(() => {
-		server.doGet('/unidade').then(data => {
+		(async () => {
+			const data = await server.doGet('/unidade');
 			console.log(data);
 			setTimeout(() => {
 				setUnid(data);
 			}, 1000);
-		}).catch(() => {});
+		})();
 	}, [server]);
 
 	function btnModify() {

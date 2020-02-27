@@ -13,16 +13,21 @@ const wrapper = {doGet: null};
  * @typedef {Object} ServerRequestObj
  * @property {doGet} doGet Performs a GET request to server.
  */
- /**
+/**
  * Hook to perform server requests, validating responses.
+ * @example
+ * const server = useServerRequest();
+ * server.doGet('/person')
+ *   .then(data => console.log(data))
+ *   .catch(error => console.err(error));
  *
  * @returns {ServerRequestObj}
  */
 function useServerRequest() {
 	const [, setAuth] = useReduxStore('auth');
 
-	wrapper.doGet = function(path, payload) {
-		return fetch(API_REST + path, {
+	wrapper.doGet = async function(path, payload) {
+		const resp = await fetch(API_REST + path, {
 			method: 'GET',
 			cache: 'no-cache',
 			credentials: 'include',
@@ -31,20 +36,18 @@ function useServerRequest() {
 			},
 			redirect: 'follow',
 			body: JSON.stringify(payload)
-		})
-		.then(resp => {
-			if (resp.status === 500) { // Internal Server Error
-				alert('Erro interno do servidor, ou ele está fora do ar.');
-				throw new Error(500);
-			} else if (resp.status === 401) { // Unauthorized
-				return resp.json().then(data => {
-					setAuth({logged: false, msg: data.mensagem}); // will redirect
-					throw new Error(401);
-				});
-			} else {
-				return resp.json();
-			}
 		});
+
+		if (resp.status === 500) { // Internal Server Error
+			alert('Erro interno do servidor, ou ele está fora do ar.');
+			throw new Error(500);
+		} else if (resp.status === 401) { // Unauthorized
+			const data = await resp.json();
+			setAuth({logged: false, msg: data.mensagem}); // will redirect
+			throw new Error(401);
+		} else {
+			return resp.json();
+		}
 	};
 
 	return wrapper; // always return the same object, important for [deps] check
