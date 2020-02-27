@@ -1,0 +1,15 @@
+.wrap {
+	display: inline-flex;
+	align-items: center;
+	margin-bottom: 12px;
+
+	.text {
+		font-style: italic;
+		margin-right: 6px;
+		color: #426d76;
+	}
+	.svg {
+		margin: auto;
+		display: inline-block;
+	}
+}
