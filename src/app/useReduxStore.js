@@ -1,25 +1,23 @@
 import {createStore} from 'redux';
 import {useDispatch, useSelector} from 'react-redux';
 
-// Global app reducer.
-function reducer(state, {type, payload}) {
-	switch (type) {
-		case 'auth':   return {...state, auth: payload};
-		case 'phrase': return {...state, phrase: payload};
-		default:       return state;
-	}
+/**
+ * Generates the store object to be passed to react-redux provider.
+ * @param {Object} initialState Initial state of the store.
+ */
+function createReduxStore(initialState) {
+	return createStore(
+		(state, {type, payload}) =>
+			state[type] !== undefined ? {...state, [type]: payload} : state,
+		initialState
+	);
 }
-
-// Global app store with initial state.
-const reduxStore = createStore(reducer, {
-	auth:   {logged: true, msg: ''},
-	phrase: ''
-});
 
 /**
  * Allows access to the store values in a similar way to React.useState().
  * @example
  * const [name, setName] = useReduxStore('name');
+ * @param {string} name Name of the store field to be accessed.
  */
 function useReduxStore(name) {
 	const value = useSelector(state => state[name]);
@@ -33,4 +31,4 @@ function useReduxStore(name) {
 }
 
 export default useReduxStore;
-export {reduxStore};
+export {createReduxStore};

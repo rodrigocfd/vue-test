@@ -2,12 +2,17 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {HashRouter} from 'react-router-dom';
 
-import {reduxStore} from './useReduxStore';
+import {createReduxStore} from './useReduxStore';
 import AppRoute from './AppRoute';
+
+const initialState = {
+	auth:   {logged: true, msg: ''},
+	phrase: ''
+};
 
 function App() {
 	return (
-		<Provider store={reduxStore}>
+		<Provider store={createReduxStore(initialState)}>
 			<HashRouter>
 				<AppRoute />
 			</HashRouter>
