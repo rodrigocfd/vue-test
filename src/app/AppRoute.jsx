@@ -16,6 +16,7 @@ function AppRoute() {
 	if (!auth.logged) {
 		return (
 			<div className={c.authErr}>
+				<div className={c.sad}>:(</div>
 				<div>{auth.msg}</div>
 				<div><a href={jsfUrl('/index.jsf')}>Clique aqui</a> para fazer login.</div>
 			</div>

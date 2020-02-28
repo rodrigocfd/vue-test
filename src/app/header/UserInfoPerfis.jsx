@@ -8,7 +8,8 @@ function UserInfoPerfis({perfis}) {
 		<div className={c.wrap}>Perfis +
 			<ul className={c.ul}>
 				{perfis.map(perfil => (
-					<li key={perfil} className={c.li}>{perfil}</li>
+					<li key={perfil.codigo} className={c.li}
+						title={perfil.codigo}>{perfil.nome}</li>
 				))}
 			</ul>
 		</div>
