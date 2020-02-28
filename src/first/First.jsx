@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import {useModalState} from '../app/modal/Modal';
 import useRefOpt from '../app/useRefOpt';
@@ -29,6 +30,7 @@ function First() {
 		)}
 		<h1>First</h1>
 		<h2 className="txtGreen">This is the first component.</h2>
+		<p><Link to="/second">Go to second</Link></p>
 		<input type="text" ref={nameRef} value={name} onChange={e => setName(e.target.value)} />
 		<input type="button" value="Modify" onClick={btnModify} />
 	</>);

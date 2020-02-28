@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import useReduxStore from '../app/useReduxStore';
 import useModalOkCancel from '../app/modal/useModalOkCancel';
@@ -18,7 +19,8 @@ function Second() {
 	}
 
 	return (
-		<div>
+		<div className={c.wrap}>
+			<Link to="/first">Go to first</Link>
 			<Reader />
 			<Writer ref={wRef} />
 			<div className={c.btnModalOk}>
