@@ -1,6 +1,10 @@
 import React from 'react';
 
-// Wrapper to React.useRef() with optional automations.
+/**
+ * Wrapper to React.useRef() with optional automations.
+ * @example
+ * const txtRef = useRefOpt(null, {focusOnMount: true});
+ */
 function useRefOpt(refVal, {focusOnMount = false, forwardRef = null}) {
 	const localRef = React.useRef(refVal); // ordinary ref
 

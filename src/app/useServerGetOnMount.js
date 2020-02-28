@@ -2,7 +2,11 @@ import React from 'react';
 
 import useServerGet from './useServerGet';
 
-// Custom useEffect() hook to load data from server on component mount.
+/**
+ * Custom useEffect() hook to load data from server on component mount.
+ * @example
+ * const myData = userServerGetOnMount('/myData');
+ */
 function useServerGetOnMount(path) {
 	const server = useServerGet();
 	const [data, setData] = React.useState(null); // data is initially null
