@@ -17,7 +17,12 @@ function UserInfoPerfis({perfis}) {
 }
 
 UserInfoPerfis.propTypes = {
-	perfis: PropTypes.arrayOf(PropTypes.string).isRequired
+	perfis: PropTypes.arrayOf(
+		PropTypes.shape({
+			codigo: PropTypes.string,
+			nome: PropTypes.string
+		})
+	).isRequired
 };
 
 export default UserInfoPerfis;
