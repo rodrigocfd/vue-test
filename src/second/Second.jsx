@@ -19,7 +19,7 @@ function Second() {
 	}
 
 	return (
-		<div className={c.wrap}>
+		<>
 			<Link to="/first">Go to first</Link>
 			<Reader />
 			<Writer ref={wRef} />
@@ -27,7 +27,7 @@ function Second() {
 				<modalOkCancel.Component />
 				<input type="button" value="Click for pop" onClick={popClick} />
 			</div>
-		</div>
+		</>
 	);
 }
 
