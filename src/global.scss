@@ -1,6 +1,21 @@
-// App-wide global styles.
+////////////////////////////////////////////////////////////////////////////////
+// Global variables.
 
-$appFont: 10pt arial, helvetica, Trebuchet MS, clean, sans-serif;
+$app-font: 10pt arial, helvetica, Trebuchet MS, clean, sans-serif;
+$txt-black: #333;
+$txt-blue: #426d76;
+$txt-green: #738f21;
+$btn-bg-green: #adc565;
+
+$menu-box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, .1);
+$menu-bg-white: #f6f7f7;
+$menu-bg-white-hover: #eee;
+$menu-txt-blue: #44788d;
+$menu-border-green: 1px solid #aaba75;
+$menu-dotted-separator: 1px dotted #aebc82;
+
+////////////////////////////////////////////////////////////////////////////////
+// App-wide global styles.
 
 html {
 	box-sizing: border-box;
@@ -11,31 +26,42 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	font: $appFont;
+	font: $app-font;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	color: #333;
+	color: $txt-black;
 	background-color: #e9f3f1;
+}
+h1, h2 {
+	color: $txt-blue;
 }
 button, input[type=button], input[type=submit] {
 	cursor: pointer;
-	font: $appFont;
-	background-color: #adc565;
+	font: $app-font;
+	background-color: $btn-bg-green;
 	color: white;
 	padding: 5px 13px;
 	margin: 0 4px;
 	border: 0;
 	border-radius: 2px;
+
+	&:active { // subtle animation effect
+		transform: translateY(1px);
+		background-color: $txt-green;
+	}
 }
-// button:hover, input[type=button]:hover, input[type=submit]:hover {
-// 	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, .75);
-// }
 input[type=text], input[type=password], select, textarea {
-	font: $appFont;
+	font: $app-font;
 	border: 1px solid #aeb6c3;
 	border-radius: 2px;
 	padding: 3px;
 }
-// input[type=text]:focus, input[type=password]:focus, select:focus, textarea:focus {
-// 	box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, .75);
-// }
+.txtBlack {
+	color: $txt-black;
+}
+.txtBlue {
+	color: $txt-blue;
+}
+.txtGreen {
+	color: $txt-green;
+}

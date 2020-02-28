@@ -1,3 +1,5 @@
+@import '../global';
+
 .wrap {
 	display: inline-flex;
 	align-items: center;
@@ -6,7 +8,7 @@
 	.text {
 		font-style: italic;
 		margin-right: 6px;
-		color: #426d76;
+		color: $menu-txt-blue;
 	}
 	.svg {
 		margin: auto;

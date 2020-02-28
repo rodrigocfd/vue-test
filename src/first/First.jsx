@@ -3,7 +3,6 @@ import React from 'react';
 import {useModalState} from '../app/modal/Modal';
 import useRefOpt from '../app/useRefOpt';
 import Prompt from './Prompt';
-import c from './First.module.scss';
 
 function First() {
 	const modalState = useModalState();
@@ -28,8 +27,8 @@ function First() {
 			<Prompt modalState={modalState} initText={name}
 				onOk={onModalOk} onCancel={onModalCancel} />
 		)}
-		<h1 className={c.title}>First</h1>
-		<h2 className={c.subtitle}>This is the first component.</h2>
+		<h1>First</h1>
+		<h2 className="txtGreen">This is the first component.</h2>
 		<input type="text" ref={nameRef} value={name} onChange={e => setName(e.target.value)} />
 		<input type="button" value="Modify" onClick={btnModify} />
 	</>);
