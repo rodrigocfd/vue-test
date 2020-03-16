@@ -1,4 +1,4 @@
-import useReduxStore from './useReduxStore';
+import useAuthContext from './useAuthContext';
 
 const API_REST = '/siorg-gestao-webapp/api';
 const wrapper = {doGet: null};
@@ -12,7 +12,7 @@ const wrapper = {doGet: null};
  *   .catch(() => {});
  */
 function useServerGet() {
-	const [, setAuth] = useReduxStore('auth');
+	const [auth, setAuth] = useAuthContext();
 
 	wrapper.doGet = async function(path, payload) {
 		const resp = await fetch(API_REST + path, {
@@ -29,7 +29,11 @@ function useServerGet() {
 		switch (resp.status) {
 		case 401: // Unauthorized
 			const data = await resp.json();
-			setAuth({logged: false, msg: data.mensagem}); // will redirect
+			setAuth({ // will redirect
+				...auth,
+				isAuth: false,
+				authMsg: data.mensagem
+			});
 			throw new Error(401);
 
 		case 404: // Not Found

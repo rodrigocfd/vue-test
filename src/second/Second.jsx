@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import useReduxStore from '../app/useReduxStore';
+import useAuthContext from '../app/useAuthContext';
 import useModalOkCancel from '../app/modal/useModalOkCancel';
 import Reader from './Reader';
 import Writer from './Writer';
@@ -10,10 +10,10 @@ import c from './Second.module.scss';
 function Second() {
 	const modalOkCancel = useModalOkCancel();
 	const wRef = React.useRef(null);
-	const [phrase] = useReduxStore('phrase');
+	const [data] = useAuthContext();
 
 	function popClick() {
-		modalOkCancel.show(`The Redux-stored text is "${phrase}".\nAnother phrase.`)
+		modalOkCancel.show(`The Context-stored text is "${data.phrase}".\nAnother phrase.`)
 			.onOk(() => { wRef.current.focus(); wRef.current.select(); })
 			.onCancel(() => console.log('Cancelled.'));
 	}

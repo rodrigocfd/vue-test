@@ -1,14 +1,14 @@
 import React from 'react';
 
-import useReduxStore from '../app/useReduxStore';
+import useAuthContext from '../app/useAuthContext';
 
 function Reader() {
-	const [phrase] = useReduxStore('phrase');
+	const [data] = useAuthContext();
 
 	return (
 		<div>
 			<h1>Reader</h1>
-			<div>In the store: {phrase}</div>
+			<div>In the store: {data.phrase}</div>
 		</div>
 	);
 }
