@@ -17,15 +17,16 @@ function AppCheckAuth({children}: Props) {
 
 	React.useEffect(() => {
 		if (context.auth === Auth.Loading) { // initial app state is loading
-			server.doGet('/informacaoUsuario')
-				.then((userInfo: InformacaoUsuario) => {
+			setTimeout(async () => { // a short timeout just to make it pretty
+				try {
+					const userInfo = await server.doGet('/informacaoUsuario') as InformacaoUsuario;
 					setContext({userInfo, auth: Auth.Yes});
-				})
-				.catch((err: Error) => {
+				} catch (err) {
 					if (err.message === '500') {
 						setContext({auth: Auth.ServerOff});
 					}
-				});
+				}
+			}, 500);
 		}
 	}, [server, setContext, context.auth]);
 
