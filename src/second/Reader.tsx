@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useAppContext from 'app/useAppContext';
+import useAppContext from 'app/hooks/useAppContext';
 
 function Reader() {
 	const [context] = useAppContext();

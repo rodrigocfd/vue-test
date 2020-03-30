@@ -2,7 +2,7 @@ import React from 'react';
 // import {Link} from 'react-router-dom';
 
 import InformacaoUsuario from 'dto/InformacaoUsuario';
-import useServerGetOnMount from 'app/useServerGetOnMount';
+import useServerGetOnMount from 'app/hooks/useServerGetOnMount';
 import Loading from 'app/Loading';
 import UserInfoPerfis from './UserInfoPerfis';
 import c from './UserInfo.module.scss';

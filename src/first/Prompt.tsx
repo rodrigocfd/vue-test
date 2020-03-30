@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useRefFocusOnMount from 'app/useRefFocusOnMount';
+import useRefFocusOnMount from 'app/hooks/useRefFocusOnMount';
 import Modal from 'app/modal/Modal';
 import c from './Prompt.module.scss';
 

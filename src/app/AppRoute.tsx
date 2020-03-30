@@ -1,11 +1,11 @@
 import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
+import useAppContext from 'app/hooks/useAppContext';
 import jsfUrl from 'app/header/jsfUrl';
 import Header from 'app/header/Header';
 import First from 'first/First';
 import Second from 'second/Second';
-import useAppContext from './useAppContext';
 import NotFound from './NotFound';
 import c from './AppRoute.module.scss';
 

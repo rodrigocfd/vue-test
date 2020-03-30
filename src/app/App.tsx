@@ -1,7 +1,7 @@
 import React from 'react';
 import {HashRouter} from 'react-router-dom';
 
-import {initialState, AppContext} from './useAppContext';
+import {initialState, AppContext} from 'app/hooks/useAppContext';
 import AppRoute from './AppRoute';
 
 function App() {

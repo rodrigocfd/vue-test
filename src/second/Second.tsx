@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import useAppContext from 'app/useAppContext';
+import useAppContext from 'app/hooks/useAppContext';
 import ModalOkCancel from 'app/modal/ModalOkCancel';
 import Reader from './Reader';
 import Writer, {FocusWrapper} from './Writer';
