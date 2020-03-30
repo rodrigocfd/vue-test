@@ -30,32 +30,35 @@ function AppCheckAuth({children}: Props) {
 		}
 	}, [server, setContext, context.auth]);
 
-	if (context.auth === Auth.Loading) {
-		return (
-			<div className={c.checking}>
-				<Loading size={'48px'} />
-				<div>Carregando Siorg...</div>
-			</div>
-		);
-	} else if (context.auth === Auth.ServerOff) {
-		return (
-			<div className={c.checking}>
-				<div className={c.sad}>:(</div>
-				<div>O servidor está fora do ar.</div>
-				<div><a href={jsfUrl('/index.jsf')}>Clique aqui</a> para tentar novamente.</div>
-			</div>
-		);
-	} else if (context.auth === Auth.No) {
-		return (
-			<div className={c.checking}>
-				<div className={c.sad}>:(</div>
-				<div>Você não está autenticado.</div>
-				<div><a href={jsfUrl('/index.jsf')}>Clique aqui</a> para fazer login.</div>
-			</div>
-		);
+	switch (context.auth) {
+		case Auth.Loading:   return Loadin();
+		case Auth.ServerOff: return ServerOff();
+		case Auth.No:        return No();
+		default:             return <>{children}</>;
 	}
-
-	return <>{children}</>;
 }
+
+const Loadin = () => (
+	<div className={c.checking}>
+		<Loading size={'48px'} />
+		<div>Carregando Siorg...</div>
+	</div>
+);
+
+const ServerOff = () => (
+	<div className={c.checking}>
+		<div className={c.sad}>:(</div>
+		<div>O servidor está fora do ar.</div>
+		<div><a href={jsfUrl('/index.jsf')}>Clique aqui</a> para tentar novamente.</div>
+	</div>
+);
+
+const No = () => (
+	<div className={c.checking}>
+		<div className={c.sad}>:(</div>
+		<div>Você não está autenticado.</div>
+		<div><a href={jsfUrl('/index.jsf')}>Clique aqui</a> para fazer login.</div>
+	</div>
+);
 
 export default AppCheckAuth;
