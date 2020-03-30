@@ -1,16 +1,18 @@
 import React from 'react';
 import {HashRouter} from 'react-router-dom';
 
-import {AppContextProvider} from '../app/AppContext';
+import {initialState, AppContext} from './useAppContext';
 import AppRoute from './AppRoute';
 
 function App() {
+	const contextGetSet = React.useState(initialState);
+
 	return (
-		<AppContextProvider>
+		<AppContext.Provider value={contextGetSet}>
 			<HashRouter>
 				<AppRoute />
 			</HashRouter>
-		</AppContextProvider>
+		</AppContext.Provider>
 	);
 }
 

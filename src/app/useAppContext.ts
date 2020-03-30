@@ -13,20 +13,6 @@ type StateGetSetT = [StateT, React.Dispatch<React.SetStateAction<StateT>>];
 
 const AppContext = React.createContext<StateGetSetT | undefined>(undefined);
 
-// Context provider, should wrap entire application.
-interface AppContextProviderProps  {
-	children: React.ReactNode;
-}
-
-function AppContextProvider({children}: AppContextProviderProps) {
-	const contextGetSet = React.useState(initialState);
-	return (
-		<AppContext.Provider value={contextGetSet}>
-			{children}
-		</AppContext.Provider>
-	);
-}
-
 // Custom hook to retrieve and set context state.
 type UseAppContextT = [StateT, (newVals: Partial<StateT>) => void];
 
@@ -38,4 +24,5 @@ function useAppContext(): UseAppContextT {
 	return [state, setPartialState];
 }
 
-export {AppContextProvider, useAppContext};
+export default useAppContext;
+export {initialState, AppContext};

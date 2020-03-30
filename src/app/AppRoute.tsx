@@ -1,7 +1,7 @@
 import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
-import {useAppContext} from '../app/AppContext';
+import useAppContext from './useAppContext';
 import jsfUrl from './header/jsfUrl';
 import Header from './header/Header';
 import First from '../first/First';

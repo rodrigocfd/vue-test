@@ -1,4 +1,4 @@
-import {useAppContext} from './AppContext';
+import useAppContext from './useAppContext';
 
 const API_REST = '/siorg-gestao-webapp/api';
 
