@@ -2,6 +2,7 @@ import React from 'react';
 import {HashRouter} from 'react-router-dom';
 
 import {initialState, AppContext} from 'app/hooks/useAppContext';
+import AppCheckAuth from './AppCheckAuth';
 import AppRoute from './AppRoute';
 
 function App() {
@@ -9,9 +10,11 @@ function App() {
 
 	return (
 		<AppContext.Provider value={contextGetSet}>
-			<HashRouter>
-				<AppRoute />
-			</HashRouter>
+			<AppCheckAuth>
+				<HashRouter>
+					<AppRoute />
+				</HashRouter>
+			</AppCheckAuth>
 		</AppContext.Provider>
 	);
 }

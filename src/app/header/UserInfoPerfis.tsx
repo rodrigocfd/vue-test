@@ -1,17 +1,15 @@
 import React from 'react';
 
-import Perfil from 'dto/Perfil';
+import useAppContext from 'app/hooks/useAppContext';
 import c from './UserInfoPerfis.module.scss';
 
-interface Props {
-	perfis: Perfil[];
-}
+function UserInfoPerfis() {
+	const [context] = useAppContext();
 
-function UserInfoPerfis({perfis}: Props) {
 	return (
 		<div className={c.wrap}>Perfis +
 			<ul className={c.ul}>
-				{perfis.map(perfil => (
+				{context.userInfo?.perfis.map(perfil => (
 					<li key={perfil.codigo} className={c.li}
 						title={perfil.codigo}>{perfil.nome}</li>
 				))}
@@ -21,4 +19,3 @@ function UserInfoPerfis({perfis}: Props) {
 }
 
 export default UserInfoPerfis;
-export type {Perfil};

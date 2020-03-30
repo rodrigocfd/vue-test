@@ -1,8 +1,6 @@
 import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
-import useAppContext from 'app/hooks/useAppContext';
-import jsfUrl from 'app/header/jsfUrl';
 import Header from 'app/header/Header';
 import First from 'first/First';
 import Second from 'second/Second';
@@ -11,18 +9,6 @@ import c from './AppRoute.module.scss';
 
 // Describes all the routes and controls auth behavior.
 function AppRoute() {
-	const [context] = useAppContext();
-
-	if (!context.isAuth) {
-		return (
-			<div className={c.authErr}>
-				<div className={c.sad}>:(</div>
-				<div>{context.authMsg}</div>
-				<div><a href={jsfUrl('/index.jsf')}>Clique aqui</a> para fazer login.</div>
-			</div>
-		);
-	}
-
 	return (<>
 		<Header />
 		<div className={c.contents}>

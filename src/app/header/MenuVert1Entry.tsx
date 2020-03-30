@@ -1,6 +1,6 @@
 import React from 'react';
 
-import jsfUrl from './jsfUrl';
+import jsfUrl from 'app/hooks/jsfUrl';
 import MenuVert2, {MenuVert2Item} from './MenuVert2';
 import c from './MenuVert1Entry.module.scss';
 

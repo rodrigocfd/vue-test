@@ -1,4 +1,4 @@
-import useAppContext from './useAppContext';
+import useAppContext, {Auth} from './useAppContext';
 
 const API_REST = '/siorg-gestao-webapp/api';
 
@@ -35,8 +35,8 @@ function useServerGet() {
 		switch (resp.status) {
 		case 401: // Unauthorized
 			const data = await resp.json();
-			setContext({ // will redirect
-				isAuth: false,
+			setContext({
+				auth:    Auth.No, // automatic logoff, router will redirect
 				authMsg: data.mensagem
 			});
 			throw new Error('401');

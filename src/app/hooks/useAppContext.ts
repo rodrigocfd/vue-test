@@ -1,10 +1,15 @@
 import React from 'react';
 
+import InformacaoUsuario from 'dto/InformacaoUsuario';
+
+enum Auth { Loading, ServerOff, No, Yes }
+
 // Global app context initial state.
 const initialState = {
-	isAuth:  true,
-	authMsg: '',
-	phrase:  ''
+	auth:     Auth.Loading, // important for AppCheckAuth
+	authMsg:  '',
+	userInfo: null as InformacaoUsuario | null,
+	phrase:   ''
 };
 
 // Global app auth context.
@@ -25,4 +30,4 @@ function useAppContext(): UseAppContextT {
 }
 
 export default useAppContext;
-export {initialState, AppContext};
+export {Auth, initialState, AppContext};

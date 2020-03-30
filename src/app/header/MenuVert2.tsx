@@ -1,6 +1,6 @@
 import React from 'react';
 
-import jsfUrl from './jsfUrl';
+import jsfUrl from 'app/hooks/jsfUrl';
 import c from './MenuVert2.module.scss';
 
 interface MenuVert2Item {
