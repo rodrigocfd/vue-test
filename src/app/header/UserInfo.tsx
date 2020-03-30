@@ -7,12 +7,14 @@ import Loading from '../Loading';
 import c from './UserInfo.module.scss';
 
 interface Data {
+	codigo: string;
 	nome: string;
+	transacoes: string[];
 	perfis: Perfil[];
 }
 
 function UserInfo() {
-	const userInfo: Data = useServerGetOnMount('/informacaoUsuario');
+	const userInfo = useServerGetOnMount('/informacaoUsuario') as Data;
 
 	if (!userInfo) {
 		return <Loading text="Carregando usuário..." />;
@@ -22,7 +24,7 @@ function UserInfo() {
 		<div className={c.wrap}>
 			<div className={c.userName}>{userInfo.nome}</div>
 			<div className={c.perfisWrap}>
-				<UserInfoPerfis {...userInfo.perfis} />
+				<UserInfoPerfis perfis={userInfo.perfis} />
 				{/* <Link to="/first">First</Link> | {' '}
 				<Link to="/second">Second</Link>
 				[Logoff] */}

@@ -2,10 +2,10 @@ import useAppContext from './useAppContext';
 
 const API_REST = '/siorg-gestao-webapp/api';
 
-interface WrapperT {
+interface DoGetWrapperT {
 	doGet: (path: string, payload?: any) => Promise<any>;
 }
-const wrapper: WrapperT = {
+const wrapper: DoGetWrapperT = {
 	doGet: (path: string) => new Promise(() => {})
 };
 

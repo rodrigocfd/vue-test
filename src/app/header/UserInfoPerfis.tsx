@@ -6,8 +6,11 @@ interface Perfil {
 	codigo: string;
 	nome: string;
 }
+interface Props {
+	perfis: Perfil[];
+}
 
-function UserInfoPerfis(perfis: Perfil[]) {
+function UserInfoPerfis({perfis}: Props) {
 	return (
 		<div className={c.wrap}>Perfis +
 			<ul className={c.ul}>
