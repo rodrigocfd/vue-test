@@ -1,10 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import c from './Loading.module.scss';
 
+interface Props {
+	text: string;
+	size: string;
+	speed: number;
+}
+const defaultProps: Props = {
+	text: '',
+	size: '18px',
+	speed: 1.6
+};
+
 // An animated loading throbber with text.
-function Loading({text, size, speed}) {
+function Loading({text, size, speed}: Props) {
 	return (
 		<div className={c.wrap}>
 			<span className={c.text}>{text}</span>
@@ -49,16 +59,6 @@ function Loading({text, size, speed}) {
 	);
 }
 
-Loading.propTypes = {
-	text: PropTypes.string,
-	size: PropTypes.string,
-	speed: PropTypes.number
-};
-
-Loading.defaultProps = {
-	text: '',
-	size: '18px',
-	speed: 1.6
-};
+Loading.defaultProps = defaultProps;
 
 export default Loading;

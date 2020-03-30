@@ -15,7 +15,7 @@ function Menu() {
 							<div className={c.label}>{item.label}</div>
 							<div className={c.arrow}>▼</div>
 						</div>
-						<MenuVert1 title={item.label} items={item.menuVert1} />
+						<MenuVert1 {...item} />
 					</li>
 				)}
 			</ul>

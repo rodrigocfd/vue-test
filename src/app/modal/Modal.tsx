@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import PropTypes from 'prop-types';
 
-import useModalState from './useModalState';
 import c from './Modal.module.scss';
 
+interface Props {
+	children: React.ReactNode;
+	onEsc?: () => void;
+}
+
 // Generic modal which can hold any content.
-function Modal(props) {
-	function onKeyDown(ev) {
+function Modal(props: Props) {
+	function onKeyDown(ev: React.KeyboardEvent<HTMLDivElement>) {
 		if (ev.keyCode === 27 && props.onEsc) { // works only if focus is within DIV
 			ev.stopPropagation();
 			props.onEsc();
@@ -27,16 +30,4 @@ function Modal(props) {
 	);
 }
 
-Modal.propTypes = {
-	children: PropTypes.node.isRequired,
-	onEsc: PropTypes.func
-};
-
-Modal.stateProps = PropTypes.shape({ // to validate an useModalState() prop
-	render: PropTypes.func.isRequired,
-	open: PropTypes.func.isRequired,
-	close: PropTypes.func.isRequired
-});
-
 export default Modal;
-export {useModalState}; // re-export for convenience

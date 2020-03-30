@@ -1,13 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import jsfUrl from './jsfUrl';
 import c from './MenuVert2.module.scss';
 
-function MenuVert2(props) {
+interface MenuVert2Item {
+	label: string;
+	oldLink: string;
+}
+interface Props {
+	items: MenuVert2Item[];
+}
+
+function MenuVert2({items}: Props) {
 	return (
 		<ul className={c.ul}>
-			{props.items.map(item =>
+			{items.map(item =>
 				<li key={item.label} className={c.li}>
 					{item.oldLink
 						? <a className={c.label} href={jsfUrl(item.oldLink)}>{item.label}</a>
@@ -19,13 +26,5 @@ function MenuVert2(props) {
 	);
 }
 
-MenuVert2.propTypes = {
-	items: PropTypes.arrayOf(
-		PropTypes.shape({
-			label: PropTypes.string,
-			oldLink: PropTypes.string
-		})
-	)
-};
-
 export default MenuVert2;
+export type {MenuVert2Item};

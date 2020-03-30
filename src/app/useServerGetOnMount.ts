@@ -7,7 +7,7 @@ import useServerGet from './useServerGet';
  * @example
  * const myData = userServerGetOnMount('/myData');
  */
-function useServerGetOnMount(path) {
+function useServerGetOnMount(path: string): any {
 	const server = useServerGet();
 	const [data, setData] = React.useState(null); // data is initially null
 

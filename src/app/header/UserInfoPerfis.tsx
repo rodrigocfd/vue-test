@@ -1,9 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import c from './UserInfoPerfis.module.scss';
 
-function UserInfoPerfis({perfis}) {
+interface Perfil {
+	codigo: string;
+	nome: string;
+}
+
+function UserInfoPerfis(perfis: Perfil[]) {
 	return (
 		<div className={c.wrap}>Perfis +
 			<ul className={c.ul}>
@@ -16,13 +20,5 @@ function UserInfoPerfis({perfis}) {
 	);
 }
 
-UserInfoPerfis.propTypes = {
-	perfis: PropTypes.arrayOf(
-		PropTypes.shape({
-			codigo: PropTypes.string,
-			nome: PropTypes.string
-		})
-	).isRequired
-};
-
 export default UserInfoPerfis;
+export type {Perfil};

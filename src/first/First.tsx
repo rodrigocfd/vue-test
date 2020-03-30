@@ -1,38 +1,40 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import {useModalState} from '../app/modal/Modal';
-import useRefOpt from '../app/useRefOpt';
+import useRefFocusOnMount from '../app/useRefFocusOnMount';
 import Prompt from './Prompt';
 
 function First() {
-	const modalState = useModalState();
-	const nameRef = useRefOpt(null, {focusOnMount: true});
+	const [promptOpen, setPromptOpen] = React.useState(false);
+	const nameRef = useRefFocusOnMount(null);
 	const [name, setName] = React.useState('');
 
 	function btnModify() {
-		modalState.open();
+		setPromptOpen(true);
 	}
 
-	function onModalOk(data) {
+	function onPromptOk(text: string) {
+		setPromptOpen(false);
+		setName(text);
 		nameRef.current.focus();
-		setName(data);
 	}
 
-	function onModalCancel() {
+	function onPromptCancel() {
+		setPromptOpen(false);
 		nameRef.current.focus();
 	}
 
 	return (<>
-		{modalState.render(
-			<Prompt modalState={modalState} initText={name}
-				onOk={onModalOk} onCancel={onModalCancel} />
-		)}
 		<h1>First</h1>
 		<h2 className="txtGreen">This is the first component.</h2>
 		<p><Link to="/second">Go to second</Link></p>
 		<input type="text" ref={nameRef} value={name} onChange={e => setName(e.target.value)} />
 		<input type="button" value="Modify" onClick={btnModify} />
+
+		{promptOpen &&
+			<Prompt text={name}
+				onOk={onPromptOk} onCancel={onPromptCancel} />
+		}
 	</>);
 }
 

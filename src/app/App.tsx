@@ -1,16 +1,16 @@
 import React from 'react';
 import {HashRouter} from 'react-router-dom';
 
-import {AuthContextProvider} from './useAuthContext';
+import {AppContextProvider} from '../app/AppContext';
 import AppRoute from './AppRoute';
 
 function App() {
 	return (
-		<AuthContextProvider>
+		<AppContextProvider>
 			<HashRouter>
 				<AppRoute />
 			</HashRouter>
-		</AuthContextProvider>
+		</AppContextProvider>
 	);
 }
 

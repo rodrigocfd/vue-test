@@ -1,11 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import jsfUrl from './jsfUrl';
-import MenuVert2 from './MenuVert2';
+import MenuVert2, {MenuVert2Item} from './MenuVert2';
 import c from './MenuVert1Entry.module.scss';
 
-function MenuVert1Entry(props) {
+interface Props {
+	label: string;
+	oldLink?: string;
+	menuVert2?: MenuVert2Item[]; // passed straight to MenuVert2 component
+}
+
+function MenuVert1Entry(props: Props) {
 	return (
 		<li className={c.li}>
 			<div className={c.flexWrap}>
@@ -24,10 +29,5 @@ function MenuVert1Entry(props) {
 	);
 }
 
-MenuVert1Entry.propTypes = {
-	label: PropTypes.string,
-	oldLink: PropTypes.string,
-	menuVert2: MenuVert2.propTypes.items // passed straight to MenuVert2 component
-};
-
 export default MenuVert1Entry;
+export type {Props as MenuVert1EntryProps};

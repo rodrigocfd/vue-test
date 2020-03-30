@@ -1,7 +1,13 @@
-import useAuthContext from './useAuthContext';
+import {useAppContext} from './AppContext';
 
 const API_REST = '/siorg-gestao-webapp/api';
-const wrapper = {doGet: null};
+
+interface WrapperT {
+	doGet: (path: string, payload?: any) => Promise<any>;
+}
+const wrapper: WrapperT = {
+	doGet: (path: string) => new Promise(() => {})
+};
 
 /**
  * Returns doGet() to perform server requests.
@@ -12,9 +18,9 @@ const wrapper = {doGet: null};
  *   .catch(() => {});
  */
 function useServerGet() {
-	const [auth, setAuth] = useAuthContext();
+	const [, setContext] = useAppContext();
 
-	wrapper.doGet = async function(path, payload) {
+	wrapper.doGet = async function(path: string, payload?: any): Promise<any> {
 		const resp = await fetch(API_REST + path, {
 			method: 'GET',
 			cache: 'no-cache',
@@ -29,20 +35,19 @@ function useServerGet() {
 		switch (resp.status) {
 		case 401: // Unauthorized
 			const data = await resp.json();
-			setAuth({ // will redirect
-				...auth,
+			setContext({ // will redirect
 				isAuth: false,
 				authMsg: data.mensagem
 			});
-			throw new Error(401);
+			throw new Error('401');
 
 		case 404: // Not Found
 			alert(`Erro da aplicação, chamada "${path}" não encontrada.`);
-			throw new Error(404);
+			throw new Error('404');
 
 		case 500: // Internal Server Error
 			alert('Erro interno do servidor, ou ele está fora do ar.');
-			throw new Error(500);
+			throw new Error('500');
 
 		default:
 			return resp.json(); // all good, send response to client
