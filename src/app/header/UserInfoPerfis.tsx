@@ -3,6 +3,9 @@ import React from 'react';
 import useAppContext from 'app/hooks/useAppContext';
 import c from './UserInfoPerfis.module.scss';
 
+/**
+ * Pequena label que, ao passar do mouse, mostra a lista de perfis do usuário.
+ */
 function UserInfoPerfis() {
 	const [context] = useAppContext();
 

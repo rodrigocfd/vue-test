@@ -4,7 +4,9 @@ import Menu from './Menu';
 import UserInfo from './UserInfo';
 import c from './Header.module.scss';
 
-// Main application header.
+/**
+ * Cabeçalho da aplicação, que aparece em todas as páginas.
+ */
 function Header() {
 	return (
 		<div className={c.header}>

@@ -7,9 +7,12 @@ import c from './MenuVert1Entry.module.scss';
 interface Props {
 	label: string;
 	oldLink?: string;
-	menuVert2?: MenuVert2Item[]; // passed straight to MenuVert2 component
+	menuVert2?: MenuVert2Item[]; // passado direto para MenuVert2
 }
 
+/**
+ * Um único item de menu, do menu vertical de primeiro nível.
+ */
 function MenuVert1Entry(props: Props) {
 	return (
 		<li className={c.li}>

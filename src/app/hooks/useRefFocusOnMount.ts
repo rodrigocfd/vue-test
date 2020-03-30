@@ -1,13 +1,14 @@
 import React from 'react';
 
 /**
- * Custom hook, wrapper to React.useRef() that sets focus automatically on
- * component mount.
+ * Wrapper do hook useRef() que seta o foco automaticamente quando o componente
+ * é montado.
+ * @param initialValue Valor que será passado direto ao useRef(), normalmente null.
  */
-function useRefFocusOnMount(refVal: any) {
-	const localRef = React.useRef(refVal); // create ordinary ref
+function useRefFocusOnMount(initialValue: any) {
+	const localRef = React.useRef(initialValue); // cria um ref comum
 
-	React.useEffect(() => { // set focus on component mount
+	React.useEffect(() => {
 		localRef?.current && localRef.current.focus();
 	}, []);
 

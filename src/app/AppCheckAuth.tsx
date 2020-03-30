@@ -11,13 +11,17 @@ interface Props {
 	children: React.ReactNode;
 }
 
+/**
+ * Faz a primeira chamada ao servidor para determinar se o usuário está logado.
+ * Também verifica se o servidor está fora do ar.
+ */
 function AppCheckAuth({children}: Props) {
 	const server = useServerGet();
 	const [context, setContext] = useAppContext();
 
 	React.useEffect(() => {
-		if (context.auth === Auth.Loading) { // initial app state is loading
-			setTimeout(async () => { // a short timeout just to make it pretty
+		if (context.auth === Auth.Loading) { // o estado inicial é Loading, foi setado no contexto
+			setTimeout(async () => { // timeout pro loading aparecer, só pra ficar bonito
 				try {
 					const userInfo = await server.doGet('/informacaoUsuario') as InformacaoUsuario;
 					setContext({userInfo, auth: Auth.Yes});
@@ -30,7 +34,7 @@ function AppCheckAuth({children}: Props) {
 		}
 	}, [server, setContext, context.auth]);
 
-	switch (context.auth) {
+	switch (context.auth) { // cada um dos possíveis estados do context.auth
 		case Auth.Loading:   return Loadin();
 		case Auth.ServerOff: return ServerOff();
 		case Auth.No:        return No();

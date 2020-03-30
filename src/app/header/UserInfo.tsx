@@ -5,6 +5,9 @@ import useAppContext from 'app/hooks/useAppContext';
 import UserInfoPerfis from './UserInfoPerfis';
 import c from './UserInfo.module.scss';
 
+/**
+ * Informações do usuário, no canto superior direito.
+ */
 function UserInfo() {
 	const [context] = useAppContext();
 

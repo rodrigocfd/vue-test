@@ -8,10 +8,18 @@ interface Props {
 	onEsc?: () => void;
 }
 
-// Generic modal which can hold any content.
+/**
+ * Modal genérica que pode mostrar qualquer conteúdo. Sua renderização deve ser
+ * controlada com um flag booleano.
+ * @example
+ * const [modalOpen, setModalOpen] = useState(false);
+ * return (<>
+ *   {modalOpen && <Modal>foo</Modal>}
+ * </>);
+ */
 function Modal(props: Props) {
 	function onKeyDown(ev: React.KeyboardEvent<HTMLDivElement>) {
-		if (ev.keyCode === 27 && props.onEsc) { // works only if focus is within DIV
+		if (ev.keyCode === 27 && props.onEsc) { // só funciona se o foco estiver dentro da DIV
 			ev.stopPropagation();
 			props.onEsc();
 		}

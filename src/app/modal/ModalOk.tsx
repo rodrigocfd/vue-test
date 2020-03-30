@@ -9,11 +9,16 @@ interface Props {
 	onClose: () => void;
 }
 
+/**
+ * Modal que exibe uma mensagem com um botão OK, com uma callback. Sua
+ * renderização deve ser controlada com um flag booleano.
+ * @see Modal
+ */
 function ModalOk(props: Props) {
 	const btnRef = useRefFocusOnMount(null);
 
 	function btnOk() {
-		props.onClose(); // invoke user callback
+		props.onClose(); // chama callback do usuário
 	}
 
 	return (

@@ -5,12 +5,12 @@ const API_REST = '/siorg-gestao-webapp/api';
 interface DoGetWrapperT {
 	doGet: (path: string, payload?: any) => Promise<any>;
 }
-const wrapper: DoGetWrapperT = {
+const wrapper: DoGetWrapperT = { // wrapper para ajudar a checagem do useEffect [deps]
 	doGet: (path: string) => new Promise(() => {})
 };
 
 /**
- * Returns doGet() to perform server requests.
+ * Retorna a função doGet() que faz requisições ao servidor.
  * @example
  * const server = useServerGet();
  * server.doGet('/myData')
@@ -36,7 +36,7 @@ function useServerGet() {
 		case 401: // Unauthorized
 			const data = await resp.json();
 			setContext({
-				auth:    Auth.No, // automatic logoff, router will redirect
+				auth:    Auth.No, // faz logoff automático aqui, o router vai redirecionar
 				authMsg: data.mensagem
 			});
 			throw new Error('401');
@@ -50,11 +50,11 @@ function useServerGet() {
 			throw new Error('500');
 
 		default:
-			return resp.json(); // all good, send response to client
+			return resp.json(); // tudo certo, encaminha a resposta do servidor
 		}
 	};
 
-	return wrapper; // always return the same object, important for useEffect [deps] check
+	return wrapper; // sempre retorna o mesmo objeto, importante para checagem do useEffect [deps]
 }
 
 export default useServerGet;

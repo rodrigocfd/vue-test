@@ -7,10 +7,14 @@ interface MenuVert2Item {
 	label: string;
 	oldLink: string;
 }
+
 interface Props {
 	items: MenuVert2Item[];
 }
 
+/**
+ * Menu vertical de segundo nível, filho do menu vertical de primeiro nível.
+ */
 function MenuVert2({items}: Props) {
 	return (
 		<ul className={c.ul}>

@@ -5,6 +5,9 @@ import {initialState, AppContext} from 'app/hooks/useAppContext';
 import AppCheckAuth from './AppCheckAuth';
 import AppRoute from './AppRoute';
 
+/**
+ * Componente de topo, raiz da aplicação.
+ */
 function App() {
 	const contextGetSet = React.useState(initialState);
 

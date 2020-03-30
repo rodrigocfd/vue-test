@@ -7,7 +7,9 @@ import Second from 'second/Second';
 import NotFound from './NotFound';
 import c from './AppRoute.module.scss';
 
-// Describes all the routes and controls auth behavior.
+/**
+ * Descreve as rotas da aplicação.
+ */
 function AppRoute() {
 	return (<>
 		<Header />

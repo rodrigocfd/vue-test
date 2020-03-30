@@ -3,18 +3,19 @@ import React from 'react';
 import useServerGet from './useServerGet';
 
 /**
- * Custom useEffect() hook to load data from server on component mount.
+ * Wrapper do hook useEffect() que traz dados do servidor automaticamente quando
+ * o componente é montado.
  * @example
  * const myData = userServerGetOnMount('/myData');
  */
 function useServerGetOnMount(path: string): any {
 	const server = useServerGet();
-	const [data, setData] = React.useState(null); // data is initially null
+	const [data, setData] = React.useState(null); // data é inicialmente null
 
 	React.useEffect(() => {
 		server.doGet(path)
 			.then(d => setData(d))
-			.catch(() => {}); // ignore exception
+			.catch(() => {}); // não faz nada em caso de exceção
 	}, [path, server]);
 
 	return data;

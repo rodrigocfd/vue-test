@@ -8,6 +8,9 @@ interface Props {
 	menuVert1: MenuVert1EntryProps[];
 }
 
+/**
+ * Menu vertical de primeiro nível, filho do menu horizontal principal.
+ */
 function MenuVert1(props: Props) {
 	return (
 		<ul className={c.ul}>

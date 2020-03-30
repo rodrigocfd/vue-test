@@ -4,7 +4,9 @@ import MenuVert1 from './MenuVert1';
 import menuItems from './menuItems.json';
 import c from './Menu.module.scss';
 
-// Main application horizontal menu.
+/**
+ * Menu horizontal da aplicação, que aparece em todas as páginas.
+ */
 function Menu() {
 	return (
 		<div className={c.menu}>

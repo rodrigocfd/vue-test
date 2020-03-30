@@ -13,7 +13,9 @@ const defaultProps: Props = {
 	speed: 1.6
 };
 
-// An animated loading throbber with text.
+/**
+ * Animação giratória, que opcionalmente aceita um texto curto.
+ */
 function Loading({text, size, speed}: Props) {
 	return (
 		<div className={c.wrap}>

@@ -10,11 +10,16 @@ interface Props {
 	onCancel?: () => void;
 }
 
+/**
+ * Modal que exibe uma mensagem com dois botões, OK e Cancelar, cada um com sua
+ * callback. Sua renderização deve ser controlada com um flag booleano.
+ * @see Modal
+ */
 function ModalOkCancel(props: Props) {
 	const btnRef = useRefFocusOnMount(null);
 
 	function btnCancel() {
-		props.onCancel && props.onCancel();
+		props.onCancel && props.onCancel(); // chama callback do Cancelar
 	}
 
 	return (
