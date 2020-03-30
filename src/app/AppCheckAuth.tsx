@@ -37,16 +37,20 @@ function AppCheckAuth({children}: Props) {
 				<div>Carregando Siorg...</div>
 			</div>
 		);
-	} else if (context.auth === Auth.ServerOff || context.auth === Auth.No) {
+	} else if (context.auth === Auth.ServerOff) {
 		return (
 			<div className={c.checking}>
 				<div className={c.sad}>:(</div>
 				<div>O servidor está fora do ar.</div>
-				<div>
-					<a href={jsfUrl('/index.jsf')}>Clique aqui</a> para
-					{context.auth === Auth.ServerOff && ' tentar novamente.'}
-					{context.auth === Auth.No && ' fazer login.'}
-				</div>
+				<div><a href={jsfUrl('/index.jsf')}>Clique aqui</a> para tentar novamente.</div>
+			</div>
+		);
+	} else if (context.auth === Auth.No) {
+		return (
+			<div className={c.checking}>
+				<div className={c.sad}>:(</div>
+				<div>Você não está autenticado.</div>
+				<div><a href={jsfUrl('/index.jsf')}>Clique aqui</a> para fazer login.</div>
 			</div>
 		);
 	}
