@@ -2,19 +2,13 @@ import React from 'react';
 // import {Link} from 'react-router-dom';
 
 import useServerGetOnMount from '../useServerGetOnMount';
-import UserInfoPerfis, {Perfil} from './UserInfoPerfis';
+import InformacaoUsuario from '../../dto/InformacaoUsuario';
+import UserInfoPerfis from './UserInfoPerfis';
 import Loading from '../Loading';
 import c from './UserInfo.module.scss';
 
-interface Data {
-	codigo: string;
-	nome: string;
-	transacoes: string[];
-	perfis: Perfil[];
-}
-
 function UserInfo() {
-	const userInfo = useServerGetOnMount('/informacaoUsuario') as Data;
+	const userInfo = useServerGetOnMount('/informacaoUsuario') as InformacaoUsuario;
 
 	if (!userInfo) {
 		return <Loading text="Carregando usuário..." />;
