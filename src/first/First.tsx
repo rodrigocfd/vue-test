@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import useRefFocusOnMount from '../app/useRefFocusOnMount';
+import useRefFocusOnMount from 'app/useRefFocusOnMount';
 import Prompt from './Prompt';
 
 function First() {

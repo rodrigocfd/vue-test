@@ -1,7 +1,7 @@
 import React from 'react';
 
-import useRefFocusOnMount from '../app/useRefFocusOnMount';
-import Modal from '../app/modal/Modal';
+import useRefFocusOnMount from 'app/useRefFocusOnMount';
+import Modal from 'app/modal/Modal';
 import c from './Prompt.module.scss';
 
 interface Props {

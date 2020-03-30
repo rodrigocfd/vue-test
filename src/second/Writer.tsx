@@ -1,7 +1,7 @@
 import React from 'react';
 
-import useAppContext from '../app/useAppContext';
-import useRefFocusOnMount from '../app/useRefFocusOnMount';
+import useAppContext from 'app/useAppContext';
+import useRefFocusOnMount from 'app/useRefFocusOnMount';
 import c from './Writer.module.scss';
 
 interface FocusWrapper {

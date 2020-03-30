@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Perfil from '../../dto/Perfil';
+import Perfil from 'dto/Perfil';
 import c from './UserInfoPerfis.module.scss';
 
 interface Props {

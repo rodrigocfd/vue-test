@@ -1,10 +1,10 @@
 import React from 'react';
 // import {Link} from 'react-router-dom';
 
-import useServerGetOnMount from '../useServerGetOnMount';
-import InformacaoUsuario from '../../dto/InformacaoUsuario';
+import InformacaoUsuario from 'dto/InformacaoUsuario';
+import useServerGetOnMount from 'app/useServerGetOnMount';
+import Loading from 'app/Loading';
 import UserInfoPerfis from './UserInfoPerfis';
-import Loading from '../Loading';
 import c from './UserInfo.module.scss';
 
 function UserInfo() {
