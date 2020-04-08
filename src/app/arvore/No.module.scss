@@ -1,0 +1,15 @@
+.no {
+	margin: 5px 0;
+
+	.btnAbre {
+		cursor: pointer;
+
+		&:active {
+			background-color: red;
+		}
+	}
+
+	.filhas {
+		margin: 4px 18px;
+	}
+}

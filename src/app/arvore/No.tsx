@@ -3,6 +3,7 @@ import React from 'react';
 import useServerGet from 'app/hooks/useServerGet';
 import Loading from 'app/Loading';
 import UnidadeNoArvore from 'dto/UnidadeNoArvore';
+import c from './No.module.scss';
 
 interface Props {
 	unidade: UnidadeNoArvore;
@@ -32,12 +33,14 @@ function No({unidade}: Props) {
 	}
 
 	return (
-		<div>
+		<div className={c.no}>
 			{unidade.temFilhas &&
-				<span onClick={abre}>[+] </span>
+				<span onClick={abre} className={c.btnAbre}>
+					{carga === Carga.ABERTO ? '[–] ' : '[+] '}
+				</span>
 			}
 			{unidade.denominacao}
-			<div>
+			<div className={c.filhas}>
 				{carga === Carga.CARREGANDO && <Loading text="Carregando filhas..." />}
 				{carga === Carga.ABERTO && filhas.map(filha =>
 					<No key={filha.id} unidade={filha} />
