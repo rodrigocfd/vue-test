@@ -12,7 +12,7 @@ function UserInfoPerfis() {
 	return (
 		<div className={c.wrap}>Perfis +
 			<ul className={c.ul}>
-				{context.userInfo?.perfis.map(perfil => (
+				{context.userInfo.perfis.map(perfil => (
 					<li key={perfil.codigo} className={c.li}
 						title={perfil.codigo}>{perfil.nome}</li>
 				))}

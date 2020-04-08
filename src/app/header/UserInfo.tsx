@@ -14,7 +14,7 @@ function UserInfo() {
 
 	return (
 		<div className={c.wrap}>
-			<div className={c.userName}>{context.userInfo?.nome}</div>
+			<div className={c.userName}>{context.userInfo.nome}</div>
 			<div className={c.perfisWrap}>
 				<UserInfoPerfis />
 				{/* <Link to="/first">First</Link> | {' '}

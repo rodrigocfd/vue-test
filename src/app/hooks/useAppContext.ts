@@ -8,9 +8,9 @@ enum Auth { Loading, ServerOff, No, Yes }
  * Estado inicial do contexto global da aplicação.
  */
 const initialState = {
-	auth:     Auth.Loading, // importante para o AppCheckAuth
-	authMsg:  '',
-	userInfo: null as InformacaoUsuario | null,
+	auth:     Auth.Loading, // o auth inicial é importante para o componente AppCheckAuth
+	authMsg:  '', // usado em caso de erro na autenticação
+	userInfo: {} as InformacaoUsuario, // populado quando a autenticação é checada
 	phrase:   ''
 };
 
