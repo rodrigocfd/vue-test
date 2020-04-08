@@ -1,5 +1,8 @@
 import React from 'react';
 
+import useServerGetOnMount from 'app/hooks/useServerGetOnMount';
+import Loading from 'app/Loading';
+import UnidadeNoArvore from 'dto/UnidadeNoArvore';
 import No from './No';
 
 interface Props {
@@ -7,11 +10,15 @@ interface Props {
 }
 
 function Arvore({idRaiz}: Props) {
-	return (
-		<div>
-			<No id={idRaiz} />
-		</div>
-	);
+	const raiz = useServerGetOnMount('/unidadeNoArvore?id=' + idRaiz) as UnidadeNoArvore;
+
+	return !raiz
+		? <Loading text="Carregando raiz..." />
+		: (
+			<div>
+				<No unidade={raiz} />
+			</div>
+		);
 }
 
 export default Arvore;

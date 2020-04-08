@@ -1,54 +1,50 @@
 import React from 'react';
 
 import useServerGet from 'app/hooks/useServerGet';
-import useServerGetOnMount from 'app/hooks/useServerGetOnMount';
 import Loading from 'app/Loading';
 import UnidadeNoArvore from 'dto/UnidadeNoArvore';
 
 interface Props {
-	id: number;
+	unidade: UnidadeNoArvore;
 }
 
-function No({id}: Props) {
+function No({unidade}: Props) {
 	const server = useServerGet();
-	const unid = useServerGetOnMount('/unidadeNoArvore?id=' + id) as UnidadeNoArvore;
 
 	enum Carga { FECHADO, CARREGANDO, ABERTO }
 	const [carga, setCarga] = React.useState(Carga.FECHADO);
+
+	const [filhas, setFilhas] = React.useState([] as UnidadeNoArvore[]);
 
 	function abre() {
 		if (carga === Carga.FECHADO) {
 			setCarga(Carga.CARREGANDO);
 			setTimeout(() => {
-				server.doGet('/unidadesNoArvoreFilhas?idPai=' + id)
-					.then((filhas: UnidadeNoArvore[]) => {
-						console.log(filhas);
+				server.doGet('/unidadesNoArvoreFilhas?idPai=' + unidade.id)
+					.then((filhasUnid: UnidadeNoArvore[]) => {
+						setFilhas(filhasUnid);
 						setCarga(Carga.ABERTO);
 					});
-			}, 1000);
+			}, 500);
 		} else if (carga === Carga.ABERTO) {
 			setCarga(Carga.FECHADO);
 		}
 	}
 
-	return !unid
-		? <Loading text="Carregando unidade..." />
-		: (
+	return (
+		<div>
+			{unidade.temFilhas &&
+				<span onClick={abre}>[+] </span>
+			}
+			{unidade.denominacao}
 			<div>
-				{unid.temFilhas &&
-					<span onClick={abre}>[+] </span>
-				}
-				{unid.denominacao}
-				<div>
-					{carga === Carga.CARREGANDO && <Loading text="Carregando filhas..." />}
-					{carga === Carga.ABERTO &&
-						<div>
-							oi
-						</div>
-					}
-				</div>
+				{carga === Carga.CARREGANDO && <Loading text="Carregando filhas..." />}
+				{carga === Carga.ABERTO && filhas.map(filha =>
+					<No key={filha.id} unidade={filha} />
+				)}
 			</div>
-		);
+		</div>
+	);
 }
 
 export default No;
