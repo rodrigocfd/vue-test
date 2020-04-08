@@ -1,11 +1,15 @@
 import React from 'react';
 
 import useServerGetOnMount from 'app/hooks/useServerGetOnMount';
+import useAppContext from 'app/hooks/useAppContext';
 import Loading from 'app/Loading';
 import UnidadeOrganizacional from 'dto/UnidadeOrganizacional';
 
 function TestaRest() {
-	const unid = useServerGetOnMount('/unidade') as UnidadeOrganizacional;
+	const [context] = useAppContext();
+
+	const codOrgao = context.userInfo?.orgaoUsuario.codigo;
+	const unid = useServerGetOnMount('/unidade?codigo=' + codOrgao) as UnidadeOrganizacional;
 
 	return !unid
 		? (
