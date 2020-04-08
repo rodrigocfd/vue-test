@@ -34,35 +34,38 @@ function AppCheckAuth({children}: Props) {
 		}
 	}, [server, setContext, context.auth]);
 
-	switch (context.auth) { // cada um dos possíveis estados do context.auth
-		case Auth.Loading:   return Loadin();
-		case Auth.ServerOff: return ServerOff();
-		case Auth.No:        return No();
-		default:             return <>{children}</>;
+	// Cada um dos estados de context.auth irá
+	// renderizar um elemento diferente.
+	switch (context.auth) {
+	case Auth.Loading:
+		return ( // primeira coisa que aparece, porque o estado inicial é Loading
+			<div className={c.checking}>
+				<Loading size={'48px'} />
+				<div>Carregando Siorg...</div>
+			</div>
+		);
+
+	case Auth.ServerOff:
+		return (
+			<div className={c.checking}>
+				<div className={c.sad}>:(</div>
+				<div>O servidor está fora do ar.</div>
+				<div><a href={jsfUrl('/index.jsf')}>Clique aqui</a> para tentar novamente.</div>
+			</div>
+		);
+
+	case Auth.No:
+		return (
+			<div className={c.checking}>
+				<div className={c.sad}>:(</div>
+				<div>Você não está autenticado.</div>
+				<div><a href={jsfUrl('/index.jsf')}>Clique aqui</a> para fazer login.</div>
+			</div>
+		);
+
+	default: // renderiza a aplicação normalmente
+		return <>{children}</>;
 	}
 }
-
-const Loadin = () => (
-	<div className={c.checking}>
-		<Loading size={'48px'} />
-		<div>Carregando Siorg...</div>
-	</div>
-);
-
-const ServerOff = () => (
-	<div className={c.checking}>
-		<div className={c.sad}>:(</div>
-		<div>O servidor está fora do ar.</div>
-		<div><a href={jsfUrl('/index.jsf')}>Clique aqui</a> para tentar novamente.</div>
-	</div>
-);
-
-const No = () => (
-	<div className={c.checking}>
-		<div className={c.sad}>:(</div>
-		<div>Você não está autenticado.</div>
-		<div><a href={jsfUrl('/index.jsf')}>Clique aqui</a> para fazer login.</div>
-	</div>
-);
 
 export default AppCheckAuth;
