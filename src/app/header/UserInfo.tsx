@@ -6,7 +6,8 @@ import UserInfoPerfis from './UserInfoPerfis';
 import c from './UserInfo.module.scss';
 
 /**
- * Informações do usuário, no canto superior direito.
+ * Informações do usuário, no canto superior direito. Estas informações são
+ * trazidas pelo component AppCheckAuth quando a página é carregada.
  */
 function UserInfo() {
 	const [context] = useAppContext();

@@ -4,8 +4,9 @@ import UnidadeOrganizacional from './UnidadeOrganizacional';
 interface InformacaoUsuario {
 	codigo: string;
 	nome: string;
-	transacoes: string[];
 	perfis: Perfil[];
+	transacoes: string[];
+	transacaoAcessada: string;
 	orgaoUsuario: UnidadeOrganizacional;
 	unidadePermitida: UnidadeOrganizacional;
 	unidadeRaiz: UnidadeOrganizacional;
