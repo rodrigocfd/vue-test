@@ -20,7 +20,7 @@ function AppCheckAuth({children}: Props) {
 	const [context, setContext] = useAppContext();
 
 	React.useEffect(() => {
-		if (context.auth === Auth.Loading) { // o estado inicial é Loading, foi setado no contexto
+		if (context.auth === Auth.Loading) { // o estado inicial é Loading, foi setado em useAppContext
 			setTimeout(async () => { // timeout pro loading aparecer, só pra ficar bonito
 				try {
 					const userInfo = await server.doGet('/informacaoUsuario') as InformacaoUsuario;

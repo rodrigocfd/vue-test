@@ -4,9 +4,9 @@ import useServerGet from './useServerGet';
 
 /**
  * Wrapper do hook useEffect() que traz dados do servidor automaticamente quando
- * o componente é montado.
+ * o componente é montado. Guarda o objeto com useState().
  * @example
- * const myData = userServerGetOnMount('/myData');
+ * const myData = userServerGetOnMount('/myData') as MyData;
  */
 function useServerGetOnMount(path: string): any {
 	const server = useServerGet();

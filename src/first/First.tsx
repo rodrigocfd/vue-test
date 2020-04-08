@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 
 import useRefFocusOnMount from 'app/hooks/useRefFocusOnMount';
 import Prompt from './Prompt';
+import TestaRest from './TestaRest';
 
 function First() {
 	const [promptOpen, setPromptOpen] = React.useState(false);
@@ -30,6 +31,7 @@ function First() {
 		<p><Link to="/second">Go to second</Link></p>
 		<input type="text" ref={nameRef} value={name} onChange={e => setName(e.target.value)} />
 		<input type="button" value="Modify" onClick={btnModify} />
+		<TestaRest />
 
 		{promptOpen &&
 			<Prompt text={name}
