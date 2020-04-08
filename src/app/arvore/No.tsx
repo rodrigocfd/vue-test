@@ -12,17 +12,22 @@ interface Props {
 function No({id}: Props) {
 	const server = useServerGet();
 	const unid = useServerGetOnMount('/unidadeNoArvore?id=' + id) as UnidadeNoArvore;
-	const [aberto, setAberto] = React.useState(false);
+
+	enum Carga { FECHADO, CARREGANDO, ABERTO }
+	const [carga, setCarga] = React.useState(Carga.FECHADO);
 
 	function abre() {
-		if (aberto) {
-			setAberto(false);
-		} else {
-			server.doGet('/unidadesNoArvoreFilhas?idPai=' + id)
-				.then((filhas: UnidadeNoArvore[]) => {
-					setAberto(true);
-					console.log(filhas);
-				});
+		if (carga === Carga.FECHADO) {
+			setCarga(Carga.CARREGANDO);
+			setTimeout(() => {
+				server.doGet('/unidadesNoArvoreFilhas?idPai=' + id)
+					.then((filhas: UnidadeNoArvore[]) => {
+						console.log(filhas);
+						setCarga(Carga.ABERTO);
+					});
+			}, 1000);
+		} else if (carga === Carga.ABERTO) {
+			setCarga(Carga.FECHADO);
 		}
 	}
 
@@ -34,11 +39,14 @@ function No({id}: Props) {
 					<span onClick={abre}>[+] </span>
 				}
 				{unid.denominacao}
-				{aberto &&
-					<div>
-						oi
-					</div>
-				}
+				<div>
+					{carga === Carga.CARREGANDO && <Loading text="Carregando filhas..." />}
+					{carga === Carga.ABERTO &&
+						<div>
+							oi
+						</div>
+					}
+				</div>
 			</div>
 		);
 }
