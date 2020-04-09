@@ -1,0 +1,9 @@
+@import 'global.scss';
+
+.arvore {
+	border: $menu-border-green;
+	overflow: auto;
+	padding: 2px 8px;
+	width: 100%; // a ideia é que a caixa da árvore se expanda dentro do elemento pai
+	height: 100%;
+}
