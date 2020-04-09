@@ -26,9 +26,7 @@ function AppCheckAuth({children}: Props) {
 					const userInfo = await server.doGet('/informacaoUsuario') as InformacaoUsuario;
 					setContext({userInfo, auth: Auth.Yes});
 				} catch (err) {
-					if (err.message === '500') {
-						setContext({auth: Auth.ServerOff});
-					}
+					// Erros de consulta são tratados dentro da própria chamada em useServerGet.
 				}
 			}, 500);
 		}
@@ -38,7 +36,7 @@ function AppCheckAuth({children}: Props) {
 	// renderizar um elemento diferente.
 	switch (context.auth) {
 	case Auth.Loading:
-		return ( // primeira coisa que aparece, porque o estado inicial é Loading
+		return ( // primeira coisa que aparece na aplicação, porque o estado inicial é Loading
 			<div className={c.checking}>
 				<Loading size={'48px'} />
 				<div>Carregando Siorg...</div>
@@ -49,7 +47,7 @@ function AppCheckAuth({children}: Props) {
 		return (
 			<div className={c.checking}>
 				<div className={c.sad}>:(</div>
-				<div>O servidor está fora do ar.</div>
+				<div>{context.authMsg}</div>
 				<div><a href={jsfUrl('/index.jsf')}>Clique aqui</a> para tentar novamente.</div>
 			</div>
 		);
@@ -58,7 +56,7 @@ function AppCheckAuth({children}: Props) {
 		return (
 			<div className={c.checking}>
 				<div className={c.sad}>:(</div>
-				<div>Você não está autenticado.</div>
+				<div>{context.authMsg}</div>
 				<div><a href={jsfUrl('/index.jsf')}>Clique aqui</a> para fazer login.</div>
 			</div>
 		);

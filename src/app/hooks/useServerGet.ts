@@ -3,9 +3,12 @@ import useAppContext, {Auth} from './useAppContext';
 const API_REST = '/siorg-gestao-webapp/api';
 
 interface DoGetWrapperT {
+	/**
+	 * Faz uma consulta GET ao servidor, interceptando erros HTTP.
+	 */
 	doGet: (path: string, payload?: any) => Promise<any>;
 }
-const wrapper: DoGetWrapperT = { // wrapper para ajudar a checagem do useEffect [deps]
+const wrapper: DoGetWrapperT = { // wrapper singleton, permite checagem no [deps] do useEffect
 	doGet: (path: string) => new Promise(() => {})
 };
 
@@ -18,7 +21,7 @@ const wrapper: DoGetWrapperT = { // wrapper para ajudar a checagem do useEffect 
  *   .catch(() => {});
  */
 function useServerGet() {
-	const [, setContext] = useAppContext();
+	const [context, setContext] = useAppContext();
 
 	wrapper.doGet = async function(path: string, payload?: any): Promise<any> {
 		const resp = await fetch(API_REST + path, {
@@ -37,16 +40,32 @@ function useServerGet() {
 			const data = await resp.json();
 			setContext({
 				auth:    Auth.No, // faz logoff automático aqui, o router vai redirecionar
-				authMsg: data.mensagem
+				authMsg: data.mensagem || 'Você não está autenticado.'
 			});
 			throw new Error('401');
 
 		case 404: // Not Found
-			alert(`Erro da aplicação, chamada "${path}" não encontrada.`);
+			const msg404 = `Erro da aplicação, chamada "${path}" não encontrada (HTTP 404).`;
+			if (context.auth === Auth.Loading) { // aplicação ainda está sendo carregada, aborta
+				setContext({
+					auth:    Auth.No, // faz logoff automático aqui, o router vai redirecionar
+					authMsg: msg404
+				});
+			} else {
+				alert(msg404);
+			}
 			throw new Error('404');
 
 		case 500: // Internal Server Error
-			alert('Erro interno do servidor, ou ele está fora do ar.');
+			const msg500 = 'Erro interno do servidor, ou ele está fora do ar (HTTP 500).';
+			if (context.auth === Auth.Loading) { // aplicação ainda está sendo carregada, aborta
+				setContext({
+					auth:    Auth.No, // faz logoff automático aqui, o router vai redirecionar
+					authMsg: msg500
+				});
+			} else {
+				alert(msg500);
+			}
 			throw new Error('500');
 
 		default:
@@ -54,7 +73,7 @@ function useServerGet() {
 		}
 	};
 
-	return wrapper; // sempre retorna o mesmo objeto, importante para checagem do useEffect [deps]
+	return wrapper; // sempre retorna o mesmo singleton, importante para checagem do [deps] do useEffect
 }
 
 export default useServerGet;
