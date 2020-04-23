@@ -4,20 +4,20 @@ import {Redirect, Route, Switch} from 'react-router-dom';
 import Header from 'app/header/Header';
 import First from 'first/First';
 import Second from 'second/Second';
-import NotFound from './NotFound';
-import c from './AppRoute.module.scss';
+import Erro404 from './Erro404';
+import c from './AppRotas.module.scss';
 
 /**
  * Descreve as rotas da aplicação.
  */
-function AppRoute() {
+function AppRotas() {
 	return (<>
 		<Header />
 		<div className={c.contents}>
 			<Switch>
 				<Route path="/first" component={First} />
 				<Route path="/second" component={Second} />
-				<Route path="/404" component={NotFound} />
+				<Route path="/404" component={Erro404} />
 
 				<Route exact path="/">
 					<Redirect to="/first" />
@@ -28,4 +28,4 @@ function AppRoute() {
 	</>);
 }
 
-export default AppRoute;
+export default AppRotas;

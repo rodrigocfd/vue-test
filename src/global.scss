@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Global variables.
+// Variáveis SASS globais.
 
 $app-font: 10pt arial, helvetica, Trebuchet MS, clean, sans-serif;
 $txt-black: #333;
@@ -15,7 +15,7 @@ $menu-border-green: 1px solid #aaba75;
 $menu-dotted-separator: 1px dotted #aebc82;
 
 ////////////////////////////////////////////////////////////////////////////////
-// App-wide global styles.
+// Estilos CSS globais.
 
 html {
 	box-sizing: border-box;
@@ -45,7 +45,7 @@ button, input[type=button], input[type=submit] {
 	border: 0;
 	border-radius: 2px;
 
-	&:active { // subtle animation effect
+	&:active { // animação sutil no clique de botão
 		transform: translateY(1px);
 		background-color: $txt-green;
 	}

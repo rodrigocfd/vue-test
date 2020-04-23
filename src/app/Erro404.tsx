@@ -3,12 +3,12 @@ import React from 'react';
 /**
  * Componente renderizado quando uma rota inválida é chamada.
  */
-function NotFound() {
+function Erro404() {
 	return (
 		<div>
-			Page not found.
+			Página não encontrada.
 		</div>
 	);
 }
 
-export default NotFound;
+export default Erro404;

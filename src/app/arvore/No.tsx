@@ -1,7 +1,7 @@
 import React from 'react';
 
 import useServerGet from 'app/hooks/useServerGet';
-import Loading from 'app/Loading';
+import Carregando from 'app/Carregando';
 import UnidadeNoArvore from 'dto/UnidadeNoArvore';
 import c from './No.module.scss';
 
@@ -41,7 +41,7 @@ function No({unidade}: Props) {
 			}
 			{unidade.denominacao}
 			<div className={c.filhas}>
-				{carga === Carga.CARREGANDO && <Loading text="Carregando filhas..." />}
+				{carga === Carga.CARREGANDO && <Carregando text="Carregando filhas..." />}
 				{carga === Carga.ABERTO && filhas.map(filha =>
 					<No key={filha.id} unidade={filha} />
 				)}

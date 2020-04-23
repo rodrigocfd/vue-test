@@ -1,6 +1,6 @@
 import React from 'react';
 
-import c from './Loading.module.scss';
+import c from './Carregando.module.scss';
 
 interface Props {
 	text: string;
@@ -16,7 +16,7 @@ const defaultProps: Props = {
 /**
  * Animação giratória, que opcionalmente aceita um texto curto.
  */
-function Loading({text, size, speed}: Props) {
+function Carregando({text, size, speed}: Props) {
 	return (
 		<div className={c.wrap}>
 			<span className={c.text}>{text}</span>
@@ -61,6 +61,6 @@ function Loading({text, size, speed}: Props) {
 	);
 }
 
-Loading.defaultProps = defaultProps;
+Carregando.defaultProps = defaultProps;
 
-export default Loading;
+export default Carregando;

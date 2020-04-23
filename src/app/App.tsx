@@ -2,8 +2,8 @@ import React from 'react';
 import {HashRouter} from 'react-router-dom';
 
 import {initialState, AppContext} from 'app/hooks/useAppContext';
-import AppCheckAuth from './AppCheckAuth';
-import AppRoute from './AppRoute';
+import AppChecaLogin from './AppChecaLogin';
+import AppRotas from './AppRotas';
 
 /**
  * Componente de topo, raiz da aplicação.
@@ -13,11 +13,11 @@ function App() {
 
 	return (
 		<AppContext.Provider value={contextGetSet}>
-			<AppCheckAuth>
+			<AppChecaLogin>
 				<HashRouter>
-					<AppRoute />
+					<AppRotas />
 				</HashRouter>
-			</AppCheckAuth>
+			</AppChecaLogin>
 		</AppContext.Provider>
 	);
 }

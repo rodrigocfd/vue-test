@@ -4,18 +4,20 @@ import InformacaoUsuario from 'dto/InformacaoUsuario';
 import jsfUrl from 'app/hooks/jsfUrl';
 import useAppContext, {Auth} from 'app/hooks/useAppContext';
 import useServerGet from 'app/hooks/useServerGet';
-import Loading from './Loading';
-import c from './AppCheckAuth.module.scss';
+import Carregando from './Carregando';
+import c from './AppChecaLogin.module.scss';
 
 interface Props {
 	children: React.ReactNode;
 }
 
 /**
- * Faz a primeira chamada ao servidor para determinar se o usuário está logado.
- * Também verifica se o servidor está fora do ar.
+ * Faz a primeira chamada ao servidor para determinar se o usuário está logado,
+ * e verifica se o servidor está fora do ar.
+ * Se há problema, aborta a aplicação e mostra uma tela de erro.
+ * Se está tudo OK, carrega "children".
  */
-function AppCheckAuth({children}: Props) {
+function AppChecaLogin({children}: Props) {
 	const server = useServerGet();
 	const [context, setContext] = useAppContext();
 
@@ -38,7 +40,7 @@ function AppCheckAuth({children}: Props) {
 	case Auth.Loading:
 		return ( // primeira coisa que aparece na aplicação, porque o estado inicial é Loading
 			<div className={c.checking}>
-				<Loading size={'48px'} />
+				<Carregando size={'48px'} />
 				<div>Carregando Siorg...</div>
 			</div>
 		);
@@ -66,4 +68,4 @@ function AppCheckAuth({children}: Props) {
 	}
 }
 
-export default AppCheckAuth;
+export default AppChecaLogin;
