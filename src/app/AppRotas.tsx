@@ -2,8 +2,8 @@ import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
 import Header from 'app/header/Header';
-import First from 'first/First';
-import Second from 'second/Second';
+import First from 'secoes/first/First';
+import Second from 'secoes/second/Second';
 import Erro404 from './Erro404';
 import c from './AppRotas.module.scss';
 
