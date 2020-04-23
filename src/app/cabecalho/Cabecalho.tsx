@@ -2,12 +2,12 @@ import React from 'react';
 
 import Menu from './Menu';
 import UserInfo from './UserInfo';
-import c from './Header.module.scss';
+import c from './Cabecalho.module.scss';
 
 /**
  * Cabeçalho da aplicação, que aparece em todas as páginas.
  */
-function Header() {
+function Cabecalho() {
 	return (
 		<div className={c.header}>
 			<div className={c.logoRow}>
@@ -23,4 +23,4 @@ function Header() {
 	);
 }
 
-export default Header;
+export default Cabecalho;

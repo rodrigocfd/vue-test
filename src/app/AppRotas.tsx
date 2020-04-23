@@ -1,7 +1,7 @@
 import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 
-import Header from 'app/header/Header';
+import Cabecalho from 'app/cabecalho/Cabecalho';
 import First from 'secoes/first/First';
 import Second from 'secoes/second/Second';
 import Erro404 from './Erro404';
@@ -12,7 +12,7 @@ import c from './AppRotas.module.scss';
  */
 function AppRotas() {
 	return (<>
-		<Header />
+		<Cabecalho />
 		<div className={c.contents}>
 			<Switch>
 				<Route path="/first" component={First} />
