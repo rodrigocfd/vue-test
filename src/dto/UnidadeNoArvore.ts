@@ -3,6 +3,7 @@ interface UnidadeNoArvore {
 	codigo: number;
 	denominacao: string;
 	sigla: string;
+	idPai: number | null;
 	temFilhas: boolean;
 }
 
